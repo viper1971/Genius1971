@@ -161,12 +161,11 @@
 </div>
 
 
-
-<div class="section" style="display: flex; align-items: center; justify-content: space-between; padding: 20px; gap: 20px;">
-    <img src="./checklist.png" alt="Checklist před odletem" style="width: 450px; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-    <div>
-        <h2>📋 Checklist před odletem</h2>
-        <ul>
+<div class="section" style="display: flex; align-items: center; justify-content: space-between; padding: 20px; gap: 20px; flex-wrap: wrap;">
+    <img src="./checklist.png" alt="Checklist před odletem" style="width: 450px; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 100%;">
+    <div style="flex: 1; min-width: 280px;">
+        <h2 style="font-size: 1.5rem;">📋 Checklist před odletem</h2>
+        <ul style="font-size: 1rem; line-height: 1.5;">
             <li>Doklad o zaplacené turistické dani na Bali (uložit v PDF + screenshot)</li>
             <li>Platný cestovní pas</li>
             <li>Mezinárodní řidičský průkaz + český řidičský průkaz</li>
@@ -176,6 +175,26 @@
         </ul>
     </div>
 </div>
+
+<style>
+    @media (max-width: 768px) {
+        .section {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .section img {
+            width: 100%;
+            max-width: 300px;
+        }
+        .section h2 {
+            font-size: 1.25rem;
+        }
+        .section ul {
+            font-size: 0.9rem;
+        }
+    }
+</style>
 
 
 
