@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kompletní itinerář cesty na Bali a Singapur</title>
-   <!-- Plovoucí tlačítko -->
+
+
+<!-- Plovoucí tlačítko -->
 <button class="floating-button" onclick="togglePanel()">Obsah</button>
 
 <!-- Boční panel s obsahem -->
@@ -13,10 +15,14 @@
     <ul>
         <li><a href="#harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
         <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
-        <li><a href="#hotely" onclick="navigateAndClose(event)">🏨 Hotely a rezervace</a></li>
+        <li><a href="#hotely" onclick="navigateAndClose(event)">🏨 Hotely - Rezervace</a></li>
+        <li><a href="#mapa-singapur" onclick="navigateAndClose(event)">🌍 Mapa itineráře - Singapur</a></li>
+        <li><a href="#atrakce-singapur" onclick="navigateAndClose(event)">🗺️ Průvodce atrakcemi - Singapur</a></li>
+        <li><a href="#mapa-bali" onclick="navigateAndClose(event)">🌍 Mapa itineráře - Bali</a></li>
+        <li><a href="#atrakce-bali" onclick="navigateAndClose(event)">🏨 Průvodce atrakcemi - Bali</a></li>
     </ul>
 </div>
-   
+
 
 <style>
     .floating-button {
@@ -41,15 +47,16 @@
     .side-panel {
         position: fixed;
         top: 0;
-        left: -320px;
+        left: -300px;
         width: 300px;
         height: 100%;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.95);
         box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-        z-index: 999;
+        z-index: 9999;
         padding: 20px;
         overflow-y: auto;
         transition: left 0.3s ease;
+        box-sizing: border-box;
     }
 
     .side-panel.open {
@@ -82,6 +89,9 @@
         text-decoration: underline;
     }
 </style>
+
+
+   
 
     <style>
         /* Globální stylování */
@@ -303,9 +313,9 @@
 </div>
 
 
+<div id="harmonogram" class="section">
+    
 
-    <!-- Sekce harmonogram příprav -->
-div id="harmonogram" class="section">
     <h2>🗓️ Harmonogram příprav</h2>
     <p>📅 Termín do 30.6.2025</p>
 </div>
@@ -322,6 +332,11 @@ div id="harmonogram" class="section">
         <p>📍 <strong>Úkol:</strong> Povinná schůzka v Hodkovicích (hromadné vyplnění a platba víza e-VOA, platba turistické daně, kontrola dokumentů)</p>
         <p>👥 <strong>Odpovědnost:</strong> Celá skupina</p>
     </div>
+
+
+
+
+
     <!-- Sekce postup na letišti -->
     <div class="card">
         <h2>🛂 Postup na letišti</h2>
@@ -359,7 +374,10 @@ div id="harmonogram" class="section">
         </div>
     </div>
     <!-- Sekce hotely a rezervace -->
-    <div class="card">
+ 
+
+
+   <div id="hotely" class="card">
         <h2>🏨 Hotely - Rezervace</h2>
 
         <div class="flex-container">
@@ -413,8 +431,10 @@ div id="harmonogram" class="section">
         </div>
     </div>
    
-    <div class="table-wrapper">
-        
+    <div id="letovy-plan" class="section">
+
+
+
         <h2>✈️ Letový plán</h2>
         <table class="flight-table">
             <tr>
@@ -531,7 +551,9 @@ div id="harmonogram" class="section">
    
    
     <!-- Sekce mapa itineráře Singapur -->
-    <div class="card">
+
+<div id="mapa-singapur" class="card">
+    
         <h2>🌍 Mapa itineráře - Singapur</h2>
         <iframe 
             src="https://www.google.com/maps/d/embed?mid=13FT1rGlTFxq7e5u33Zfaew9KpamhfHM&ehbc=2E312F" 
@@ -541,7 +563,10 @@ div id="harmonogram" class="section">
         </iframe>
     </div>
     <!-- Sekce průvodce atrakcemi v Singapuru -->
-    <div class="card">
+
+
+<div id="atrakce-singapur" class="card">
+    
         <h2>🗺️ Průvodce atrakcemi v Singapuru 🌆</h2>
 
         <div class="flex-container">
@@ -710,6 +735,8 @@ div id="harmonogram" class="section">
             <a href="https://www.google.com/maps/dir/HOTEL+81+Palace,+Geylang,+Singapore/River+Safari/" target="_blank">📍 Zobrazit trasu</a>
         </div>
     </div>
+
+<div id="mapa-bali" class="section">
     <h2>🌍 Mapa itineráře - Bali</h2>
     <iframe 
         src="https://www.google.com/maps/d/u/0/embed?mid=1gXa0M2z-FE6YhOPVd0_ae2hqUCt3ih0&ehbc=2E312F" 
@@ -717,7 +744,11 @@ div id="harmonogram" class="section">
         height="480" 
         style="border:0; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
     </iframe>
-    <div class="section">
+ </div>
+
+
+
+<div id="atrakce-bali" class="section">
         <h2>🏨 Atrakce v okolí hotelu Kamboja Homestay</h2>
         <div class="flex-container">
             <div class="card">
@@ -918,3 +949,22 @@ div id="harmonogram" class="section">
         </div>
     </div>
               
+
+
+<script>
+    function togglePanel() {
+        const panel = document.getElementById('sidePanel');
+        panel.classList.toggle('open');
+    }
+
+    function navigateAndClose(event) {
+        event.preventDefault();
+        const targetId = event.target.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('sidePanel').classList.remove('open');
+        }
+    }
+</script>
