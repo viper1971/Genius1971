@@ -2,24 +2,40 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kompletní itinerář cesty na Bali a Singapur</title>
-    
-   
-    
     <style>
+        /* Základní styly */
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.8;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 30px;
+            margin: 0;
+            padding: 20px;
             background: #f8f9fa;
+            color: #333;
         }
 
         h1, h2, h3 {
             color: #2d6a4f;
             border-left: 5px solid #40916c;
             padding-left: 15px;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        h3 {
+            font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+        }
+
+        p, li {
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
         .section {
@@ -27,7 +43,7 @@
             padding: 25px;
             margin: 20px 0;
             border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
         }
 
         .warning {
@@ -44,111 +60,197 @@
         li {
             margin-bottom: 8px;
         }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #40916c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: clamp(0.9rem, 3vw, 1rem);
+        }
+
+        button:hover {
+            background-color: #2d6a4f;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Flexbox a Grid pro rozložení */
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .flex-container img {
+            flex: 1 1 300px;
+            max-width: 100%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Tabulky */
+        .graficka-tabulka {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .graficka-tabulka th, .graficka-tabulka td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .graficka-tabulka th {
+            background: #40916c;
+            color: white;
+            padding: 15px;
+        }
+
+        .graficka-tabulka tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .graficka-tabulka tr:hover {
+            background-color: #4caf50;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Interaktivní prvky */
+        .details {
+            cursor: pointer;
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .details-content {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .details.active .details-content {
+            display: block;
+        }
+
+        /* Responzivní styly */
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .section {
+                padding: 15px;
+            }
+
+            .graficka-tabulka th, .graficka-tabulka td {
+                font-size: clamp(0.8rem, 2vw, 0.9rem);
+            }
+        }
     </style>
 </head>
 <body>
 
     <h1>🌍 INFORMACE K DOVOLENÉ SINGAPUR a BALI - 9-25.7.2025</h1>
-        
-    <div style="display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap; padding: 20px;">
-        <div style="flex: 1 1 300px; max-width: 300px;">
-            <img src="./Bali.jpg" alt="Bali" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        </div>
-        <div style="flex: 1 1 300px; max-width: 300px;">
-            <img src="./LOGO.jpg" alt="Logo Genius3" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        </div>
-        <div style="flex: 1 1 300px; max-width: 300px;">
-            <img src="./singapur.jpg" alt="Singapore" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+
+    <div class="flex-container">
+        <img src="./Bali.jpg" alt="Bali">
+        <img src="./LOGO.jpg" alt="Logo Genius3">
+        <img src="./singapur.jpg" alt="Singapore">
+    </div>
+
+    <div class="section">
+        <h2>🎥 Celá trasa na Bali – Video</h2>
+        <p>Pro zobrazení videa klikněte na následující odkaz:</p>
+        <a href="https://drive.google.com/file/d/1E7WOPSULsjnYUldTG4K7zF-6ce5vUVt4/view?usp=drivesdk" target="_self">
+            <button>Zobrazit video na Google Drive</button>
+        </a>
+    </div>
+
+    <div class="warning flex-container">
+        <img src="./dokumenty.jpg" alt="Dokumenty" style="width: 100px;">
+        <div>
+            <h3>❗ Povinné pro všechny účastníky</h3>
+            <ul>
+                <li>Pas platný do 24.1.2026 + 2 volné stránky</li>
+                <li>e-VOA vízum (35 USD) (<a href="https://evisa.imigrasi.go.id/">LINK/</a>)</li>
+                <li>Turistická daň (10 USD) (<a href="https://lovebali.baliprov.go.id/levy-group">LINK</a>)</li>
+                <li>Zdravotní formulář SATUSEHAT (<a href="https://sshp.kemkes.go.id/">LINK/</a>)</li>
+                <li>Příjezdová karta SG Arrival Card (<a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/sg-arrival-card">LINK</a>)</li>
+                <li>Klikni a potvrď schůzku 5.7.2025 (<a href="https://calendar.app.google/VqNDM6J6WbT5qSZi6">Kalendář schůzka</a>)</li>
+            </ul>
         </div>
     </div>
-    
-     
-      
 
-<div class="section">
-    <h2>🎥 Celá trasa na Bali – Video</h2>
-    <p>Pro zobrazení videa klikněte na následující odkaz:</p>
-    <a href="https://drive.google.com/file/d/1E7WOPSULsjnYUldTG4K7zF-6ce5vUVt4/view?usp=drivesdk" target="_self">
-        <button class="filter-button">Zobrazit video na Google Drive</button>
-    </a>
-</div>
-
-
-
-
-
-    
-    
-<div class="warning" style="display: flex; align-items: center; justify-content: left; padding: 5px; gap: 5px;">
-    <img src="./dokumenty.jpg" alt="Dokumenty" style="width: 100px; height: auto; object-fit: cover;">
-    <div>
-        <h3>❗ Povinné pro všechny účastníky</h3>
-        <ul>
-            <li>Pas platný do 24.1.2026 + 2 volné stránky</li>
-            <li>e-VOA vízum (35 USD) (<a href="https://evisa.imigrasi.go.id/">LINK/</a>)</li>
-            <li>Turistická daň (10 USD) (<a href="https://lovebali.baliprov.go.id/levy-group">LINK</a>)</li>
-            <li>Zdravotní formulář SATUSEHAT (<a href="https://sshp.kemkes.go.id/">LINK/</a>)</li>
-            <li>Příjezdová karta SG Arrival Card (<a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/sg-arrival-card">LINK</a>)</li>
-            <li>Klikni a potvrď schůzku 5.7.2025 (<a href="https://calendar.app.google/VqNDM6J6WbT5qSZi6">Kalendář schůzka</a>)</li>
-        </ul>
+    <div class="section">
+        <h2>🗓 Harmonogram příprav</h2>
+        <table class="graficka-tabulka">
+            <tr>
+                <th>Termín</th>
+                <th>Úkol</th>
+                <th>Odpovědnost</th>
+            </tr>
+            <tr>
+                <td>Do 30.6.2025</td>
+                <td>Získání mezinárodních řidičských průkazů (Ženevský a Vídeňský)</td>
+                <td>Michal, Radek, Tomáš, Pepa, Naďa, Míša, Milan</td>
+            </tr>
+            <tr>
+                <td>5.7.2025 15:00</td>
+                <td>Povinná schůzka v Hodkovicích (hromadné vyplnění a platba víza e-VOA, platba turistické daně, kontrola dokumentů)</td>
+                <td>Celá skupina</td>
+            </tr>
+        </table>
     </div>
-</div>
 
+    <div class="section flex-container">
+        <img src="./checklist.png" alt="Checklist před odletem">
+        <div>
+            <h2>📋 Checklist před odletem</h2>
+            <ul>
+                <li>Doklad o zaplacené turistické dani na Bali (uložit v PDF + screenshot)</li>
+                <li>Platný cestovní pas</li>
+                <li>Mezinárodní řidičský průkaz + český řidičský průkaz</li>
+                <li>Kreditní karty</li>
+                <li>Hotovost v USD nebo EUR</li>
+                <li>Registrace do systému DROZD (<a href="https://drozd.mzv.gov.cz/register" target="_blank">LINK</a>)</li>
+            </ul>
+        </div>
+    </div>
 
-
-<div class="section">
-    <h2>🗓 Harmonogram příprav</h2>
-    <table class="graficka-tabulka">
-        <tr>
-            <th>Termín</th>
-            <th>Úkol</th>
-            <th>Odpovědnost</th>
-        </tr>
-        <tr>
-            <td>Do 30.6.2025</td>
-            <td>Získání mezinárodních řidičských průkazů (Ženevský a Vídeňský)</td>
-            <td>Michal, Radek, Tomáš, Pepa, Naďa, Míša, Milan</td>
-        </tr>
-        <tr>
-            <td>5.7.2025 15:00</td>
-            <td>Povinná schůzka v Hodkovicích (hromadné vyplnění a platba víza e-VOA, platba turistické daně, kontrola dokumentů)</td>
-            <td>Celá skupina</td>
-        </tr>
-    </table>
-</div>
-
-<style>
-    .graficka-tabulka {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 25px 0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .graficka-tabulka th, .graficka-tabulka td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .graficka-tabulka th {
-        background: #40916c;
-        color: white;
-        padding: 15px;
-    }
-
-    .graficka-tabulka tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    .graficka-tabulka tr:hover {
-        background-color: #4caf50;
-        color: white;
-        transition: all 0.3s ease;
-    }
-</style>
-<div class="section" style="display: flex; align-items: center; justify-content: space-between; padding: 20px; gap: 20px;">
+    <div class="section flex-container">
     <div>
         <h2>🧳 Příruční zavazadla</h2>
         <ul>
@@ -157,176 +259,133 @@
             <li>Zakázáno: Tekutiny nad 100 ml</li>
         </ul>
     </div>
-    <img src="./batoh.jpg" alt="Příruční zavazadlo" style="width: 150px; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <img src="./batoh.jpg" alt="Příruční zavazadlo" style="max-width: 150px;">
 </div>
-
-
-<div class="section" style="display: flex; align-items: center; justify-content: space-between; padding: 20px; gap: 20px; flex-wrap: wrap;">
-    <img src="./checklist.png" alt="Checklist před odletem" style="width: 450px; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 100%;">
-    <div style="flex: 1; min-width: 280px;">
-        <h2 style="font-size: 1.5rem;">📋 Checklist před odletem</h2>
-        <ul style="font-size: 1rem; line-height: 1.5;">
-            <li>Doklad o zaplacené turistické dani na Bali (uložit v PDF + screenshot)</li>
-            <li>Platný cestovní pas</li>
-            <li>Mezinárodní řidičský průkaz + český řidičský průkaz</li>
-            <li>Kreditní karty</li>
-            <li>Hotovost v USD nebo EUR</li>
-            <li>Registrace do systému DROZD (<a href="https://drozd.mzv.gov.cz/register" target="_blank">LINK</a>)</li>
-        </ul>
-    </div>
-</div>
-
-<style>
-    @media (max-width: 768px) {
-        .section {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        .section img {
-            width: 100%;
-            max-width: 300px;
-        }
-        .section h2 {
-            font-size: 1.25rem;
-        }
-        .section ul {
-            font-size: 0.9rem;
-        }
-    }
-</style>
-
-
-
 
 <div class="section">
     <h2>🛂 Postup na letišti</h2>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; padding: 20px;">
-        <div style="flex: 1 1 300px; text-align: center;">
-            <img src="./LetištěPraha.png" alt="Letiště Praha" style="width: 200px; height: auto; margin-bottom: 10px;">
+    <div class="grid-container">
+        <div>
+            <img src="./LetištěPraha.png" alt="Letiště Praha">
             <h3>V Praze (9.7.2025)</h3>
-            <ul style="text-align: left;">
+            <ul>
                 <li>Společná cesta autobusem z Hodkovic nad Mohelkou do Prahy</li>
                 <li>3 hodiny před odletem na letišti</li>
                 <li>Vyplnit SG Arrival Card pro Singapur</li>
             </ul>
         </div>
-        <div style="flex: 1 1 300px; text-align: center;">
-            <img src="./Changi.png" alt="Letiště Changi" style="width: 200px; height: auto; margin-bottom: 10px;">
+        <div>
+            <img src="./Changi.png" alt="Letiště Changi">
             <h3>V Singapuru (10.7.2025)</h3>
-            <ul style="text-align: left;">
+            <ul>
                 <li>Předložit: Příjezdová karta SG Arrival Card</li>
             </ul>
         </div>
-        <div style="flex: 1 1 300px; text-align: center;">
-            <img src="./Baliletiste.jpg" alt="Letiště Bali" style="width: 200px; height: auto; margin-bottom: 10px;">
+        <div>
+            <img src="./Baliletiste.jpg" alt="Letiště Bali">
             <h3>Na Bali (13.7.2025)</h3>
-            <ul style="text-align: left;">
+            <ul>
                 <li>Předložit: e-VOA + SATUSEHAT kód</li>
             </ul>
         </div>
     </div>
 </div>
 
-
 <div class="section">
     <h2>📝 Tabulka s osobními údaji</h2>
-
     <div style="text-align: center;">
-        <button class="filter-button" onclick="showAllRows()">Zobraz všechny záznamy</button>
-        <button class="filter-button" onclick="filterRowsByPassportYear(2026)">Zobraz pasy platné do roku 2026</button>
-        <select class="filter-select" id="surnameFilter" onchange="filterRowsBySurname()">
+        <button onclick="showAllRows()">Zobraz všechny záznamy</button>
+        <button onclick="filterRowsByPassportYear(2026)">Zobraz pasy platné do roku 2026</button>
+        <select id="surnameFilter" onchange="filterRowsBySurname()">
             <option value="">Vyber příjmení</option>
             <option value="Holan">Holanovi</option>
-           
             <option value="Zelen">Zelení</option>
-           
             <option value="Habasko">Habaskovi</option>
-           
             <option value="Urbanova">Urbanova</option>
             <option value="Cmelik">Cmelikovi</option>
-           
         </select>
     </div>
-    <table class="graficka-tabulka" id="personalDataTable">
-        <tr>
-            <th>Jméno</th>
-            <th>Číslo pasu</th>
-            <th>Platnost pasu</th>
-            <th>Datum narození</th>
-            <th>Zbývá dní do konce platnosti</th>
-        </tr>
-        <tr>
-            <td>Radek Holan</td>
-            <td>47935419</td>
-            <td>3.3.2033</td>
-            <td>24.5.1971</td>
-            <td>2952</td>
-        </tr>
-        <tr>
-            <td>Hannah Holanova</td>
-            <td>46771417</td>
-            <td>14.1.2032</td>
-            <td>19.11.2006</td>
-            <td>2538</td>
-        </tr>
-        <tr>
-            <td>Lucie Zelena</td>
-            <td>43286120</td>
-            <td>11.4.2026</td>
-            <td>20.6.1977</td>
-            <td>434</td>
-        </tr>
-        <tr>
-            <td>Tomáš Zeleny</td>
-            <td>47102606</td>
-            <td>22.4.2027</td>
-            <td>22.9.2007</td>
-            <td>810</td>
-        </tr>
-        <tr>
-            <td>Michaela Habaskova</td>
-            <td>43635432</td>
-            <td>17.8.2026</td>
-            <td>5.8.1972</td>
-            <td>562</td>
-        </tr>
-        <tr>
-            <td>Milan Habasko</td>
-            <td>43635431</td>
-            <td>17.8.2026</td>
-            <td>13.4.1974</td>
-            <td>562</td>
-        </tr>
-        <tr>
-            <td>Nadezda Urbanova</td>
-            <td>44980554</td>
-            <td>19.5.2028</td>
-            <td>30.11.1963</td>
-            <td>1203</td>
-        </tr>
-        <tr>
-            <td>Michal Cmelik</td>
-            <td>45911485</td>
-            <td>3.9.2029</td>
-            <td>4.4.1973</td>
-            <td>1675</td>
-        </tr>
-        <tr>
-            <td>Jitka Cmelikova</td>
-            <td>48632831</td>
-            <td>22.12.2033</td>
-            <td>2.4.1974</td>
-            <td>3246</td>
-        </tr>
-        <tr>
-            <td>Josef Cmelik</td>
-            <td>46765901</td>
-            <td>11.1.2032</td>
-            <td>17.4.2006</td>
-            <td>2535</td>
-        </tr>
-    </table>
+    <div style="overflow-x: auto;">
+        <table class="graficka-tabulka" id="personalDataTable" style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <th>Jméno</th>
+                <th>Číslo pasu</th>
+                <th>Platnost pasu</th>
+                <th>Datum narození</th>
+                <th>Zbývá dní do konce platnosti</th>
+            </tr>
+            <tr>
+                <td>Radek Holan</td>
+                <td>47935419</td>
+                <td>3.3.2033</td>
+                <td>24.5.1971</td>
+                <td>2952</td>
+            </tr>
+            <tr>
+                <td>Hannah Holanova</td>
+                <td>46771417</td>
+                <td>14.1.2032</td>
+                <td>19.11.2006</td>
+                <td>2538</td>
+            </tr>
+            <tr>
+                <td>Lucie Zelena</td>
+                <td>43286120</td>
+                <td>11.4.2026</td>
+                <td>20.6.1977</td>
+                <td>434</td>
+            </tr>
+            <tr>
+                <td>Tomáš Zeleny</td>
+                <td>47102606</td>
+                <td>22.4.2027</td>
+                <td>22.9.2007</td>
+                <td>810</td>
+            </tr>
+            <tr>
+                <td>Michaela Habaskova</td>
+                <td>43635432</td>
+                <td>17.8.2026</td>
+                <td>5.8.1972</td>
+                <td>562</td>
+            </tr>
+            <tr>
+                <td>Milan Habasko</td>
+                <td>43635431</td>
+                <td>17.8.2026</td>
+                <td>13.4.1974</td>
+                <td>562</td>
+            </tr>
+            <tr>
+                <td>Nadezda Urbanova</td>
+                <td>44980554</td>
+                <td>19.5.2028</td>
+                <td>30.11.1963</td>
+                <td>1203</td>
+            </tr>
+            <tr>
+                <td>Michal Cmelik</td>
+                <td>45911485</td>
+                <td>3.9.2029</td>
+                <td>4.4.1973</td>
+                <td>1675</td>
+            </tr>
+            <tr>
+                <td>Jitka Cmelikova</td>
+                <td>48632831</td>
+                <td>22.12.2033</td>
+                <td>2.4.1974</td>
+                <td>3246</td>
+            </tr>
+            <tr>
+                <td>Josef Cmelik</td>
+                <td>46765901</td>
+                <td>11.1.2032</td>
+                <td>17.4.2006</td>
+                <td>2535</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <script>
@@ -359,15 +418,11 @@
         });
     }
 </script>
+
 <div class="section">
-    <div style="display: flex; justify-content: center; gap: 10px; padding: 20px;">
-        <img src="1.jpeg"  style="width: 30%; height: 250px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-        <img src="2.jpeg"  style="width: 30%; height: 250px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-        <img src="3.jpeg"  style="width: 30%; height: 250px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    </div>
     <h2>✈️ Letový plán</h2>
-    <div style="overflow-x: auto; white-space: nowrap;">
-        <table class="graficka-tabulka" style="width: 100%; border-collapse: collapse;">
+    <div style="overflow-x: auto;">
+        <table class="graficka-tabulka">
             <tr>
                 <th>Let</th>
                 <th>Datum</th>
@@ -471,801 +526,841 @@
     </div>
 </div>
 
-
 <div class="section">
     <h2>🏨 Hotely - Rezervace</h2>
-
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px;">
-        <!-- Hotel v Singapuru -->
-        <div style="flex: 1 1 300px; background: #f8f9fa; border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./h1.jpg" alt="Hotel 81 Palace" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+    <div class="grid-container">
+        <div>
+            <img src="./h1.jpg" alt="Hotel 81 Palace">
             <h3>Hotel 81 Palace - NEWLY RENOVATED</h3>
             <p><strong>Místo:</strong> Singapur</p>
             <p><strong>Datum rezervace:</strong> 10. července – 13. července</p>
-            <a href="https://www.booking.com/hotel/sg/81-palace.cs.html?" target="_blank" style="color: #007bff;">Otevřít odkaz na Booking.com</a>
+            <a href="https://www.booking.com/hotel/sg/81-palace.cs.html?" target="_blank">Otevřít odkaz na Booking.com</a>
         </div>
-
-        <!-- Hotel Kamboja Homestay na Bali -->
-        <div style="flex: 1 1 300px; background: #f8f9fa; border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./h2.jpg" alt="Kamboja Homestay" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+        <div>
+            <img src="./h2.jpg" alt="Kamboja Homestay">
             <h3>Kamboja Homestay</h3>
             <p><strong>Místo:</strong> Bali</p>
             <p><strong>Datum rezervace:</strong> 13. července – 15. července</p>
-            <a href="https://www.booking.com/hotel/id/kamboja-homestay.cs.html?" target="_blank" style="color: #007bff;">Otevřít odkaz na Booking.com</a>
+            <a href="https://www.booking.com/hotel/id/kamboja-homestay.cs.html?" target="_blank">Otevřít odkaz na Booking.com</a>
         </div>
-
-        <!-- Hotel Gili Pesona na Bali -->
-        <div style="flex: 1 1 300px; background: #f8f9fa; border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./h3.jpg" alt="Gili Pesona" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+        <div>
+            <img src="./h3.jpg" alt="Gili Pesona">
             <h3>Gili Pesona</h3>
             <p><strong>Místo:</strong> Bali</p>
             <p><strong>Datum rezervace:</strong> 15. července – 18. července</p>
-            <a href="https://www.booking.com/hotel/id/gili-pesona.cs.html?" target="_blank" style="color: #007bff;">Otevřít odkaz na Booking.com</a>
+            <a href="https://www.booking.com/hotel/id/gili-pesona.cs.html?" target="_blank">Otevřít odkaz na Booking.com</a>
         </div>
-
-        <!-- Hotel Lovina Beach Hotel -->
-        <div style="flex: 1 1 300px; background: #f8f9fa; border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./h4.jpg" alt="Lovina Beach Hotel" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+        <div>
+            <img src="./h4.jpg" alt="Lovina Beach Hotel">
             <h3>Lovina Beach Hotel</h3>
             <p><strong>Místo:</strong> Bali</p>
             <p><strong>Datum rezervace:</strong> 18. července – 21. července</p>
-            <a href="https://www.booking.com/hotel/id/lovina-beach.cs.html?" target="_blank" style="color: #007bff;">Otevřít odkaz na Booking.com</a>
+            <a href="https://www.booking.com/hotel/id/lovina-beach.cs.html?" target="_blank">Otevřít odkaz na Booking.com</a>
         </div>
-
-        <!-- Hotel Gubug Balian Beach Bungalow -->
-        <div style="flex: 1 1 300px; background: #f8f9fa; border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./h5.jpg" alt="Gubug Balian Beach Bungalow" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+        <div>
+            <img src="./h5.jpg" alt="Gubug Balian Beach Bungalow">
             <h3>Gubug Balian Beach Bungalow</h3>
             <p><strong>Místo:</strong> Bali</p>
             <p><strong>Datum rezervace:</strong> 21. července – 23. července</p>
-            <a href="https://www.booking.com/hotel/id/gubug-balian-beach-bungalow.cs.html?" target="_blank" style="color: #007bff;">Otevřít odkaz na Booking.com</a>
+            <a href="https://www.booking.com/hotel/id/gubug-balian-beach-bungalow.cs.html?" target="_blank">Otevřít odkaz na Booking.com</a>
         </div>
-
-        <!-- Hotel Argya Santi Suite and Villas -->
-        <div style="flex: 1 1 300px; background: #f8f9fa; border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            <img src="./h6.jpg" alt="Argya Santi Suite and Villas" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+        <div>
+            <img src="./h6.jpg" alt="Argya Santi Suite and Villas">
             <h3>Argya Santi Suite and Villas</h3>
             <p><strong>Místo:</strong> Bali</p>
             <p><strong>Datum rezervace:</strong> 23. července – 24. července</p>
-            <a href="https://www.booking.com/hotel/id/argya-santi-seminyak.cs.html?" target="_blank" style="color: #007bff;">Otevřít odkaz na Booking.com</a>
+            <a href="https://www.booking.com/hotel/id/argya-santi-seminyak.cs.html?" target="_blank">Otevřít odkaz na Booking.com</a>
+        </div>
+    </div>
+</div>
+
+<h2>🌍 Mapa itineráře - Singapur</h2>
+<iframe 
+    src="https://www.google.com/maps/d/embed?mid=13FT1rGlTFxq7e5u33Zfaew9KpamhfHM&ehbc=2E312F" 
+    width="100%" 
+    height="480" 
+    style="border:0; display: block; margin: 0 auto;">
+</iframe>
+
+<div class="section">
+    <h2>🗓️ Itinerář pro Singapur a Bali 🌆</h2>
+
+    <style>
+        .details {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .details-header {
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #d9d9d9;
+        }
+
+        .details-content {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .details.active .details-content {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e6e6e6;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const detailsElements = document.querySelectorAll('.details');
+
+            detailsElements.forEach((element, index) => {
+                const isActive = localStorage.getItem(`detailsOpen${index}`) === 'true';
+                if (isActive) {
+                    element.classList.add('active');
+                }
+            });
+        });
+
+        function toggleDetails(element, index) {
+            element.classList.toggle('active');
+            const isActive = element.classList.contains('active');
+            localStorage.setItem(`detailsOpen${index}`, isActive);
+        }
+    </script>
+
+    <!-- 1. den -->
+    <div class="details" onclick="toggleDetails(this, 0)">
+        <div class="details-header">🛬 1. den (10. července 2025) – Přílet a večerní prohlídka 🌆</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🛫 14:05</td>
+                    <td>Přílet na letiště Changi</td>
+                    <td>
+                        <a href="https://www.changiairport.com/en/at-changi/terminal-guides.html" target="_blank">✈️ Letiště Changi</a> je jedním z nejmodernějších a největších letišť na světě. 
+                        Nabízí širokou škálu atrakcí, včetně 🌺 motýlí zahrady, 🌊 vodopádu HSBC Rain Vortex a mnoha nákupních možností.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🌳 17:00</td>
+                    <td>Návštěva Gardens by the Bay</td>
+                    <td>
+                        <a href="https://www.gardensbythebay.com.sg/" target="_blank">🏞️ Gardens by the Bay</a> je ikonický park v centru Singapuru, známý svými futuristickými 🌲 Supertrees a světelnou show 🌟 Garden Rhapsody. 
+                        Nabízí také skleníky s unikátními rostlinami a krásné vyhlídky na Marina Bay.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🏮 19:30</td>
+                    <td>Přesun do Chinatown</td>
+                    <td>
+                        <a href="https://www.visitsingapore.com/see-do-singapore/places-to-see/chinatown/" target="_blank">🏯 Chinatown</a> je historická čtvrť známá svou tradiční architekturou, chrámy a živou atmosférou. 
+                        Naleznete zde restaurace nabízející autentickou čínskou kuchyni 🍜 a pouliční trhy se suvenýry.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 2. den -->
+    <div class="details" onclick="toggleDetails(this, 1)">
+        <div class="details-header">🌺 2. den (11. července 2025) – Botanická zahrada a památky 🏛️</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🌿 09:00</td>
+                    <td>Návštěva Singapore Botanic Gardens</td>
+                    <td>
+                        <a href="https://www.nparks.gov.sg/" target="_blank">🌸 Singapore Botanic Gardens</a> je historická botanická zahrada zapsaná na seznamu světového dědictví UNESCO. 
+                        Nabízí nádhernou 🌺 Národní zahradu orchidejí a klidnou procházku kolem jezera 🦢 Swan Lake.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🔭 14:00</td>
+                    <td>Procházka v oblasti Marina Bay</td>
+                    <td>
+                        <a href="https://www.marinabaysands.com/" target="_blank">🌁 Marina Bay</a> je moderní část Singapuru s mnoha ikonickými budovami, jako je 🏙️ Marina Bay Sands. 
+                        Vyhlídka z 🌅 SkyParku nabízí úchvatné panoramatické pohledy na celé město.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🎡 17:00</td>
+                    <td>Návštěva Singapore Flyer</td>
+                    <td>
+                        <a href="https://www.singaporeflyer.com/en" target="_blank">🎡 Singapore Flyer</a> je jedno z největších ruských kol na světě, které poskytuje dechberoucí výhledy na město, moře a okolní ostrovy.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 3. den -->
+    <div class="details" onclick="toggleDetails(this, 2)">
+        <div class="details-header">🏖️ 3. den (12. července 2025) – Sentosa a kulturní zážitky 🎭</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🚡 09:00</td>
+                    <td>Výlet na ostrov Sentosa</td>
+                    <td>
+                        <a href="https://www.sentosa.com.sg/" target="_blank">🏝️ Sentosa</a> je známá svými atrakcemi, jako je 🌊 SEA Aquarium, Fort Siloso a 🎢 zábavní parky. 
+                        Je ideálním místem pro relaxaci na pláži i dobrodružství.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🏯 15:00</td>
+                    <td>Návštěva chrámu Buddha Tooth Relic</td>
+                    <td>
+                        <a href="https://www.buddhatoothrelictemple.org.sg/">🕌 Chrám Buddha Tooth Relic</a> je významnou náboženskou památkou nacházející se v srdci Chinatownu. 
+                        Uchovává vzácné relikvie a nabízí nádherně zdobený interiér.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 4. den -->
+    <div class="details" onclick="toggleDetails(this, 3)">
+        <div class="details-header">🛫 4. den (13. července 2025) – Odlet na Bali 🏝️</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🥞 06:30</td>
+                    <td>Snídaně a check-out</td>
+                    <td>Poslední snídaně v hotelu před odletem do další destinace.</td>
+                </tr>
+                <tr>
+                    <td>🚌 07:30</td>
+                    <td>Transfer na letiště Changi</td>
+                    <td>Transfer z hotelu na letiště k odletu do Denpasaru.</td>
+                </tr>
+                <tr>
+                    <td>✈️ 12:15</td>
+                    <td>Odlet na Bali</td>
+                    <td>Let z Singapuru na mezinárodní letiště Ngurah Rai v Denpasaru, Bali.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>🗓️ Itinerář pro Kamboja Homestay 🌴</h2>
+
+    <style>
+        .details {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .details-header {
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #d9d9d9;
+        }
+
+        .details-content {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .details.active .details-content {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e6e6e6;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const detailsElements = document.querySelectorAll('.details');
+
+            detailsElements.forEach((element, index) => {
+                const isActive = localStorage.getItem(`kambojaDetailsOpen${index}`) === 'true';
+                if (isActive) {
+                    element.classList.add('active');
+                }
+            });
+        });
+
+        function toggleDetails(element, index) {
+            element.classList.toggle('active');
+            const isActive = element.classList.contains('active');
+            localStorage.setItem(`kambojaDetailsOpen${index}`, isActive);
+        }
+    </script>
+
+    <!-- 1. den -->
+    <div class="details" onclick="toggleDetails(this, 0)">
+        <div class="details-header">🏡 1. den (13. července 2025) – Příjezd, pronájem motorek a prohlídka Sanuru 🛵</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🛫 15:05</td>
+                    <td>Přílet na letiště Ngurah Rai (Denpasar)</td>
+                    <td>
+                        <a href="https://bali-airport.com/en">✈️ Letiště Ngurah Rai</a> je hlavní mezinárodní letiště na Bali, známé svou moderní architekturou.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🚐 15:30</td>
+                    <td>Odvoz mikrobusem do půjčovny motorek</td>
+                    <td>Pronájem motorek je běžnou praxí pro turisty na Bali, poskytuje flexibilitu a snadný přístup k místním atrakcím.</td>
+                </tr>
+                <tr>
+                    <td>🏍️ 16:30</td>
+                    <td>Check-in v Kamboja Homestay</td>
+                    <td>
+                        <a href="https://www.booking.com/hotel/id/kamboja-homestay.cs.html" target="_blank">🏨 Kamboja Homestay</a> je tradiční ubytování obklopené zelení.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🌅 18:00</td>
+                    <td>Projížďka po okolí Sanuru</td>
+                    <td>
+                        <a href="https://www.bali-indonesie.cz/destinace/ostrov-bali/sanur">🏖️ Sanur Beach</a> nabízí klidnou atmosféru s krásným výhledem na moře.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🍴 19:30</td>
+                    <td>Večeře v restauraci Warung Mak Beng</td>
+                    <td>
+                        <a href="https://www.tripadvisor.com/Restaurant_Review-g297700-d1144166-Reviews-Warung_Mak_Beng-Sanur_Denpasar_Bali.html" target="_blank">🍽️ Warung Mak Beng</a> je oblíbená místní restaurace známá pro své tradiční rybí speciality.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 2. den -->
+    <div class="details" onclick="toggleDetails(this, 1)">
+        <div class="details-header">🏛️ 2. den (14. července 2025) – Kulturní a přírodní památky 🌿</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🌿 09:00</td>
+                    <td>Výlet na Bajra Sandhi Monument</td>
+                    <td>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g297694-d3493864-Reviews-Bajra_Sandhi_Monument-Denpasar_Bali.html" target="_blank">🏯 Bajra Sandhi Monument</a> je památník postavený na počest balijské historie.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🎨 11:00</td>
+                    <td>Návštěva Muzea Bali</td>
+                    <td>
+                        <a href="https://balistarisland.com/bali-tourist-attractions/bali-museum/" target="_blank">🏛️ Muzeum Bali</a> uchovává bohatou sbírku artefaktů, které ilustrují kulturní dědictví ostrova.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🏖️ 14:30</td>
+                    <td>Výlet k pláži Mertasari</td>
+                    <td>
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g297694-d7785440-Reviews-Mertasari_Beach-Denpasar_Bali.html" target="_blank">🌴 Pláž Mertasari</a> je klidná pláž ideální pro relaxaci daleko od davů.
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 3. den -->
+    <div class="details" onclick="toggleDetails(this, 2)">
+        <div class="details-header">🚴‍♂️ 3. den (15. července 2025) – Odjezd a příjezd do Gili Pesona 🌅</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🏍️ 09:00</td>
+                    <td>Odjezd z Kamboja Homestay na motorkách</td>
+                    <td>Odjezd do další destinace na motorkách po klikatých cestách plných krásných výhledů.</td>
+                </tr>
+                <tr>
+                    <td>🏨 11:00</td>
+                    <td>Check-in v Gili Pesona</td>
+                    <td>
+                        <a href="https://www.booking.com/hotel/id/gili-pesona.cs.html" target="_blank">🏝️ Gili Pesona</a> je oblíbené ubytování v blízkosti pláží a atrakcí.
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
 
 
 <div class="section">
-    <h2>🗓 Návrh itineráře pro Singapur (10. – 13. července 2025)</h2>
-   
+    <h2>🗓 Itinerář pro Gili Pesona Villa s přesunem do Lovina Beach Hotel (15.–18. července 2025) 🏨</h2>
 
-   
-    <h2>🌍 Mapa itineráře - Singapur</h2>
-    <iframe 
-        src="https://www.google.com/maps/d/embed?mid=13FT1rGlTFxq7e5u33Zfaew9KpamhfHM&ehbc=2E312F" 
-        width="100%" 
-        height="480" 
-        style="border:0; display: block; margin: 0 auto;">
-    </iframe>
-    
-    <div class="section">
-        <h2>🗓️ Itinerář pro Singapur a Bali 🌆</h2>
-    
-        <style>
-            .details {
-                cursor: pointer;
-                background-color: #f0f0f0;
-                padding: 10px;
-                margin: 5px 0;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-    
-            .details-content {
-                display: none;
-                padding: 10px;
-                border-top: 1px solid #ccc;
-                background-color: #fff;
-            }
-    
-            .details.active .details-content {
-                display: block;
-            }
-    
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-    
-            th, td {
-                border: 1px solid #ccc;
-                padding: 10px;
-                text-align: left;
-            }
-    
-            th {
-                background-color: #e6e6e6;
-            }
-        </style>
-    
-        <script>
-            function toggleDetails(element) {
-                element.classList.toggle('active');
-            }
-        </script>
-    
-        <!-- 1. den -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🛬 1. den (10. července 2025) – Přílet a večerní prohlídka 🌆</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🛫 14:05</td>
-                        <td>Přílet na letiště Changi</td>
-                        <td>
-                            <a href="https://www.changiairport.com/en/at-changi/terminal-guides.html"_blank">✈️ Letiště Changi</a> je jedním z nejmodernějších a největších letišť na světě. 
-                            Nabízí širokou škálu atrakcí, včetně 🌺 motýlí zahrady, 🌊 vodopádu HSBC Rain Vortex a mnoha nákupních možností.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🌳 17:00</td>
-                        <td>Návštěva Gardens by the Bay</td>
-                        <td>
-                            <a href="https://www.gardensbythebay.com.sg/"_blank">🏞️ Gardens by the Bay</a> je ikonický park v centru Singapuru, známý svými futuristickými 🌲 Supertrees a světelnou show 🌟 Garden Rhapsody. 
-                            Nabízí také skleníky s unikátními rostlinami a krásné vyhlídky na Marina Bay.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🏮 19:30</td>
-                        <td>Přesun do Chinatown</td>
-                        <td>
-                            <a href="https://www.visitsingapore.com/see-do-singapore/places-to-see/chinatown/" target="_blank">🏯 Chinatown</a> je historická čtvrť známá svou tradiční architekturou, chrámy a živou atmosférou. 
-                            Naleznete zde restaurace nabízející autentickou čínskou kuchyni 🍜 a pouliční trhy se suvenýry.
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 2. den -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🌺 2. den (11. července 2025) – Botanická zahrada a památky 🏛️</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🌿 09:00</td>
-                        <td>Návštěva Singapore Botanic Gardens</td>
-                        <td>
-                            <a href="https://www.nparks.gov.sg/">🌸 Singapore Botanic Gardens</a> je historická botanická zahrada zapsaná na seznamu světového dědictví UNESCO. 
-                            Nabízí nádhernou 🌺 Národní zahradu orchidejí a klidnou procházku kolem jezera 🦢 Swan Lake.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🔭 14:00</td>
-                        <td>Procházka v oblasti Marina Bay</td>
-                        <td>
-                            <a href="https://www.marinabaysands.com/" target="_blank">🌁 Marina Bay</a> je moderní část Singapuru s mnoha ikonickými budovami, jako je 🏙️ Marina Bay Sands. 
-                            Vyhlídka z 🌅 SkyParku nabízí úchvatné panoramatické pohledy na celé město.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🎡 17:00</td>
-                        <td>Návštěva Singapore Flyer</td>
-                        <td>
-                            <a href="https://www.singaporeflyer.com/en">🎡 Singapore Flyer</a> je jedno z největších ruských kol na světě, které poskytuje dechberoucí výhledy na město, moře a okolní ostrovy.
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 3. den -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🏖️ 3. den (12. července 2025) – Sentosa a kulturní zážitky 🎭</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🚡 09:00</td>
-                        <td>Výlet na ostrov Sentosa</td>
-                        <td>
-                            <a href="https://www.sentosa.com.sg/" target="_blank">🏝️ Sentosa</a> je známá svými atrakcemi, jako je 🌊 SEA Aquarium, Fort Siloso a 🎢 zábavní parky. 
-                            Je ideálním místem pro relaxaci na pláži i dobrodružství.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🏯 15:00</td>
-                        <td>Návštěva chrámu Buddha Tooth Relic</td>
-                        <td>
-                            <a href="https://www.buddhatoothrelictemple.org.sg/">🕌 Chrám Buddha Tooth Relic</a> je významnou náboženskou památkou nacházející se v srdci Chinatownu. 
-                            Uchovává vzácné relikvie a nabízí nádherně zdobený interiér.
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 4. den -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🛫 4. den (13. července 2025) – Odlet na Bali 🏝️</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🥞 06:30</td>
-                        <td>Snídaně a check-out</td>
-                        <td>Poslední snídaně v hotelu před odletem do další destinace.</td>
-                    </tr>
-                    <tr>
-                        <td>🚌 07:30</td>
-                        <td>Transfer na letiště Changi</td>
-                        <td>Transfer z hotelu na letiště k odletu do Denpasaru.</td>
-                    </tr>
-                    <tr>
-                        <td>✈️ 12:15</td>
-                        <td>Odlet na Bali</td>
-                        <td>Let z Singapuru na mezinárodní letiště Ngurah Rai v Denpasaru, Bali.</td>
-                    </tr>
-                </table>
-            </div>
+    <style>
+        .details {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .details-header {
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #d9d9d9;
+        }
+
+        .details-content {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .details.active .details-content {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e6e6e6;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const detailsElements = document.querySelectorAll('.details');
+
+            detailsElements.forEach((element, index) => {
+                const isActive = localStorage.getItem(`giliDetailsOpen${index}`) === 'true';
+                if (isActive) {
+                    element.classList.add('active');
+                }
+            });
+        });
+
+        function toggleDetails(element, index) {
+            element.classList.toggle('active');
+            const isActive = element.classList.contains('active');
+            localStorage.setItem(`giliDetailsOpen${index}`, isActive);
+        }
+    </script>
+
+    <!-- 15. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 0)">
+        <div class="details-header">🚤 15. července 2025 – Prohlídka okolí Amedu 🌊</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🍽️ 07:30</td>
+                    <td>Snídaně v hotelu</td>
+                    <td>Tradiční balijská snídaně s čerstvým ovocem a místní kávou.</td>
+                </tr>
+                <tr>
+                    <td>⚓ 09:00</td>
+                    <td>Výlet k vraku lodi USS Liberty</td>
+                    <td><a href="https://www.tripadvisor.com/Attraction_Review-g469406-d3247704-Reviews-USS_Liberty_Shipwreck-Tulamben_Bali.html">USS Liberty</a> je vyhledávané místo pro potápění a šnorchlování na Bali.</td>
+                </tr>
+                <tr>
+                    <td>🏰 11:30</td>
+                    <td>Návštěva vodního paláce Tirta Gangga</td>
+                    <td><a href="https://www.mahalo.cz/bali/destinace-bali/tirta-gangga.html" target="_blank">Tirta Gangga</a> je královský vodní palác s fontánami a jezery, ideální pro relaxaci.</td>
+                </tr>
+                <tr>
+                    <td>🏛️ 14:30</td>
+                    <td>Zastávka u chrámu Pura Lempuyang</td>
+                    <td><a href="https://www.bali.com/pura-lempuyang.html" target="_blank">Pura Lempuyang</a>, známý jako "Brána do nebe", nabízí úchvatné výhledy na horu Agung.</td>
+                </tr>
+            </table>
         </div>
     </div>
-    
-    <div class="section">
-        <h2>🗓️ Itinerář pro Kamboja Homestay 🌴</h2>
-    
-        <style>
-            .details {
-                cursor: pointer;
-                background-color: #f0f0f0;
-                padding: 10px;
-                margin: 5px 0;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-    
-            .details-content {
-                display: none;
-                padding: 10px;
-                border-top: 1px solid #ccc;
-                background-color: #fff;
-            }
-    
-            .details.active .details-content {
-                display: block;
-            }
-    
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-    
-            th, td {
-                border: 1px solid #ccc;
-                padding: 10px;
-                text-align: left;
-            }
-    
-            th {
-                background-color: #e6e6e6;
-            }
-        </style>
-    
-        <script>
-            function toggleDetails(element) {
-                element.classList.toggle('active');
-            }
-        </script>
-    
-        <!-- 1. den -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🏡 1. den (13. července 2025) – Příjezd, pronájem motorek a prohlídka Sanuru 🛵</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🛫 15:05</td>
-                        <td>Přílet na letiště Ngurah Rai (Denpasar)</td>
-                        <td>
-                            <a href="https://bali-airport.com/en">✈️ Letiště Ngurah Rai</a> je hlavní mezinárodní letiště na Bali, známé svou moderní architekturou. 
-                            Nachází se v blízkosti turistického centra Kuta a nabízí širokou škálu služeb včetně duty-free obchodů a restaurací.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🚐 15:30</td>
-                        <td>Odvoz mikrobusem do půjčovny motorek</td>
-                        <td>
-                            Pronájem motorek je běžnou praxí pro turisty na Bali, poskytuje flexibilitu a snadný přístup k místním atrakcím. 
-                            Půjčovny často nabízejí pojištění a základní vybavení jako helmy.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🏍️ 16:30</td>
-                        <td>Check-in v Kamboja Homestay</td>
-                        <td>
-                            <a href="https://www.booking.com/hotel/id/kamboja-homestay.cs.html" target="_blank">🏨 Kamboja Homestay</a> je tradiční ubytování obklopené zelení. 
-                            Hosté oceňují klidné prostředí, čistotu a přátelskou atmosféru.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🌅 18:00</td>
-                        <td>Projížďka po okolí Sanuru</td>
-                        <td>
-                            <a href="https://www.bali-indonesie.cz/destinace/ostrov-bali/sanur">🏖️ Sanur Beach</a> nabízí klidnou atmosféru s krásným výhledem na moře. 
-                            Pláž je vhodná pro dlouhé procházky a západy slunce.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🍴 19:30</td>
-                        <td>Večeře v restauraci Warung Mak Beng</td>
-                        <td>
-                            <a href="https://www.tripadvisor.com/Restaurant_Review-g297700-d1144166-Reviews-Warung_Mak_Beng-Sanur_Denpasar_Bali.html" target="_blank">🍽️ Warung Mak Beng</a> je oblíbená místní restaurace známá pro své tradiční rybí speciality.
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 2. den -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🏛️ 2. den (14. července 2025) – Kulturní a přírodní památky 🌿</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🌿 09:00</td>
-                        <td>Výlet na Bajra Sandhi Monument</td>
-                        <td>
-                            <a href="https://www.tripadvisor.com/Attraction_Review-g297694-d3493864-Reviews-Bajra_Sandhi_Monument-Denpasar_Bali.html" target="_blank">🏯 Bajra Sandhi Monument</a> je památník postavený na počest balijské historie a boje za nezávislost.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🎨 11:00</td>
-                        <td>Návštěva Muzea Bali</td>
-                        <td>
-                            <a href="https://balistarisland.com/bali-tourist-attractions/bali-museum/"_blank">🏛️ Muzeum Bali</a> uchovává bohatou sbírku artefaktů, které ilustrují kulturní dědictví ostrova. 
-                            Pavilony muzea jsou rozděleny podle různých témat balijské historie a umění.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🏖️ 14:30</td>
-                        <td>Výlet k pláži Mertasari</td>
-                        <td>
-                            <a href="https://www.tripadvisor.com/Attraction_Review-g297694-d7785440-Reviews-Mertasari_Beach-Denpasar_Bali.html"_blank">🌴 Pláž Mertasari</a> je klidná pláž ideální pro relaxaci daleko od davů. 
-                            Okolí nabízí možnosti pikniků a pohodové atmosféry.
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 3. den -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🚴‍♂️ 3. den (15. července 2025) – Odjezd a příjezd do Gili Pesona 🌅</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🏍️ 09:00</td>
-                        <td>Odjezd z Kamboja Homestay na motorkách</td>
-                        <td>Odjezd do další destinace na motorkách po klikatých cestách plných krásných výhledů.</td>
-                    </tr>
-                    <tr>
-                        <td>🏨 11:00</td>
-                        <td>Check-in v Gili Pesona</td>
-                        <td>
-                            <a href="https://www.booking.com/hotel/id/gili-pesona.cs.html" target="_blank">🏝️ Gili Pesona</a> je oblíbené ubytování v blízkosti pláží a atrakcí s možností prohlídek okolí na motorkách.
-                        </td>
-                    </tr>
-                </table>
-            </div>
+
+    <!-- 16. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 1)">
+        <div class="details-header">🏖️ 16. července 2025 – Pláže a místní vesnice 🏝️</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🏖️ 09:00</td>
+                    <td>Návštěva Amed Beach</td>
+                    <td><a href="https://faheyjamestravel.com/beaches-in-amed/" target="_blank">Amed Beach</a> nabízí klidné prostředí s černým pískem a skvělými podmínkami pro šnorchlování.</td>
+                </tr>
+                <tr>
+                    <td>🐟 11:00</td>
+                    <td>Výlet do vesnice Jemeluk</td>
+                    <td><a href="https://www.getyourguide.com/cs-cz/gianyar-l164593/to-nejlepsi-z-amedu-dobrodruzstvi-se-snorchlovanim-all-inclusive-highlights-t529608/" target="_blank">Jemeluk</a> je známý pro své korálové útesy a tradiční rybářské lodě.</td>
+                </tr>
+                <tr>
+                    <td>🌅 14:00</td>
+                    <td>Výjezd na vyhlídku Sunset Point Amed</td>
+                    <td>Oblíbené místo s výhledem na západ slunce.</td>
+                </tr>
+            </table>
         </div>
     </div>
-    
-    <div class="section">
-        <h2>🗓 Itinerář pro Gili Pesona Villa s přesunem do Lovina Beach Hotel (15.–18. července 2025) 🏨</h2>
-    
-        <style>
-            .details {
-                cursor: pointer;
-                background-color: #f0f0f0;
-                padding: 10px;
-                margin: 5px 0;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-    
-            .details-content {
-                display: none;
-                padding: 10px;
-                border-top: 1px solid #ccc;
-                background-color: #fff;
-            }
-    
-            .details.active .details-content {
-                display: block;
-            }
-    
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-    
-            th, td {
-                border: 1px solid #ccc;
-                padding: 10px;
-                text-align: left;
-            }
-    
-            th {
-                background-color: #e6e6e6;
-            }
-        </style>
-    
-        <script>
-            function toggleDetails(element) {
-                element.classList.toggle('active');
-            }
-        </script>
-    
-        <!-- 15. července 2025 -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🚤 15. července 2025 – Prohlídka okolí Amedu 🌊</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🍽️ 07:30</td>
-                        <td>Snídaně v hotelu</td>
-                        <td>Tradiční balijská snídaně s čerstvým ovocem a místní kávou.</td>
-                    </tr>
-                    <tr>
-                        <td>⚓ 09:00</td>
-                        <td>Výlet k vraku lodi USS Liberty</td>
-                        <td><a href="https://www.tripadvisor.com/Attraction_Review-g469406-d3247704-Reviews-USS_Liberty_Shipwreck-Tulamben_Bali.html">USS Liberty</a> je vyhledávané místo pro potápění a šnorchlování na Bali.</td>
-                    </tr>
-                    <tr>
-                        <td>🏰 11:30</td>
-                        <td>Návštěva vodního paláce Tirta Gangga</td>
-                        <td><a href="https://www.mahalo.cz/bali/destinace-bali/tirta-gangga.html" target="_blank">Tirta Gangga</a> je královský vodní palác s fontánami a jezery, ideální pro relaxaci.</td>
-                    </tr>
-                    <tr>
-                        <td>🏛️ 14:30</td>
-                        <td>Zastávka u chrámu Pura Lempuyang</td>
-                        <td><a href="https://www.bali.com/pura-lempuyang.html" target="_blank">Pura Lempuyang</a>, známý jako "Brána do nebe", nabízí úchvatné výhledy na horu Agung.</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 16. července 2025 -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🏖️ 16. července 2025 – Pláže a místní vesnice 🏝️</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🏖️ 09:00</td>
-                        <td>Návštěva Amed Beach</td>
-                        <td><a href="https://faheyjamestravel.com/beaches-in-amed/" target="_blank">Amed Beach</a> nabízí klidné prostředí s černým pískem a skvělými podmínkami pro šnorchlování.</td>
-                    </tr>
-                    <tr>
-                        <td>🐟 11:00</td>
-                        <td>Výlet do vesnice Jemeluk</td>
-                        <td><a href="https://www.getyourguide.com/cs-cz/gianyar-l164593/to-nejlepsi-z-amedu-dobrodruzstvi-se-snorchlovanim-all-inclusive-highlights-t529608/" target="_blank">Jemeluk</a> je známý pro své korálové útesy a tradiční rybářské lodě.</td>
-                    </tr>
-                    <tr>
-                        <td>🌅 14:00</td>
-                        <td>Výjezd na vyhlídku Sunset Point Amed</td>
-                        <td>Oblíbené místo s výhledem na západ slunce.</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 17. července 2025 -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🏞️ 17. července 2025 – Krátký trek a kulturní památky 🚶</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🌾 09:00</td>
-                        <td>Výlet k rýžovým polím v oblasti Abang</td>
-                        <td>Procházka mezi rýžovými terasami s možností fotografování malebné krajiny.</td>
-                    </tr>
-                    <tr>
-                        <td>🦇 11:00</td>
-                        <td>Návštěva chrámu Pura Goa Lawah</td>
-                        <td>Chrám známý svou Netopýří jeskyní, která je duchovním místem na Bali.</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 18. července 2025 -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🚚 18. července 2025 – Check-out a přesun do Lovina Beach Hotel 🌴</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>🕒 Čas</th>
-                        <th>📍 Aktivita</th>
-                        <th>🔗 Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🏍️ 09:00</td>
-                        <td>Odjezd na motorkách do Lovina Beach Hotel</td>
-                        <td>Jízda malebnou krajinou přes hory a rýžová pole, možnost zastávky u <a href="https://www.bali.com/gitgit-waterfall.html" target="_blank">vodopádu Gitgit</a>.</td>
-                    </tr>
-                    <tr>
-                        <td>🏨 15:00</td>
-                        <td>Check-in v Lovina Beach Hotel</td>
-                        <td>Ubytování v hotelu poblíž pláže Lovina.</td>
-                    </tr>
-                </table>
-            </div>
+
+    <!-- 17. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 2)">
+        <div class="details-header">🏞️ 17. července 2025 – Krátký trek a kulturní památky 🚶</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🌾 09:00</td>
+                    <td>Výlet k rýžovým polím v oblasti Abang</td>
+                    <td>Procházka mezi rýžovými terasami s možností fotografování malebné krajiny.</td>
+                </tr>
+                <tr>
+                    <td>🦇 11:00</td>
+                    <td>Návštěva chrámu Pura Goa Lawah</td>
+                    <td>Chrám známý svou Netopýří jeskyní, která je duchovním místem na Bali.</td>
+                </tr>
+            </table>
         </div>
     </div>
-    
-    <div class="section">
-        <h2>🗓 Návrh itineráře pro Lovina Beach Hotel s přesunem do Gubug Balian Beach Bungalow (18.–21. července 2025)</h2>
-    
-        <style>
-            .details {
-                cursor: pointer;
-                background-color: #f0f0f0;
-                padding: 10px;
-                margin: 5px 0;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-    
-            .details-content {
-                display: none;
-                padding: 10px;
-                border-top: 1px solid #ccc;
-                background-color: #fff;
-            }
-    
-            .details.active .details-content {
-                display: block;
-            }
-    
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-    
-            th, td {
-                border: 1px solid #ccc;
-                padding: 10px;
-                text-align: left;
-            }
-    
-            th {
-                background-color: #e6e6e6;
-            }
-        </style>
-    
-        <script>
-            function toggleDetails(element) {
-                element.classList.toggle('active');
-            }
-        </script>
-    
-        <!-- 18. července 2025 -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🏝️ 18. července 2025 – Příjezd a prohlídka okolí</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>Čas</th>
-                        <th>Aktivita</th>
-                        <th>Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🏨 15:00</td>
-                        <td>Check-in v Lovina Beach Hotel</td>
-                        <td>Hotel nabízí výhled na oceán, venkovní bazén a tradiční balijské ubytování. Je to ideální místo pro relaxaci a poznávání okolních přírodních krás.</td>
-                    </tr>
-                    <tr>
-                        <td>🌅 16:30</td>
-                        <td>Prohlídka okolí pláže Lovina</td>
-                        <td>
-                            <a href="https://www.bali-indonesie.cz/destinace/ostrov-bali/lovina" target="_blank">Pláž Lovina</a> je známá svým klidem, černým vulkanickým pískem a možnostmi pozorování západu slunce. V okolí se nachází několik tradičních restaurací a obchodů s ručně vyráběnými suvenýry.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🍴 19:00</td>
-                        <td>Večeře v místní restauraci</td>
-                        <td>Tradiční balijská kuchyně s čerstvými mořskými plody a dalšími specialitami, jako jsou satay, nasi goreng nebo pepes ikan.</td>
-                    </tr>
-                    <tr>
-                        <td>🛏️ 21:00</td>
-                        <td>Volný večer</td>
-                        <td>Možnost relaxace na pláži nebo v hotelovém areálu. Některé restaurace nabízejí živou hudbu nebo tradiční taneční vystoupení.</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 19. července 2025 -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>💧 19. července 2025 – Vodopády a vesnice 🌄</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>Čas</th>
-                        <th>Aktivita</th>
-                        <th>Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🍽️ 07:30</td>
-                        <td>Snídaně v hotelu</td>
-                        <td>Čerstvé ovoce, místní káva a balijské speciality, jako jsou rýžové placky nebo nasi goreng.</td>
-                    </tr>
-                    <tr>
-                        <td>💦 09:00</td>
-                        <td>Výlet k vodopádu Sekumpul</td>
-                        <td>
-                            <a href="https://www.cestujlevne.com/pruvodce/indonesie/bali/sekumpul-waterfall#google_vignette" target="_blank">Sekumpul Waterfall</a> je jeden z nejkrásnějších a největších vodopádů na Bali. Výlet zahrnuje procházku džunglí a možnost koupání v přírodních bazénech pod vodopádem.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🍛 12:00</td>
-                        <td>Oběd v restauraci poblíž vodopádu</td>
-                        <td>Restaurace nabízí tradiční balijské pokrmy s výhledem na okolní džungli a vodopády.</td>
-                    </tr>
-                    <tr>
-                        <td>🏡 13:30</td>
-                        <td>Návštěva vesnice Munduk</td>
-                        <td>
-                            <a href="https://cz.baliguide.me/lokalita/munduk" target="_blank">Munduk Village</a> je malebná vesnice známá svou tradiční kulturou, plantážemi kávy a čaje a krásnými výhledy na okolní hory a rýžová pole.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🏨 16:00</td>
-                        <td>Návrat na hotel a relaxace</td>
-                        <td>Možnost relaxace u bazénu nebo procházky po pláži. Hotel nabízí také masáže a wellness služby.</td>
-                    </tr>
-                    <tr>
-                        <td>🍴 19:00</td>
-                        <td>Večeře a volný večer</td>
-                        <td>Výběr z místních restaurací, které nabízejí autentickou balijskou kuchyni. Doporučení: restaurace Spice Beach Club nebo Warung Made.</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 20. července 2025 -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🏛️ 20. července 2025 – Kulturní památky 🏯</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>Čas</th>
-                        <th>Aktivita</th>
-                        <th>Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🍽️ 07:30</td>
-                        <td>Snídaně v hotelu</td>
-                        <td>Tradiční balijská snídaně s čerstvým ovocem, kávou a místními specialitami.</td>
-                    </tr>
-                    <tr>
-                        <td>🕌 09:00</td>
-                        <td>Výlet k chrámu Pura Dalem Jagaraga</td>
-                        <td>
-                            <a href="https://www.tripadvisor.com/Attraction_Review-g297699-d6584089-Reviews-Dalem_Jagaraga_Temple-Singaraja_Buleleng_District_Buleleng_Regency_Bali.html" target="_blank">Pura Dalem Jagaraga</a> je historický chrám známý svými reliéfy a výjevy z balijské mytologie. Chrám se nachází v klidné vesnici obklopené rýžovými poli.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>📚 11:00</td>
-                        <td>Návštěva muzea Gedong Kirtya</td>
-                        <td>
-                            <a href="https://www.tripadvisor.com/Attraction_Review-g297699-d7057390-Reviews-Gedong_Kertya_Museum-Singaraja_Buleleng_District_Buleleng_Regency_Bali.html" target="_blank">Gedong Kirtya</a> je jedinečné muzeum věnované starým balijským rukopisům, které jsou psány na listech palmy (lontar). Prohlídka zahrnuje seznámení s historií a kulturou Bali.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🍲 13:00</td>
-                        <td>Oběd v tradiční restauraci</td>
-                        <td>Oběd s výhledem na okolní přírodu. Doporučená jídla zahrnují babi guling (pečené sele) nebo ayam betutu (kořeněné kuře).</td>
-                    </tr>
-                    <tr>
-                        <td>🛍️ 14:30</td>
-                        <td>Návštěva místních trhů ve vesnici Singaraja</td>
-                        <td>Trhy nabízejí širokou škálu místních produktů, včetně ručně vyráběných suvenýrů, textilií a koření.</td>
-                    </tr>
-                    <tr>
-                        <td>🏨 17:00</td>
-                        <td>Návrat na hotel</td>
-                        <td>Relaxace na pláži nebo u hotelového bazénu.</td>
-                    </tr>
-                    <tr>
-                        <td>🍴 19:00</td>
-                        <td>Večeře a volný večer</td>
-                        <td>Poslední večeře v Lovina Beach Hotel. Doporučení: ochutnávka místních dezertů, jako je dodol nebo bubur injin (černá lepkavá rýže).</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <!-- 21. července 2025 -->
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🚚 21. července 2025 – Check-out a přesun do Gubug Balian Beach Bungalow 🌴</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>Čas</th>
-                        <th>Aktivita</th>
-                        <th>Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>🍽️ 07:30</td>
-                        <td>Snídaně v hotelu</td>
-                        <td>Poslední snídaně v hotelu s možností výběru z místních i mezinárodních pokrmů.</td>
-                    </tr>
-                    <tr>
-                        <td>🏍️ 09:00</td>
-                        <td>Odjezd na motorkách do Gubug Balian Beach Bungalow</td>
-                        <td>
-                            <a href="https://www.tripadvisor.com/Attraction_Review-g608497-d1515658-Reviews-Tegalalang_Rice_Terrace-Tegalalang_Gianyar_Regency_Bali.html" target="_blank">Cesta zahrnuje možnost zastávky u rýžových polí Jatiluwih</a>, která jsou součástí světového dědictví UNESCO.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>🏨 12:00</td>
-                        <td>Check-in v Gubug Balian Beach Bungalow</td>
-                        <td>Ubytování v tradičním balijském stylu s výhledem na oceán.</td>
-                    </tr>
-                </table>
-            </div>
+
+    <!-- 18. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 3)">
+        <div class="details-header">🚚 18. července 2025 – Check-out a přesun do Lovina Beach Hotel 🌴</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🏍️ 09:00</td>
+                    <td>Odjezd na motorkách do Lovina Beach Hotel</td>
+                    <td>Jízda malebnou krajinou přes hory a rýžová pole, možnost zastávky u <a href="https://www.bali.com/gitgit-waterfall.html" target="_blank">vodopádu Gitgit</a>.</td>
+                </tr>
+                <tr>
+                    <td>🏨 15:00</td>
+                    <td>Check-in v Lovina Beach Hotel</td>
+                    <td>Ubytování v hotelu poblíž pláže Lovina.</td>
+                </tr>
+            </table>
         </div>
     </div>
-     
+</div>
+
+
+
+
+
+<div class="section">
+    <h2>🗓 Návrh itineráře pro Lovina Beach Hotel s přesunem do Gubug Balian Beach Bungalow (18.–21. července 2025)</h2>
+
+    <style>
+        .details {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .details-header {
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #d9d9d9;
+        }
+
+        .details-content {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .details.active .details-content {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e6e6e6;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const detailsElements = document.querySelectorAll('.details');
+
+            detailsElements.forEach((element, index) => {
+                const isActive = localStorage.getItem(`lovinaDetailsOpen${index}`) === 'true';
+                if (isActive) {
+                    element.classList.add('active');
+                }
+            });
+        });
+
+        function toggleDetails(element, index) {
+            element.classList.toggle('active');
+            const isActive = element.classList.contains('active');
+            localStorage.setItem(`lovinaDetailsOpen${index}`, isActive);
+        }
+    </script>
+
+    <!-- 18. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 0)">
+        <div class="details-header">🏝️ 18. července 2025 – Příjezd a prohlídka okolí</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>Čas</th>
+                    <th>Aktivita</th>
+                    <th>Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🏨 15:00</td>
+                    <td>Check-in v Lovina Beach Hotel</td>
+                    <td>Hotel nabízí výhled na oceán, venkovní bazén a tradiční balijské ubytování. Je to ideální místo pro relaxaci a poznávání okolních přírodních krás.</td>
+                </tr>
+                <tr>
+                    <td>🌅 16:30</td>
+                    <td>Prohlídka okolí pláže Lovina</td>
+                    <td>
+                        <a href="https://www.bali-indonesie.cz/destinace/ostrov-bali/lovina" target="_blank">Pláž Lovina</a> je známá svým klidem, černým vulkanickým pískem a možnostmi pozorování západu slunce. V okolí se nachází několik tradičních restaurací a obchodů s ručně vyráběnými suvenýry.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🍴 19:00</td>
+                    <td>Večeře v místní restauraci</td>
+                    <td>Tradiční balijská kuchyně s čerstvými mořskými plody a dalšími specialitami, jako jsou satay, nasi goreng nebo pepes ikan.</td>
+                </tr>
+                <tr>
+                    <td>🛏️ 21:00</td>
+                    <td>Volný večer</td>
+                    <td>Možnost relaxace na pláži nebo v hotelovém areálu. Některé restaurace nabízejí živou hudbu nebo tradiční taneční vystoupení.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 19. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 1)">
+        <div class="details-header">💧 19. července 2025 – Vodopády a vesnice 🌄</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>Čas</th>
+                    <th>Aktivita</th>
+                    <th>Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🍽️ 07:30</td>
+                    <td>Snídaně v hotelu</td>
+                    <td>Čerstvé ovoce, místní káva a balijské speciality, jako jsou rýžové placky nebo nasi goreng.</td>
+                </tr>
+                <tr>
+                    <td>💦 09:00</td>
+                    <td>Výlet k vodopádu Sekumpul</td>
+                    <td>
+                        <a href="https://www.cestujlevne.com/pruvodce/indonesie/bali/sekumpul-waterfall#google_vignette" target="_blank">Sekumpul Waterfall</a> je jeden z nejkrásnějších a největších vodopádů na Bali. Výlet zahrnuje procházku džunglí a možnost koupání v přírodních bazénech pod vodopádem.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🍛 12:00</td>
+                    <td>Oběd v restauraci poblíž vodopádu</td>
+                    <td>Restaurace nabízí tradiční balijské pokrmy s výhledem na okolní džungli a vodopády.</td>
+                </tr>
+                <tr>
+                    <td>🏡 13:30</td>
+                    <td>Návštěva vesnice Munduk</td>
+                    <td>
+                        <a href="https://cz.baliguide.me/lokalita/munduk" target="_blank">Munduk Village</a> je malebná vesnice známá svou tradiční kulturou, plantážemi kávy a čaje a krásnými výhledy na okolní hory a rýžová pole.
+                    </td>
+                </tr>
+                <tr>
+                    <td>🏨 16:00</td>
+                    <td>Návrat na hotel a relaxace</td>
+                    <td>Možnost relaxace u bazénu nebo procházky po pláži. Hotel nabízí také masáže a wellness služby.</td>
+                </tr>
+                <tr>
+                    <td>🍴 19:00</td>
+                    <td>Večeře a volný večer</td>
+                    <td>Výběr z místních restaurací, které nabízejí autentickou balijskou kuchyni. Doporučení: restaurace Spice Beach Club nebo Warung Made.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 20. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 2)">
+        <div class="details-header">🚤 20. července 2025 – Výlet lodí a relaxace 🌊</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>Čas</th>
+                    <th>Aktivita</th>
+                    <th>Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🌅 05:30</td>
+                    <td>Plavba za delfíny</td>
+                    <td>Oblíbená aktivita na Lovina Beach, při které můžete pozorovat delfíny při východu slunce.</td>
+                </tr>
+                <tr>
+                    <td>🍽️ 08:00</td>
+                    <td>Snídaně v hotelu</td>
+                    <td>Snídaně formou bufetu s čerstvým ovocem, džusy a tradičními pokrmy.</td>
+                </tr>
+                <tr>
+                    <td>🏖️ 10:00</td>
+                    <td>Relaxace na pláži</td>
+                    <td>Možnost koupání, opalování nebo vodních sportů na pláži Lovina.</td>
+                </tr>
+                <tr>
+                    <td>🍛 12:30</td>
+                    <td>Oběd v restauraci Spice Beach Club</td>
+                    <td>Restaurace přímo na pláži nabízí široký výběr mořských plodů a koktejlů.</td>
+                </tr>
+                <tr>
+                    <td>🛏️ 14:00</td>
+                    <td>Odpočinek a volný čas</td>
+                    <td>Možnost využít hotelové wellness služby, masáže nebo bazén.</td>
+                </tr>
+                <tr>
+                    <td>🍴 19:00</td>
+                    <td>Večeře a kulturní vystoupení</td>
+                    <td>Tradiční balijské taneční a hudební vystoupení pořádané v hotelu.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 21. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 3)">
+        <div class="details-header">🚚 21. července 2025 – Check-out a přesun do Gubug Balian Beach Bungalow 🌴</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>Čas</th>
+                    <th>Aktivita</th>
+                    <th>Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>🍽️ 07:00</td>
+                    <td>Snídaně a check-out</td>
+                    <td>Poslední snídaně v hotelu před přesunem do další destinace.</td>
+                </tr>
+                <tr>
+                    <td>🚚 09:00</td>
+                    <td>Odjezd na Gubug Balian Beach</td>
+                    <td>Transfer přes krásnou krajinu Bali s možností zastávky u významných míst.</td>
+                </tr>
+                <tr>
+                    <td>🏨 12:00</td>
+                    <td>Check-in v Gubug Balian Beach Bungalow</td>
+                    <td>Tradiční bungalovy u pláže nabízejí klidnou atmosféru pro relaxaci.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
     <div class="section">
         <h2>🗓 Návrh itineráře pro Gubug Balian Beach Bungalow (21.–23. července 2025)</h2>
-    
+
         <style>
             .details {
                 cursor: pointer;
@@ -1275,40 +1370,40 @@
                 border: 1px solid #ccc;
                 border-radius: 5px;
             }
-    
+
             .details-content {
                 display: none;
                 padding: 10px;
                 border-top: 1px solid #ccc;
                 background-color: #fff;
             }
-    
+
             .details.active .details-content {
                 display: block;
             }
-    
+
             table {
                 width: 100%;
                 border-collapse: collapse;
             }
-    
+
             th, td {
                 border: 1px solid #ccc;
                 padding: 10px;
                 text-align: left;
             }
-    
+
             th {
                 background-color: #e6e6e6;
             }
         </style>
-    
+
         <script>
             function toggleDetails(element) {
                 element.classList.toggle('active');
             }
         </script>
-    
+
         <div class="details" onclick="toggleDetails(this)">
             <h3>🌅 21. července 2025 – Příjezd a prohlídka okolí</h3>
             <div class="details-content">
@@ -1356,7 +1451,7 @@
                 </table>
             </div>
         </div>
-    
+
         <div class="details" onclick="toggleDetails(this)">
             <h3>🌄 22. července 2025 – Přírodní rezervace a chrám</h3>
             <div class="details-content">
@@ -1394,7 +1489,7 @@
                 </table>
             </div>
         </div>
-    
+
         <div class="details" onclick="toggleDetails(this)">
             <h3>🏞️ 23. července 2025 – Check-out a odjezd</h3>
             <div class="details-content">
@@ -1418,143 +1513,206 @@
             </div>
         </div>
     </div>
-    
-    <div class="section">
-        <h2>🗓 Návrh itineráře pro 16. den (24. července 2025) – Check-out a odlet na Singapur</h2>
-    
-        <style>
-            .details {
-                cursor: pointer;
-                background-color: #f0f0f0;
-                padding: 10px;
-                margin: 5px 0;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-    
-            .details-content {
-                display: none;
-                padding: 10px;
-                border-top: 1px solid #ccc;
-                background-color: #fff;
-            }
-    
-            .details.active .details-content {
-                display: block;
-            }
-    
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-    
-            th, td {
-                border: 1px solid #ccc;
-                padding: 10px;
-                text-align: left;
-            }
-    
-            th {
-                background-color: #e6e6e6;
-            }
-        </style>
-    
-        <script>
-            function toggleDetails(element) {
-                element.classList.toggle('active');
-            }
-        </script>
-    
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>✈️ Check-out z hotelu a odlet</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>Čas</th>
-                        <th>Aktivita</th>
-                        <th>Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>07:30</td>
-                        <td>Snídaně v hotelu Gubug Balian Beach Bungalow</td>
-                        <td>Poslední snídaně v hotelu s výběrem čerstvých balijských specialit.</td>
-                    </tr>
-                    <tr>
-                        <td>08:30</td>
-                        <td>Odjezd na letiště Ngurah Rai (DPS)</td>
-                        <td><a href="https://www.bali-airport.com/" target="_blank">Letiště Ngurah Rai</a> je hlavní mezinárodní letiště na Bali. Trasa zahrnuje přejezd přes vnitrozemské oblasti ostrova.</td>
-                    </tr>
-                    <tr>
-                        <td>11:00</td>
-                        <td>Příjezd na letiště, odbavení a bezpečnostní kontrola</td>
-                        <td>Příprava na odlet, dokončení potřebné administrativy a kontrol.</td>
-                    </tr>
-                    <tr>
-                        <td>13:40</td>
-                        <td>Odlet z Denpasaru (Bali) do Singapuru</td>
-                        <td>Let QZ0506 společnosti AirAsia, s přistáním v Singapuru přibližně za 3 hodiny.</td>
-                    </tr>
-                    <tr>
-                        <td>16:40</td>
-                        <td>Přílet na letiště Changi (SIN)</td>
-                        <td><a href="https://www.changiairport.com/" target="_blank">Letiště Changi</a>, jedno z nejmodernějších letišť na světě, nabízí širokou škálu atrakcí a služeb.</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    
-        <div class="details" onclick="toggleDetails(this)">
-            <h3>🌟 Prohlídka letiště Changi (16:40 – 01:40)</h3>
-            <div class="details-content">
-                <table>
-                    <tr>
-                        <th>Čas</th>
-                        <th>Aktivita</th>
-                        <th>Odkaz / Popis</th>
-                    </tr>
-                    <tr>
-                        <td>17:30</td>
-                        <td>Začátek prohlídky letiště Changi</td>
-                        <td>Letiště nabízí několik atrakcí, včetně:</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>HSBC Rain Vortex</td>
-                        <td><a href="https://www.jewelchangiairport.com/" target="_blank">Nejvyšší krytý vodopád na světě</a>, který je součástí komplexu Jewel Changi.</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Canopy Park</td>
-                        <td><a href="https://www.jewelchangiairport.com/en/attractions/canopy-park.html" target="_blank">Zahrada</a> s visutými sítěmi, stezkami a relaxačními zónami.</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Motýlí zahrada</td>
-                        <td><a href="https://forbes.cz/motyl-odleta-z-kristaloveho-stromu-preciosa-rozzarila-nejlepsi-svetove-letiste/" target="_blank">Tropická zahrada</a> s volně létajícími motýly.</td>
-                    </tr>
-                    <tr>
-                        <td>19:30</td>
-                        <td>Večeře v letištní restauraci</td>
-                        <td>Výběr z mezinárodních i místních kuchyní.</td>
-                    </tr>
-                    <tr>
-                        <td>22:00</td>
-                        <td>Krátký odpočinek nebo návštěva dalších atrakcí</td>
-                        <td>Další možnosti pro relaxaci či nákupy na letišti.</td>
-                    </tr>
-                    <tr>
-                        <td>01:40</td>
-                        <td>Odlet ze Singapuru do Dubaje</td>
-                        <td>Let EK349 společnosti Emirates, trvající přibližně 7 hodin 15 minut.</td>
-                    </tr>
-                </table>
-            </div>
+
+<div class="section">
+    <h2>🗓 Itinerář pro Argya Santi Suite and Villas a odlet do Singapuru (23.–24. července 2025) 🏨✈️</h2>
+
+    <style>
+        .details {
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .details-header {
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #d9d9d9;
+        }
+
+        .details-content {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .details.active .details-content {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e6e6e6;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const detailsElements = document.querySelectorAll('.details');
+
+            detailsElements.forEach((element, index) => {
+                const isActive = localStorage.getItem(`combinedDetailsOpen${index}`) === 'true';
+                if (isActive) {
+                    element.classList.add('active');
+                }
+            });
+        });
+
+        function toggleDetails(element, index) {
+            element.classList.toggle('active');
+            const isActive = element.classList.contains('active');
+            localStorage.setItem(`combinedDetailsOpen${index}`, isActive);
+        }
+    </script>
+
+    <!-- 23. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 0)">
+        <div class="details-header">🏨 23. července 2025 – Check-in do hotelu Argya Santi</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>16:00</td>
+                    <td>Vrácení motorek poblíž hotelu</td>
+                    <td>Půjčovna se nachází přibližně 700 metrů od hotelu.</td>
+                </tr>
+                <tr>
+                    <td>16:30</td>
+                    <td>Check-in v hotelu Argya Santi</td>
+                    <td><a href="https://www.booking.com/hotel/id/argya-santi-seminyak.cs.html" target="_blank">🏨 Hotel Argya Santi</a> nabízí luxusní ubytování v klidné části Seminyaku.</td>
+                </tr>
+                <tr>
+                    <td>18:00</td>
+                    <td>Večeře v hotelové restauraci</td>
+                    <td>Výběr z místních a mezinárodních specialit.</td>
+                </tr>
+                <tr>
+                    <td>19:30</td>
+                    <td>Prohlídka okolí</td>
+                    <td>Procházka po okolí Seminyaku s návštěvou místních obchodů a kaváren.</td>
+                </tr>
+                <tr>
+                    <td>21:00</td>
+                    <td>Relaxace a volný večer</td>
+                    <td>Možnost relaxace u bazénu nebo v hotelovém wellness centru.</td>
+                </tr>
+            </table>
         </div>
     </div>
-    
+
+    <!-- 24. července 2025 -->
+    <div class="details" onclick="toggleDetails(this, 1)">
+        <div class="details-header">✈️ 24. července 2025 – Check-out a odlet do Singapuru</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>07:30</td>
+                    <td>Snídaně v hotelu</td>
+                    <td>Výběr z místních specialit formou bufetu.</td>
+                </tr>
+                <tr>
+                    <td>08:30</td>
+                    <td>Odjezd na letiště Ngurah Rai</td>
+                    <td><a href="https://www.bali-airport.com/" target="_blank">Letiště Ngurah Rai</a> se nachází přibližně hodinu a půl jízdy od hotelu.</td>
+                </tr>
+                <tr>
+                    <td>11:00</td>
+                    <td>Check-in na letišti</td>
+                    <td>Odbavení a bezpečnostní kontrola před odletem do Singapuru.</td>
+                </tr>
+                <tr>
+                    <td>13:40</td>
+                    <td>Odlet z Bali do Singapuru</td>
+                    <td>Let QZ0506 společnosti AirAsia, trvající přibližně 3 hodiny.</td>
+                </tr>
+                <tr>
+                    <td>16:40</td>
+                    <td>Přílet na letiště Changi</td>
+                    <td><a href="https://www.changiairport.com/" target="_blank">Letiště Changi</a> nabízí širokou škálu atrakcí a služeb.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="details" onclick="toggleDetails(this, 2)">
+        <div class="details-header">🌟 24. července 2025 – Prohlídka letiště Changi</div>
+        <div class="details-content">
+            <table>
+                <tr>
+                    <th>🕒 Čas</th>
+                    <th>📍 Aktivita</th>
+                    <th>🔗 Odkaz / Popis</th>
+                </tr>
+                <tr>
+                    <td>17:30</td>
+                    <td>Začátek prohlídky letiště</td>
+                    <td>Letiště nabízí atraktivní místa, jako jsou:</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>HSBC Rain Vortex</td>
+                    <td><a href="https://www.jewelchangiairport.com/" target="_blank">Krytý vodopád</a>, největší svého druhu na světě.</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Canopy Park</td>
+                    <td><a href="https://www.jewelchangiairport.com/en/attractions/canopy-park.html" target="_blank">Zahrada</a> s atrakcemi a relaxačními zónami.</td>
+                </tr>
+                <tr>
+                    <td>19:30</td>
+                    <td>Večeře v restauraci</td>
+                    <td>Výběr z místních i mezinárodních kuchyní.</td>
+                </tr>
+                <tr>
+                    <td>22:00</td>
+                    <td>Odpočinek nebo návštěva dalších atrakcí</td>
+                    <td>Možnost relaxace nebo nákupů v duty-free zóně.</td>
+                </tr>
+                <tr>
+                    <td>01:40</td>
+                    <td>Odlet ze Singapuru do Dubaje</td>
+                    <td>Let EK349 společnosti Emirates.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 
 
+
+
+
+<!-- Další sekce a obsah... -->
+
+    <script>
+        // Interaktivní prvky
+        function toggleDetails(element) {
+            element.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
