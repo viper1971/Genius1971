@@ -228,7 +228,10 @@
 
 
     <!-- Sekce harmonogram příprav -->
-
+div id="harmonogram" class="section">
+    <h2>🗓️ Harmonogram příprav</h2>
+    <p>📅 Termín do 30.6.2025</p>
+</div>
     <div class="card" style="text-align: left;">
         <h2>🗓️ Harmonogram příprav</h2>
 
@@ -914,6 +917,11 @@
         .side-panel a:hover {
             text-decoration: underline;
         }
+
+        .section {
+            padding: 20px;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
@@ -925,37 +933,36 @@
     <div class="side-panel" id="sidePanel">
         <h2>📑 Obsah itineráře</h2>
         <ul>
-            <li><a href=".section-harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
-            <li><a href=".section-letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
-            <li><a href=".section-hotely" onclick="navigateAndClose(event)">🏨 Hotely - Rezervace</a></li>
-            <li><a href=".section-singapur-attractions" onclick="navigateAndClose(event)">🌆 Průvodce atrakcemi v Singapuru</a></li>
-            <li><a href=".section-bali-attractions" onclick="navigateAndClose(event)">🏝️ Průvodce atrakcemi na Bali</a></li>
+            <li><a href="#harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
+            <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
+            <li><a href="#hotely" onclick="navigateAndClose(event)">🏨 Hotely - Rezervace</a></li>
+            <li><a href="#singapur-attractions" onclick="navigateAndClose(event)">🌆 Průvodce atrakcemi v Singapuru</a></li>
+            <li><a href="#bali-attractions" onclick="navigateAndClose(event)">🏝️ Průvodce atrakcemi na Bali</a></li>
         </ul>
     </div>
 
     <!-- Sekce stránky -->
-    <div class="section section-harmonogram" style="padding: 20px; margin: 20px;">
+    <div id="harmonogram" class="section">
         <h2>🗓️ Harmonogram příprav</h2>
         <p>📅 Termín do 30.6.2025</p>
-        <p>🛂 Získání mezinárodních řidičských průkazů</p>
     </div>
 
-    <div class="section section-letovy-plan" style="padding: 20px; margin: 20px;">
+    <div id="letovy-plan" class="section">
         <h2>✈️ Letový plán</h2>
         <p>Odlet z Prahy 9.7.2025 v 16:10.</p>
     </div>
 
-    <div class="section section-hotely" style="padding: 20px; margin: 20px;">
+    <div id="hotely" class="section">
         <h2>🏨 Hotely - Rezervace</h2>
         <p>Hotel 81 Palace - Singapur</p>
     </div>
 
-    <div class="section section-singapur-attractions" style="padding: 20px; margin: 20px;">
+    <div id="singapur-attractions" class="section">
         <h2>🌆 Průvodce atrakcemi v Singapuru</h2>
         <p>Jewel Changi Airport</p>
     </div>
 
-    <div class="section section-bali-attractions" style="padding: 20px; margin: 20px;">
+    <div id="bali-attractions" class="section">
         <h2>🏝️ Průvodce atrakcemi na Bali</h2>
         <p>Tegallalang Rice Terrace</p>
     </div>
@@ -963,26 +970,12 @@
     <script>
         function togglePanel() {
             const panel = document.getElementById('sidePanel');
-
-            if (panel.style.left === '0px') {
-                panel.style.left = '-300px';
-            } else {
-                panel.style.left = '0px';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                panel.scrollTop = 0;
-            }
+            panel.style.left = panel.style.left === '0px' ? '-300px' : '0px';
         }
 
         function navigateAndClose(event) {
-            event.preventDefault();
-            const targetClass = event.target.getAttribute('href');
-            const targetElement = document.querySelector(targetClass);
-
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-
-            document.getElementById('sidePanel').style.left = '-300px';
+            const panel = document.getElementById('sidePanel');
+            panel.style.left = '-300px';
         }
     </script>
 </body>
