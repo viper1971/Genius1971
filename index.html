@@ -4,8 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kompletní itinerář cesty na Bali a Singapur</title>
+   <!-- Plovoucí tlačítko -->
+<button class="floating-button" onclick="togglePanel()">Obsah</button>
+
+<!-- Boční panel s obsahem -->
+<div class="side-panel" id="sidePanel">
+    <h2>📑 Obsah itineráře</h2>
+    <ul>
+        <li><a href="#harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
+        <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
+        <li><a href="#hotely" onclick="navigateAndClose(event)">🏨 Hotely a rezervace</a></li>
+    </ul>
+</div>
    
-   
+
+<style>
+    .floating-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: background-color 0.3s ease;
+    }
+
+    .floating-button:hover {
+        background-color: #0056b3;
+    }
+
+    .side-panel {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 300px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        padding: 20px;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+    }
+
+    .side-panel.open {
+        left: 0;
+    }
+
+    .side-panel h2 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    .side-panel ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .side-panel ul li {
+        margin: 10px 0;
+    }
+
+    .side-panel ul li a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    .side-panel ul li a:hover {
+        text-decoration: underline;
+    }
+</style>
+
     <style>
         /* Globální stylování */
         body {
@@ -841,142 +918,3 @@ div id="harmonogram" class="section">
         </div>
     </div>
               
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kompletní itinerář</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #e9f5ff;
-            color: #333;
-        }
-
-        .floating-button {
-            position: fixed;
-            top: 20px;
-            left: -50px;
-            width: 100px;
-            height: 40px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            text-align: center;
-            line-height: 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: left 0.3s ease;
-        }
-
-        .floating-button:hover {
-            left: 0px;
-        }
-
-        .side-panel {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 300px;
-            height: 100%;
-            background-color: #fff;
-            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-            padding: 20px;
-            overflow-y: auto;
-            transition: left 0.3s ease;
-        }
-
-        .side-panel h2 {
-            text-align: center;
-            color: #007bff;
-        }
-
-        .side-panel ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .side-panel li {
-            margin: 10px 0;
-        }
-
-        .side-panel a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .side-panel a:hover {
-            text-decoration: underline;
-        }
-
-        .section {
-            padding: 20px;
-            margin: 20px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Plovoucí tlačítko -->
-    <button class="floating-button" onclick="togglePanel()">Obsah</button>
-
-    <!-- Boční panel s navigací -->
-    <div class="side-panel" id="sidePanel">
-        <h2>📑 Obsah itineráře</h2>
-        <ul>
-            <li><a href="#harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
-            <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
-            <li><a href="#hotely" onclick="navigateAndClose(event)">🏨 Hotely - Rezervace</a></li>
-            <li><a href="#singapur-attractions" onclick="navigateAndClose(event)">🌆 Průvodce atrakcemi v Singapuru</a></li>
-            <li><a href="#bali-attractions" onclick="navigateAndClose(event)">🏝️ Průvodce atrakcemi na Bali</a></li>
-        </ul>
-    </div>
-
-    <!-- Sekce stránky -->
-    <div id="harmonogram" class="section">
-        <h2>🗓️ Harmonogram příprav</h2>
-        <p>📅 Termín do 30.6.2025</p>
-    </div>
-
-    <div id="letovy-plan" class="section">
-        <h2>✈️ Letový plán</h2>
-        <p>Odlet z Prahy 9.7.2025 v 16:10.</p>
-    </div>
-
-    <div id="hotely" class="section">
-        <h2>🏨 Hotely - Rezervace</h2>
-        <p>Hotel 81 Palace - Singapur</p>
-    </div>
-
-    <div id="singapur-attractions" class="section">
-        <h2>🌆 Průvodce atrakcemi v Singapuru</h2>
-        <p>Jewel Changi Airport</p>
-    </div>
-
-    <div id="bali-attractions" class="section">
-        <h2>🏝️ Průvodce atrakcemi na Bali</h2>
-        <p>Tegallalang Rice Terrace</p>
-    </div>
-
-    <script>
-        function togglePanel() {
-            const panel = document.getElementById('sidePanel');
-            panel.style.left = panel.style.left === '0px' ? '-300px' : '0px';
-        }
-
-        function navigateAndClose(event) {
-            const panel = document.getElementById('sidePanel');
-            panel.style.left = '-300px';
-        }
-    </script>
-</body>
-</html>
