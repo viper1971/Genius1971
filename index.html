@@ -857,6 +857,7 @@
             cursor: pointer;
             font-weight: bold;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
         }
 
         #sidePanel {
@@ -877,14 +878,6 @@
         #sidePanel h2 {
             color: #007bff;
             text-align: center;
-        }
-
-        .close-btn {
-            text-align: right;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: #ff6f00;
-            font-weight: bold;
         }
 
         .panel-link {
@@ -912,13 +905,12 @@
 
 <!-- Panel s obsahem -->
 <div id="sidePanel">
-    <div class="close-btn" onclick="togglePanel()">✖ Zavřít</div>
     <h2>📋 Obsah stránky</h2>
-    <a href="#harmonogram" class="panel-link">🗓️ Harmonogram příprav</a>
-    <a href="#hotely" class="panel-link">🏨 Hotely a rezervace</a>
-    <a href="#letovyPlan" class="panel-link">✈️ Letový plán</a>
-    <a href="#singapurAtrakce" class="panel-link">🗺️ Atrakce v Singapuru</a>
-    <a href="#baliAtrakce" class="panel-link">🏝️ Atrakce na Bali</a>
+    <a href="#harmonogram" class="panel-link" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a>
+    <a href="#hotely" class="panel-link" onclick="navigateAndClose(event)">🏨 Hotely a rezervace</a>
+    <a href="#letovyPlan" class="panel-link" onclick="navigateAndClose(event)">✈️ Letový plán</a>
+    <a href="#singapurAtrakce" class="panel-link" onclick="navigateAndClose(event)">🗺️ Atrakce v Singapuru</a>
+    <a href="#baliAtrakce" class="panel-link" onclick="navigateAndClose(event)">🏝️ Atrakce na Bali</a>
 </div>
 
 <script>
@@ -930,7 +922,20 @@
             panel.style.left = '-300px';
         } else {
             panel.style.left = '0px';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+    }
+
+    function navigateAndClose(event) {
+        event.preventDefault();
+        const targetId = event.target.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.getElementById('sidePanel').style.left = '-300px';
     }
 </script>
 
