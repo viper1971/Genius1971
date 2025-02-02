@@ -836,4 +836,129 @@
             </div>
         </div>
     </div>
-                        
+              
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plovoucí obsah</title>
+    <style>
+        /* Styl pro plovoucí tlačítko a panel */
+        #floatingButton {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #sidePanel {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: #f7f7f7;
+            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        #sidePanel h2 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        .close-btn {
+            text-align: right;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #ff6f00;
+            font-weight: bold;
+        }
+
+        .panel-link {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            background: #e0f7fa;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #00796b;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .panel-link:hover {
+            background: #80deea;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Plovoucí tlačítko -->
+<div id="floatingButton" onclick="togglePanel()">Obsah</div>
+
+<!-- Panel s obsahem -->
+<div id="sidePanel">
+    <div class="close-btn" onclick="togglePanel()">✖ Zavřít</div>
+    <h2>📋 Obsah stránky</h2>
+    <a href="#harmonogram" class="panel-link">🗓️ Harmonogram příprav</a>
+    <a href="#hotely" class="panel-link">🏨 Hotely a rezervace</a>
+    <a href="#letovyPlan" class="panel-link">✈️ Letový plán</a>
+    <a href="#singapurAtrakce" class="panel-link">🗺️ Atrakce v Singapuru</a>
+    <a href="#baliAtrakce" class="panel-link">🏝️ Atrakce na Bali</a>
+</div>
+
+<script>
+    function togglePanel() {
+        const panel = document.getElementById('sidePanel');
+        const currentLeft = panel.style.left;
+
+        if (currentLeft === '0px') {
+            panel.style.left = '-300px';
+        } else {
+            panel.style.left = '0px';
+        }
+    }
+</script>
+
+<!-- Kotvy pro obsah -->
+<div id="harmonogram" style="padding: 100px 20px; background: #e0f7fa; margin-top: 20px;">
+    <h2>🗓️ Harmonogram příprav</h2>
+    <p>Zde je popis harmonogramu...</p>
+</div>
+
+<div id="hotely" style="padding: 100px 20px; background: #ffe082; margin-top: 20px;">
+    <h2>🏨 Hotely a rezervace</h2>
+    <p>Zde je seznam hotelů...</p>
+</div>
+
+<div id="letovyPlan" style="padding: 100px 20px; background: #c8e6c9; margin-top: 20px;">
+    <h2>✈️ Letový plán</h2>
+    <p>Zde je letový plán...</p>
+</div>
+
+<div id="singapurAtrakce" style="padding: 100px 20px; background: #b3e5fc; margin-top: 20px;">
+    <h2>🗺️ Atrakce v Singapuru</h2>
+    <p>Zde jsou atrakce v Singapuru...</p>
+</div>
+
+<div id="baliAtrakce" style="padding: 100px 20px; background: #d7ccc8; margin-top: 20px;">
+    <h2>🏝️ Atrakce na Bali</h2>
+    <p>Zde jsou atrakce na Bali...</p>
+</div>
+
+</body>
+</html>
