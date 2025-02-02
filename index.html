@@ -843,133 +843,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kompletní itinerář cesty na Bali a Singapur</title>
+    <title>Kompletní itinerář</title>
+
     <style>
-        /* Styl pro plovoucí tlačítko a panel */
-        #floatingButton {
-            position: fixed;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            background: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 0 8px 8px 0;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            z-index: 1001;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e9f5ff;
+            color: #333;
         }
 
-        #sidePanel {
+        .floating-button {
+            position: fixed;
+            top: 20px;
+            left: -50px;
+            width: 100px;
+            height: 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            line-height: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: left 0.3s ease;
+        }
+
+        .floating-button:hover {
+            left: 0px;
+        }
+
+        .side-panel {
             position: fixed;
             top: 0;
             left: -300px;
             width: 300px;
             height: 100%;
-            background: #f7f7f7;
-            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
+            background-color: #fff;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+            z-index: 999;
             padding: 20px;
-            box-sizing: border-box;
+            overflow-y: auto;
             transition: left 0.3s ease;
-            z-index: 1000;
         }
 
-        #sidePanel h2 {
+        .side-panel h2 {
+            text-align: center;
             color: #007bff;
-            text-align: center;
         }
 
-        .panel-link {
-            display: block;
-            padding: 10px;
+        .side-panel ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .side-panel li {
             margin: 10px 0;
-            background: #e0f7fa;
-            text-align: center;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #00796b;
-            font-weight: bold;
-            transition: background 0.3s;
         }
 
-        .panel-link:hover {
-            background: #80deea;
+        .side-panel a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .side-panel a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-<!-- Plovoucí tlačítko -->
-<div id="floatingButton" onclick="togglePanel()">Obsah</div>
+    <!-- Plovoucí tlačítko -->
+    <button class="floating-button" onclick="togglePanel()">Obsah</button>
 
-<!-- Panel s obsahem -->
-<div id="sidePanel">
-    <h2>📋 Obsah stránky</h2>
-    <a href="#harmonogramSection" class="panel-link" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a>
-    <a href="#hotelySection" class="panel-link" onclick="navigateAndClose(event)">🏨 Hotely a rezervace</a>
-    <a href="#letovyPlanSection" class="panel-link" onclick="navigateAndClose(event)">✈️ Letový plán</a>
-    <a href="#singapurAtrakceSection" class="panel-link" onclick="navigateAndClose(event)">🗺️ Atrakce v Singapuru</a>
-    <a href="#baliAtrakceSection" class="panel-link" onclick="navigateAndClose(event)">🏝️ Atrakce na Bali</a>
-</div>
+    <!-- Boční panel s navigací -->
+    <div class="side-panel" id="sidePanel">
+        <h2>📑 Obsah itineráře</h2>
+        <ul>
+            <li><a href=".section-harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
+            <li><a href=".section-letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
+            <li><a href=".section-hotely" onclick="navigateAndClose(event)">🏨 Hotely - Rezervace</a></li>
+            <li><a href=".section-singapur-attractions" onclick="navigateAndClose(event)">🌆 Průvodce atrakcemi v Singapuru</a></li>
+            <li><a href=".section-bali-attractions" onclick="navigateAndClose(event)">🏝️ Průvodce atrakcemi na Bali</a></li>
+        </ul>
+    </div>
 
-<script>
-    function togglePanel() {
-        const panel = document.getElementById('sidePanel');
-        const currentLeft = panel.style.left;
+    <!-- Sekce stránky -->
+    <div class="section section-harmonogram" style="padding: 20px; margin: 20px;">
+        <h2>🗓️ Harmonogram příprav</h2>
+        <p>📅 Termín do 30.6.2025</p>
+        <p>🛂 Získání mezinárodních řidičských průkazů</p>
+    </div>
 
-        if (currentLeft === '0px') {
-            panel.style.left = '-300px';
-        } else {
-            panel.style.left = '0px';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    <div class="section section-letovy-plan" style="padding: 20px; margin: 20px;">
+        <h2>✈️ Letový plán</h2>
+        <p>Odlet z Prahy 9.7.2025 v 16:10.</p>
+    </div>
+
+    <div class="section section-hotely" style="padding: 20px; margin: 20px;">
+        <h2>🏨 Hotely - Rezervace</h2>
+        <p>Hotel 81 Palace - Singapur</p>
+    </div>
+
+    <div class="section section-singapur-attractions" style="padding: 20px; margin: 20px;">
+        <h2>🌆 Průvodce atrakcemi v Singapuru</h2>
+        <p>Jewel Changi Airport</p>
+    </div>
+
+    <div class="section section-bali-attractions" style="padding: 20px; margin: 20px;">
+        <h2>🏝️ Průvodce atrakcemi na Bali</h2>
+        <p>Tegallalang Rice Terrace</p>
+    </div>
+
+    <script>
+        function togglePanel() {
+            const panel = document.getElementById('sidePanel');
+
+            if (panel.style.left === '0px') {
+                panel.style.left = '-300px';
+            } else {
+                panel.style.left = '0px';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                panel.scrollTop = 0;
+            }
         }
-    }
 
-    function navigateAndClose(event) {
-        event.preventDefault();
-        const targetId = event.target.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+        function navigateAndClose(event) {
+            event.preventDefault();
+            const targetClass = event.target.getAttribute('href');
+            const targetElement = document.querySelector(targetClass);
 
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            document.getElementById('sidePanel').style.left = '-300px';
         }
-
-        document.getElementById('sidePanel').style.left = '-300px';
-    }
-</script>
-
-<!-- Sekce harmonogram příprav -->
-<div id="harmonogramSection" class="card">
-    <h2>🗓️ Harmonogram příprav</h2>
-    <p>Zde je popis harmonogramu...</p>
-</div>
-
-<!-- Sekce ho tely a rezervace -->
-<div id="hotelySection" class="card">
-    <h2>🏨 Hotely a rezervace</h2>
-    <p>Zde je seznam hotelů...</p>
-</div>
-
-<!-- Sekce letový plán -->
-<div id="letovyPlanSection" class="card">
-    <h2>✈️ Letový plán</h2>
-    <p>Zde je letový plán...</p>
-</div>
-
-<!-- Sekce průvodce atrakcemi v Singapuru -->
-<div id="singapurAtrakceSection" class="card">
-    <h2>🗺️ Průvodce atrakcemi v Singapuru 🌆</h2>
-    <p>Zde jsou atrakce v Singapuru...</p>^>
--
-</div>
-
-<!-- Sekce průvodce atrakcemi na Bali -->
-<div id="baliAtrakceSection" class="card">
-    <h2>🏝️ Průvodce atrakcemi na Bali</h2>
-    <p>Zde jsou atrakce na Bali...</p>
-</div>
-
+    </script>
 </body>
 </html>
