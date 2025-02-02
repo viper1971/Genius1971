@@ -842,7 +842,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plovoucí obsah</title>
+    <title>Kompletní itinerář cesty na Bali a Singapur</title>
     <style>
         /* Styl pro plovoucí tlačítko a panel */
         #floatingButton {
@@ -906,11 +906,11 @@
 <!-- Panel s obsahem -->
 <div id="sidePanel">
     <h2>📋 Obsah stránky</h2>
-    <a href="#harmonogram" class="panel-link" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a>
-    <a href="#hotely" class="panel-link" onclick="navigateAndClose(event)">🏨 Hotely a rezervace</a>
-    <a href="#letovyPlan" class="panel-link" onclick="navigateAndClose(event)">✈️ Letový plán</a>
-    <a href="#singapurAtrakce" class="panel-link" onclick="navigateAndClose(event)">🗺️ Atrakce v Singapuru</a>
-    <a href="#baliAtrakce" class="panel-link" onclick="navigateAndClose(event)">🏝️ Atrakce na Bali</a>
+    <a href="#harmonogramSection" class="panel-link" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a>
+    <a href="#hotelySection" class="panel-link" onclick="navigateAndClose(event)">🏨 Hotely a rezervace</a>
+    <a href="#letovyPlanSection" class="panel-link" onclick="navigateAndClose(event)">✈️ Letový plán</a>
+    <a href="#singapurAtrakceSection" class="panel-link" onclick="navigateAndClose(event)">🗺️ Atrakce v Singapuru</a>
+    <a href="#baliAtrakceSection" class="panel-link" onclick="navigateAndClose(event)">🏝️ Atrakce na Bali</a>
 </div>
 
 <script>
@@ -939,29 +939,33 @@
     }
 </script>
 
-<!-- Kotvy pro obsah -->
-<div id="harmonogram" style="padding: 100px 20px; background: #e0f7fa; margin-top: 20px;">
+<!-- Sekce harmonogram příprav -->
+<div id="harmonogramSection" class="card">
     <h2>🗓️ Harmonogram příprav</h2>
     <p>Zde je popis harmonogramu...</p>
 </div>
 
-<div id="hotely" style="padding: 100px 20px; background: #ffe082; margin-top: 20px;">
+<!-- Sekce hotely a rezervace -->
+<div id="hotelySection" class="card">
     <h2>🏨 Hotely a rezervace</h2>
     <p>Zde je seznam hotelů...</p>
 </div>
 
-<div id="letovyPlan" style="padding: 100px 20px; background: #c8e6c9; margin-top: 20px;">
+<!-- Sekce letový plán -->
+<div id="letovyPlanSection" class="card">
     <h2>✈️ Letový plán</h2>
     <p>Zde je letový plán...</p>
 </div>
 
-<div id="singapurAtrakce" style="padding: 100px 20px; background: #b3e5fc; margin-top: 20px;">
-    <h2>🗺️ Atrakce v Singapuru</h2>
+<!-- Sekce průvodce atrakcemi v Singapuru -->
+<div id="singapurAtrakceSection" class="card">
+    <h2>🗺️ Průvodce atrakcemi v Singapuru 🌆</h2>
     <p>Zde jsou atrakce v Singapuru...</p>
 </div>
 
-<div id="baliAtrakce" style="padding: 100px 20px; background: #d7ccc8; margin-top: 20px;">
-    <h2>🏝️ Atrakce na Bali</h2>
+<!-- Sekce průvodce atrakcemi na Bali -->
+<div id="baliAtrakceSection" class="card">
+    <h2>🏝️ Průvodce atrakcemi na Bali</h2>
     <p>Zde jsou atrakce na Bali...</p>
 </div>
 
