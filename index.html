@@ -525,102 +525,126 @@
     </div>
     
     
-<div class="section">
-    <h2>🛂 Postup na letišti</h2>
-
-    <style>
-        .section {
-            background: #f0f8ff;
-            padding: 30px;
-            margin: 20px 0;
-            border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            color: #007bff;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .grid-container div {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: left;
-            transition: transform 0.3s ease;
-        }
-
-        .grid-container div:hover {
-            transform: scale(1.05);
-        }
-
-        .grid-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            color: #00796b;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            font-size: 1rem;
-            color: #333;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-    </style>
-
-    <div class="grid-container">
-        <div>
-            <img src="./LetištěPraha.png" alt="Letiště Praha">
-            <h3>V Praze (9.7.2025)</h3>
-            <ul>
-                <li>Společná cesta autobusem z Hodkovic nad Mohelkou do Prahy</li>
-                <li>3 hodiny před odletem na letišti</li>
-                <li>Vyplnit SG Arrival Card pro Singapur</li>
-            </ul>
-        </div>
-        <div>
-            <img src="./Changi.png" alt="Letiště Changi">
-            <h3>V Singapuru (10.7.2025)</h3>
-            <ul>
-                <li>Předložit: Příjezdová karta SG Arrival Card</li>
-                <li>Projít imigrační kontrolou</li>
-                <li>Vyřídit přepravu z letiště do hotelu</li>
-            </ul>
-        </div>
-        <div>
-            <img src="./Baliletiste.jpg" alt="Letiště Bali">
-            <h3>Na Bali (13.7.2025)</h3>
-            <ul>
-                <li>Předložit: e-VOA + SATUSEHAT kód</li>
-                <li>Imigrační kontrola</li>
-                <li>Přeprava do ubytování</li>
-            </ul>
+    <div class="section">
+        <h2>🛂 Postup na letišti</h2>
+    
+        <style>
+            .section {
+                background: #f0f8ff;
+                padding: 20px;
+                margin: 10px 0;
+                border-radius: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+            }
+    
+            h2 {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+                color: #007bff;
+                margin-bottom: 20px;
+                font-weight: bold;
+            }
+    
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+    
+            .flex-item {
+                background: #fff;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                text-align: left;
+                transition: transform 0.3s ease;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+    
+            .flex-item:hover {
+                transform: scale(1.03);
+            }
+    
+            .flex-item img {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin-bottom: 15px;
+            }
+    
+            h3 {
+                font-size: 1.4rem;
+                color: #00796b;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+    
+            ul {
+                list-style-type: disc;
+                padding-left: 20px;
+                font-size: 1rem;
+                color: #333;
+            }
+    
+            li {
+                margin-bottom: 8px;
+            }
+    
+            @media (min-width: 768px) {
+                .flex-container {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+    
+                .flex-item {
+                    width: calc(33.33% - 40px);
+                    margin: 10px;
+                }
+    
+                h3 {
+                    font-size: 1.6rem;
+                }
+    
+                ul {
+                    font-size: 1.1rem;
+                }
+            }
+        </style>
+    
+        <div class="flex-container">
+            <div class="flex-item">
+                <img src="./LetištěPraha.png" alt="Letiště Praha">
+                <h3>V Praze (9.7.2025)</h3>
+                <ul>
+                    <li>Společná cesta autobusem z Hodkovic nad Mohelkou do Prahy</li>
+                    <li>3 hodiny před odletem na letišti</li>
+                    <li>Vyplnit SG Arrival Card pro Singapur</li>
+                </ul>
+            </div>
+            <div class="flex-item">
+                <img src="./Changi.png" alt="Letiště Changi">
+                <h3>V Singapuru (10.7.2025)</h3>
+                <ul>
+                    <li>Předložit: Příjezdová karta SG Arrival Card</li>
+                    <li>Projít imigrační kontrolou</li>
+                    <li>Vyřídit přepravu z letiště do hotelu</li>
+                </ul>
+            </div>
+            <div class="flex-item">
+                <img src="./Baliletiste.jpg" alt="Letiště Bali">
+                <h3>Na Bali (13.7.2025)</h3>
+                <ul>
+                    <li>Předložit: e-VOA + SATUSEHAT kód</li>
+                    <li>Imigrační kontrola</li>
+                    <li>Přeprava do ubytování</li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+    
 
 
 
