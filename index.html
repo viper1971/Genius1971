@@ -4,182 +4,213 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kompletní itinerář cesty na Bali a Singapur</title>
-    <style>
-        /* Základní styly */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            padding: 20px;
-            background: #f8f9fa;
-            color: #333;
-        }
 
-        h1, h2, h3 {
-            color: #2d6a4f;
-            border-left: 5px solid #40916c;
-            padding-left: 15px;
-            margin-top: 0;
-        }
 
-        h1 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-        }
+<style>
+    /* Základní styly */
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.8;
+        margin: 0;
+        padding: 20px;
+        background: #f8f9fa;
+        color: #333;
+    }
 
-        h2 {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-        }
+    h1, h2, h3 {
+        color: #2d6a4f;
+        border-left: 5px solid #40916c;
+        padding-left: 15px;
+        margin-top: 0;
+    }
 
-        h3 {
-            font-size: clamp(1.2rem, 3.5vw, 1.8rem);
-        }
+    h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
 
-        p, li {
-            font-size: clamp(0.9rem, 3vw, 1rem);
+    h2 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    h3 {
+        font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+    }
+
+    p, li {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+    }
+
+    .section {
+        background: white;
+        padding: 25px;
+        margin: 20px 0;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    button {
+        background-color: #40916c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: clamp(0.9rem, 3vw, 1rem);
+    }
+
+    button:hover {
+        background-color: #2d6a4f;
+    }
+
+    /* Obrázky */
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 15px 0;
+    }
+
+    img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Flexbox a Grid pro rozložení */
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .flex-container img {
+        flex: 1 1 300px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    /* Tabulky */
+    .graficka-tabulka-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 15px 0;
+        border-radius: 8px;
+    }
+
+    .graficka-tabulka {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .graficka-tabulka th, .graficka-tabulka td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .graficka-tabulka th {
+        background: #40916c;
+        color: white;
+        padding: 15px;
+    }
+
+    .graficka-tabulka tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .graficka-tabulka tr:hover {
+        background-color: #4caf50;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    /* Interaktivní prvky */
+    .details {
+        cursor: pointer;
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .details-content {
+        display: none;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+        background-color: #fff;
+    }
+
+    .details.active .details-content {
+        display: block;
+    }
+
+    /* Responzivní styly */
+    @media (max-width: 768px) {
+        .flex-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
         }
 
         .section {
-            background: white;
-            padding: 25px;
-            margin: 20px 0;
-            border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .warning {
-            background: #fff3cd;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        button {
-            background-color: #40916c;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: clamp(0.9rem, 3vw, 1rem);
-        }
-
-        button:hover {
-            background-color: #2d6a4f;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Flexbox a Grid pro rozložení */
-        .flex-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .flex-container img {
-            flex: 1 1 300px;
-            max-width: 100%;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        /* Tabulky */
-        .graficka-tabulka {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .graficka-tabulka th, .graficka-tabulka td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-        }
-
-        .graficka-tabulka th {
-            background: #40916c;
-            color: white;
             padding: 15px;
         }
 
-        .graficka-tabulka tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .graficka-tabulka th, .graficka-tabulka td {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
-        .graficka-tabulka tr:hover {
-            background-color: #4caf50;
-            color: white;
-            transition: all 0.3s ease;
+        .image-container {
+            margin: 10px 0;
         }
 
-        /* Interaktivní prvky */
-        .details {
-            cursor: pointer;
-            background-color: #f0f0f0;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        img {
+            width: 90%;
+            max-width: 400px;
+            height: auto;
         }
+    }
+</style>
 
-        .details-content {
-            display: none;
-            padding: 10px;
-            border-top: 1px solid #ccc;
-            background-color: #fff;
-        }
+<div class="section">
+    <div class="image-container">
+        <img src="example.jpg" alt="Ukázkový obrázek">
+    </div>
+    
+</div>
 
-        .details.active .details-content {
-            display: block;
-        }
 
-        /* Responzivní styly */
-        @media (max-width: 768px) {
-            .flex-container {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
 
-            .section {
-                padding: 15px;
-            }
 
-            .graficka-tabulka th, .graficka-tabulka td {
-                font-size: clamp(0.8rem, 2vw, 0.9rem);
-            }
-        }
-    </style>
 </head>
 <body>
 
