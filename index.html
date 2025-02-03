@@ -522,6 +522,51 @@
 <!-- Styl pro popup -->
 <style>
     .popup {
+<!-- Texty sloužící jako tlačítka pro otevření pop-up oken -->
+<h2 class="popup-button" onclick="showPopup('popup1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</h2>
+<h2 class="popup-button" onclick="showPopup('popup2')">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</h2>
+<h2 class="popup-button" onclick="showPopup('popup3')">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</h2>
+
+<!-- Popup okna s podrobnostmi -->
+<div id="popup1" class="popup" style="display:none;">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popup1')">&times;</span>
+        <h2>🚌 Úsek: Hodkovice → Černý Most</h2>
+        <p><strong>Odjezd:</strong> 10:00 ze zastávky Hodkovice</p>
+        <p><strong>Příjezd:</strong> 11:30 na Černý Most</p>
+        <p><strong>Doba jízdy:</strong> 1 hodina 30 minut</p>
+        <p><strong>Cena:</strong> 150 Kč</p>
+        <img src="Hodkovice.jpg" alt="Obrázek dopravy Hodkovice">
+    </div>
+</div>
+
+<div id="popup2" class="popup" style="display:none;">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popup2')">&times;</span>
+        <h2>🚌 Úsek: Zličín → Letiště Václava Havla</h2>
+        <p><strong>Příjezd:</strong> 12:20 na stanici Zličín</p>
+        <p><strong>Doba jízdy:</strong> 35 minut</p>
+        <p><strong>Cena:</strong> 40 Kč (90minutová jízdenka PID)</p>
+        <p><strong>Rezerva na přestup:</strong> 10 minut</p>
+        <img src="Praha2.jpg" alt="Obrázek dopravy Zličín">
+    </div>
+</div>
+
+<div id="popup3" class="popup" style="display:none;">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popup3')">&times;</span>
+        <h2>🚌 Úsek: Letiště Václava Havla → Centrum</h2>
+        <p><strong>Odjezd:</strong> 12:30 z Letiště Václava Havla</p>
+        <p><strong>Příjezd:</strong> 13:00 na Náměstí Republiky</p>
+        <p><strong>Doba jízdy:</strong> 30 minut</p>
+        <p><strong>Cena:</strong> 90 Kč</p>
+        <img src="Praha3.jpg" alt="Obrázek dopravy Centrum">
+    </div>
+</div>
+
+<!-- Styl pro popup přizpůsobený mobilnímu zařízení -->
+<style>
+    .popup {
         position: fixed;
         top: 0;
         left: 0;
@@ -538,10 +583,12 @@
         background-color: white;
         padding: 20px;
         border-radius: 10px;
-        width: 80%;
-        max-width: 600px;
+        width: 90%;
+        max-width: 400px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         position: relative;
+        overflow-y: auto;
+        max-height: 80%;
     }
 
     .close {
@@ -557,6 +604,16 @@
         max-width: 100%;
         height: auto;
         margin-top: 10px;
+    }
+
+    .popup-button {
+        color: #007bff;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .popup-button:hover {
+        color: #0056b3;
     }
 </style>
 
