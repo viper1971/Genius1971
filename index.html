@@ -491,16 +491,83 @@
         <img src="Praha3.jpg" alt="Obrázek dopravy 3">
     </details>
 </div>
+<button onclick="showPopup('popup1')">🚌 Úsek 1: Detaily jízdy</button>
+<button onclick="showPopup('popup2')">🚌 Úsek 2: Detaily jízdy</button>
 
-<!-- Skript pro ovládání rozbalování sekcí -->
+<!-- Popup okna s podrobnostmi -->
+<div id="popup1" class="popup" style="display:none;">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popup1')">&times;</span>
+        <h2>🚍 Spoj: Metro B, Dopravní podnik hl. m. Prahy</h2>
+        <p><strong>Příjezd:</strong> 12:20 na stanici Zličín</p>
+        <p><strong>Doba jízdy:</strong> 35 minut</p>
+        <p><strong>Cena:</strong> 40 Kč (90minutová jízdenka PID)</p>
+        <p><strong>Rezerva na přestup:</strong> 10 minut</p>
+        <img src="Praha2.jpg" alt="Obrázek dopravy 2">
+    </div>
+</div>
+
+<div id="popup2" class="popup" style="display:none;">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('popup2')">&times;</span>
+        <h2>🚍 Spoj: Autobus 100, Dopravní podnik hl. m. Prahy</h2>
+        <p><strong>Odjezd:</strong> 12:30 ze zastávky Zličín</p>
+        <p><strong>Příjezd:</strong> 12:50 na Letiště Václava Havla, Terminál 1</p>
+        <p><strong>Doba jízdy:</strong> 20 minut</p>
+        <p><strong>Cena:</strong> V rámci 90minutové jízdenky za 40 Kč</p>
+        <img src="Praha3.jpg" alt="Obrázek dopravy 3">
+    </div>
+</div>
+
+<!-- Styl pro popup -->
+<style>
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .popup-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+</style>
+
+<!-- Skript pro zobrazení a zavření pop-up oken -->
 <script>
-    function toggleContent(id) {
-        const content = document.getElementById(id);
-        if (content.style.display === "block") {
-            content.style.display = "none";
-        } else {
-            content.style.display = "block";
-        }
+    function showPopup(id) {
+        document.getElementById(id).style.display = "flex";
+    }
+
+    function closePopup(id) {
+        document.getElementById(id).style.display = "none";
     }
 </script>
 
