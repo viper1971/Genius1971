@@ -5,7 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kompletní itinerář cesty na Bali a Singapur</title>
-
+    <script>
+        // Uložení aktuální pozice při odchodu
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('scrollPosition', window.scrollY);
+        });
+    
+        // Obnovení pozice při načtení stránky
+        window.addEventListener('load', () => {
+            const savedPosition = localStorage.getItem('scrollPosition');
+            if (savedPosition) {
+                window.scrollTo(0, parseInt(savedPosition));
+            }
+        });
+    </script>
+ </head>   
 
 <!-- Plovoucí tlačítko -->
 <button class="floating-button" onclick="togglePanel()">Obsah</button>
@@ -511,23 +525,23 @@
         <h2>🏨 Hotely - Rezervace</h2>
     
         <div class="flex-container">
-            <div class="card">
+            <div class="card" id="hotel81">
                 <img src="./h1.jpg" alt="Hotel 81 Palace">
                 <h3>Hotel 81 Palace - NEWLY RENOVATED</h3>
                 <p><strong>Místo:</strong> Singapur</p>
                 <p><strong>Datum rezervace:</strong> 10. července – 13. července</p>
                 <a href="https://www.booking.com/hotel/sg/81-palace.cs.html?" target="_blank" class="pdf-button">Zobrazit hotel na Booking.com</a>
-                <a href="#" class="pdf-button" onclick="openModal('./Hotel81 1.rezervace.pdf')">Otevřít rezervaci - PDF</a>
-                <a href="#" class="pdf-button" onclick="openModal('./Hotel81 2.rezervace.pdf')">Otevřít rezervaci - PDF (2)</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Hotel81 1.rezervace.pdf', 'hotel81')">Otevřít rezervaci - PDF</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Hotel81 2.rezervace.pdf', 'hotel81')">Otevřít rezervaci - PDF (2)</a>
             </div>
     
-            <div class="card">
+            <div class="card" id="kamboja">
                 <img src="./h2.jpg" alt="Kamboja Homestay">
                 <h3>Kamboja Homestay</h3>
                 <p><strong>Místo:</strong> Bali</p>
                 <p><strong>Datum rezervace:</strong> 13. července – 15. července</p>
                 <a href="https://www.booking.com/hotel/id/kamboja-homestay.cs.html?" target="_blank" class="pdf-button">Zobrazit hotel na Booking.com</a>
-                <a href="#" class="pdf-button" onclick="openModal('./Kamboja Homestay.pdf')">Otevřít rezervaci - PDF</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Kamboja Homestay.pdf', 'kamboja')">Otevřít rezervaci - PDF</a>
             </div>
     
             <div class="card">
@@ -570,17 +584,19 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        function openModal(pdfPath) {
-            const password = prompt("Zadejte heslo pro otevření dokumentu:");
-            if (password === "Bali2025") {
-                window.open(pdfPath, '_blank');
-            } else {
-                alert("Nesprávné heslo!");
-            }
+</div>
+
+<script>
+    function openModal(pdfPath, elementId) {
+        const password = prompt("Zadejte heslo pro otevření dokumentu:");
+        if (password === "Bali2025") {
+            window.location.hash = '#' + elementId;
+            window.open(pdfPath, '_blank');
+        } else {
+            alert("Nesprávné heslo!");
         }
-    </script>
+    }
+</script>
     
    
     <div id="letovy-plan" class="section">
