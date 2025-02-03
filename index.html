@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +19,7 @@
  
     <ul>
 
-
+        
 
      
         <li><a href="#informace" onclick="navigateAndClose(event)">🌍 INFORMACE K DOVOLENÉ SINGAPUR A BALI - 9–25.7.2025</a></li>
@@ -26,6 +27,7 @@
           <li><a href="#postup" onclick="navigateAndClose(event)">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</a></li>   
      <li><a href="#praha" onclick="navigateAndClose(event)">🛂 Postup na letišti</a></li>   
      <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
+     <li><a href="#letadla" onclick="navigateAndClose(event)">✈️ Kompletní přehled letů a letadel</a></li>
      <li><a href="#osobni" onclick="navigateAndClose(event)">📝 Osobní údaje cestujících</a></li>
         <li><a href="#hotely" onclick="navigateAndClose(event)">🏨 Hotely - Rezervace</a></li>
         <li><a href="#mapa-singapur" onclick="navigateAndClose(event)">🌍 Mapa itineráře - Singapur</a></li>
@@ -541,51 +543,275 @@
             <tr><td>Let Dubaj - Praha</td><td>25.7.2025</td><td>08:35</td><td>EK139</td><td>Emirates</td><td>Dubaj (DXB)</td><td>Praha (PRG)</td><td>13:00</td><td>6h 25m</td></tr>
         </table>
     </div>
-    <div class="section" </div>
-    <div id="osobni" class="table-wrapper" id="passwordProtectedTable">
-        <h2>📝 Osobní údaje cestujících</h2>
-        <div id="passwordPrompt">
-            <p>Zadejte heslo pro zobrazení tabulky:</p>
-            <input type="password" id="tablePassword" placeholder="Heslo">
-            <button onclick="unlockTable()">Odemknout</button>
+</div>
+
+
+<style>
+    .flight-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .flight-card {
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+        background-color: #e9f3ff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .flight-video {
+        height: 300px;
+        width: 100%;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .flight-info {
+        padding: 20px;
+        text-align: left;
+    }
+
+    .flight-info h3 {
+        color: #007bff;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        .flight-card {
+            width: 100%;
+        }
+
+        .flight-video {
+            height: 270px;
+        }
+    }
+</style>
+
+<div id="letadla" class="flight-container">
+    <div class="flight-card">
+        <div class="flight-video">
+            <iframe 
+                src="https://www.youtube.com/embed/ffLO9Lsw3Rg?autoplay=1&mute=1&loop=1&playlist=ffLO9Lsw3Rg&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
         </div>
-        <div id="tableContent" style="display: none;">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <button onclick="showAllRows()">Zobraz všechny záznamy</button>
-                <button onclick="filterRowsByPassportYear(2026)">Filtr: Platnost pasu do roku 2026</button>
-                <select id="surnameFilter" onchange="filterRowsBySurname()">
-                    <option value="">Vyber příjmení</option>
-                    <option value="Holan">Holanovi</option>
-                    <option value="Zelen">Zelení</option>
-                    <option value="Habasko">Habaskovi</option>
-                    <option value="Urbanova">Urbanova</option>
-                    <option value="Čmelík">Čmelíkovi</option>
-           </select>
-            </div>
+        <div class="flight-info">
+            <h3>Praha (PRG) → Dubaj (DXB)</h3>
+            <p>✈️ <strong>Let číslo:</strong> EK140</p>
+            <p>🛫 <strong>Letadlo:</strong> Boeing 777-300ER</p>
+            <p>🪑 <strong>Kapacita:</strong> 354 míst</p>
+            <p>📏 <strong>Délka:</strong> 73,9 m</p>
+            <p>📏 <strong>Výška:</strong> 18,5 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 64,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 351 000 kg</p>
+        </div>
+    </div>
+
+    <div class="flight-card">
+        <div class="flight-video">
+            <iframe 
+                src="https://www.youtube.com/embed/-jpOuhLYx_k?autoplay=1&mute=1&loop=1&playlist=-jpOuhLYx_k&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Dubaj (DXB) → Singapur (SIN)</h3>
+            <p>✈️ <strong>Let číslo:</strong> EK348</p>
+            <p>🛫 <strong>Letadlo:</strong> Airbus A380</p>
+            <p>🪑 <strong>Kapacita:</strong> 484 míst</p>
+            <p>📏 <strong>Délka:</strong> 72,7 m</p>
+            <p>📏 <strong>Výška:</strong> 24,1 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 79,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 575 000 kg</p>
+        </div>
+    </div>
     
-            <div class="table-wrapper">
-                <table class="personal-data-table" id="personalDataTable">
-                    <tr>
-                        <th>Jméno</th>
-                        <th>Číslo pasu</th>
-                        <th>Platnost pasu</th>
-                        <th>Datum narození</th>
-                        <th>Zbývá dní do konce platnosti</th>
-                    </tr>
-                    <tr><td>Radek Holan</td><td>47935419</td><td>3.3.2033</td><td>24.5.1971</td><td>2952</td></tr>
-                    <tr><td>Hannah Holanova</td><td>46771417</td><td>14.1.2032</td><td>19.11.2006</td><td>2538</td></tr>
-                    <tr><td>Lucie Zelena</td><td>43286120</td><td>11.4.2026</td><td>20.6.1977</td><td>434</td></tr>
-                    <tr><td>Tomáš Zelený</td><td>47102606</td><td>22.4.2027</td><td>22.9.2007</td><td>810</td></tr>
-                    <tr><td>Michaela Habasková</td><td>43635432</td><td>17.8.2026</td><td>5.8.1972</td><td>562</td></tr>
-                    <tr><td>Milan Habasko</td><td>43635431</td><td>17.8.2026</td><td>13.4.1974</td><td>562</td></tr>
-                    <tr><td>Nadezda Urbanova</td><td>44980554</td><td>19.5.2028</td><td>30.11.1963</td><td>1203</td></tr>
-                    <tr><td>Michal Čmelík</td><td>45911485</td><td>3.9.2029</td><td>4.4.1973</td><td>1675</td></tr>
-                    <tr><td>Jitka Čmelíková</td><td>48632831</td><td>22.12.2033</td><td>2.4.1974</td><td>3246</td></tr>
-                    <tr><td>Josef Čmelík</td><td>46765901</td><td>11.1.2032</td><td>17.4.2006</td><td>2535</td></tr>
-                </table>
+    <div class="flight-card">
+        <div class="flight-video">
+            <iframe 
+                src="https://www.youtube.com/embed/nCqA5AmyqBA?autoplay=1&mute=1&loop=1&playlist=nCqA5AmyqBA&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Singapur (SIN) → Bali (DPS)</h3>
+            <p>✈️ <strong>Let číslo:</strong> QZ0505</p>
+            <p>🛫 <strong>Letadlo:</strong> Airbus A320</p>
+            <p>🪑 <strong>Kapacita:</strong> 180 míst</p>
+            <p>📏 <strong>Délka:</strong> 37,6 m</p>
+            <p>📏 <strong>Výška:</strong> 11,8 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 35,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 78 000 kg</p>
+        </div>
+    </div>
+
+    <div class="flight-card">
+        <div class="flight-video">
+            <iframe 
+                src="https://www.youtube.com/embed/x7OM1T1mlZM?autoplay=1&mute=1&loop=1&playlist=x7OM1T1mlZM&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Bali (DPS) → Singapur (SIN)</h3>
+            <p>✈️ <strong>Let číslo:</strong> QZ0506</p>
+            <p>🛫 <strong>Letadlo:</strong> Airbus A320</p>
+            <p>🪑 <strong>Kapacita:</strong> 180 míst</p>
+            <p>📏 <strong>Délka:</strong> 37,6 m</p>
+            <p>📏 <strong>Výška:</strong> 11,8 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 35,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 78 000 kg</p>
+        </div>
+    </div>
+
+    <div class="flight-card">
+        <div class="flight-video">
+            <iframe 
+                src="https://www.youtube.com/embed/kBynbL7P3p0?autoplay=1&mute=1&loop=1&playlist=kBynbL7P3p0&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Singapur (SIN) → Dubaj (DXB) - na videu neni naše cestovní třída😁😁😁</h3>
+            <p>✈️ <strong>Let číslo:</strong> EK349</p>
+            <p>🛫 <strong>Letadlo:</strong> Airbus A380</p>
+            <p>🪑 <strong>Kapacita:</strong> 484 míst</p>
+            <p>📏 <strong>Délka:</strong> 72,7 m</p>
+            <p>📏 <strong>Výška:</strong> 24,1 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 79,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 575 000 kg</p>
+        </div>
+    </div>
+
+    <div class="flight-card">
+        <div class="flight-video">
+            <iframe 
+                src="https://www.youtube.com/embed/Fvc7PjkfJN8?autoplay=1&mute=1&loop=1&playlist=Fvc7PjkfJN8&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Dubaj (DXB) → Praha (PRG)</h3>
+            <p>✈️ <strong>Let číslo:</strong> EK139</p>
+            <p>🛫 <strong>Letadlo:</strong> Boeing 777-300ER</p>
+            <p>🪑 <strong>Kapacita:</strong> 354 míst</p>
+            <p>📏 <strong>Délka:</strong> 73,9 m</p>
+            <p>📏 <strong>Výška:</strong> 18,5 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 64,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 351 000 kg</p>
+        </div>
+    </div>
+</div>
+
+
+ <!-- Oddělovací linka -->
+ <div id="emptySection" style="width: 100%; height: 5px; background-color: #ccc; margin: 20px 0;"></div>
+
+
+    <div class="section">
+        <div id="osobni" class="table-wrapper">
+            <h2>📝 Osobní údaje cestujících</h2>
+            <div id="passwordPrompt">
+                <p>Zadejte heslo pro zobrazení tabulky:</p>
+                <input type="password" id="tablePassword" placeholder="Heslo">
+                <button onclick="unlockTable()">Odemknout</button>
+            </div>
+            <div id="tableContent" style="display: none;">
+                <div style="margin-bottom: 20px;">
+                    <button onclick="showAllRows()">Zobraz všechny záznamy</button>
+                    <button onclick="filterRowsByPassportYear(2026)">Filtr: Platnost pasu do roku 2026</button>
+                    <select id="surnameFilter" onchange="filterRowsBySurname()">
+                        <option value="">Vyber příjmení</option>
+                        <option value="Holan">Holanovi</option>
+                        <option value="Zelen">Zelení</option>
+                        <option value="Habasko">Habaskovi</option>
+                        <option value="Urbanova">Urbanova</option>
+                        <option value="Čmelík">Čmelíkovi</option>
+                    </select>
+                </div>
+    
+     
+                <div class="table-wrapper">
+                    <table class="personal-data-table" id="personalDataTable">
+                        <tr>
+                            <th>Jméno</th>
+                            <th>Číslo pasu</th>
+                            <th>Platnost pasu</th>
+                            <th>Datum narození</th>
+                            <th>Zbývá dní do konce platnosti</th>
+                        </tr>
+                        <tr><td>Radek Holan</td><td>47935419</td><td>3.3.2033</td><td>24.5.1971</td><td>2952</td></tr>
+                        <tr><td>Hannah Holanova</td><td>46771417</td><td>14.1.2032</td><td>19.11.2006</td><td>2538</td></tr>
+                        <tr><td>Lucie Zelena</td><td>43286120</td><td>11.4.2026</td><td>20.6.1977</td><td>434</td></tr>
+                        <tr><td>Tomáš Zelený</td><td>47102606</td><td>22.4.2027</td><td>22.9.2007</td><td>810</td></tr>
+                        <tr><td>Michaela Habasková</td><td>43635432</td><td>17.8.2026</td><td>5.8.1972</td><td>562</td></tr>
+                        <tr><td>Milan Habasko</td><td>43635431</td><td>17.8.2026</td><td>13.4.1974</td><td>562</td></tr>
+                        <tr><td>Nadezda Urbanova</td><td>44980554</td><td>19.5.2028</td><td>30.11.1963</td><td>1203</td></tr>
+                        <tr><td>Michal Čmelík</td><td>45911485</td><td>3.9.2029</td><td>4.4.1973</td><td>1675</td></tr>
+                        <tr><td>Jitka Čmelíková</td><td>48632831</td><td>22.12.2033</td><td>2.4.1974</td><td>3246</td></tr>
+                        <tr><td>Josef Čmelík</td><td>46765901</td><td>11.1.2032</td><td>17.4.2006</td><td>2535</td></tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+    
+    <style>
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    
+        .table-wrapper {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    
+        .personal-data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+    
+        th {
+            background: #40916c;
+            color: white;
+        }
+    
+        .personal-data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    
+        .personal-data-table tr:hover {
+            background-color: #4caf50;
+            color: white;
+        }
+    
+        input[type="password"], select, button {
+            margin: 10px;
+        }
+    </style>
     
     <script>
         const correctPassword = "Bali2025"; // Heslo pro zobrazení tabulky
@@ -631,10 +857,11 @@
     </script>
     
     
+    
 
 
     <!-- Oddělovací linka -->
-    <div id="emptySection" style="width: 100%; height: 1px; background-color: #ccc; margin: 20px 0;"></div>
+    <div id="emptySection" style="width: 100%; height: 5px; background-color: #ccc; margin: 20px 0;"></div>
 
  
     <!-- Sekce mapa itineráře Singapur -->
