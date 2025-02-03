@@ -17,8 +17,16 @@
 <button id="closeButton" onclick="closePanel()" style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 20px; font-weight: bold; cursor: pointer;">×</button>
  
     <ul>
+
+
+
+     
+        <li><a href="#informace" onclick="navigateAndClose(event)">🌍 INFORMACE K DOVOLENÉ SINGAPUR A BALI - 9–25.7.2025</a></li>
         <li><a href="#harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
-        <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
+          <li><a href="#postup" onclick="navigateAndClose(event)">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</a></li>   
+     <li><a href="#praha" onclick="navigateAndClose(event)">🛂 Postup na letišti</a></li>   
+     <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
+     <li><a href="#osobni" onclick="navigateAndClose(event)">📝 Osobní údaje cestujících</a></li>
         <li><a href="#hotely" onclick="navigateAndClose(event)">🏨 Hotely - Rezervace</a></li>
         <li><a href="#mapa-singapur" onclick="navigateAndClose(event)">🌍 Mapa itineráře - Singapur</a></li>
         <li><a href="#atrakce-singapur" onclick="navigateAndClose(event)">🗺️ Průvodce atrakcemi - Singapur</a></li>
@@ -341,7 +349,7 @@
 <body>
     <h1>🌍 INFORMACE K DOVOLENÉ SINGAPUR A BALI - 9–25.7.2025</h1>
 
-  <div class="card" style="text-align: center; padding: 20px;">
+  <div id="informace" class="card" style="text-align: center; padding: 20px;">
     <h2>🎥 Celá trasa na Bali – Video</h2>
     <p>Video se automaticky přehraje na pozadí:</p>
     <div style="position: relative; width: 100%; padding-top: 177.78%; /* Poměr stran 16:9 převrácený (9:16) */ overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
@@ -368,7 +376,7 @@
     </div>
 
 <!-- Začátek sekce pro dopravu -->
-<div class="container">
+<div id="praha" class="container">
     <h1>🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</h1>
 
     <details>
@@ -417,7 +425,7 @@
 </script>
 
     <!-- Sekce postup na letišti -->
-    <div class="card">
+    <div id="postup" class="card">
         <h2>🛂 Postup na letišti</h2>
 
         <div class="flex-container">
@@ -511,9 +519,6 @@
     </div>
    
     <div id="letovy-plan" class="section">
-
-
-
         <h2>✈️ Letový plán</h2>
         <table class="flight-table">
             <tr>
@@ -537,7 +542,7 @@
         </table>
     </div>
     
-    <div class="table-wrapper" id="passwordProtectedTable">
+    <div id="osobni" class="table-wrapper" id="passwordProtectedTable">
         <h2>📝 Osobní údaje cestujících</h2>
         <div id="passwordPrompt">
             <p>Zadejte heslo pro zobrazení tabulky:</p>
