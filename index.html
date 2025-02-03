@@ -249,6 +249,26 @@
             color: white;
         }
     
+        .map-container {
+        width: 100%;
+        height: 400px; /* Výchozí výška pro desktop */
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    @media screen and (max-width: 768px) {
+        .map-container {
+            height: 800px; /* Zvýšená výška pro mobilní zobrazení */
+        }
+    }
+
         /* Responzivní styly */
         @media (min-width: 1200px) {
             .card {
@@ -890,14 +910,21 @@
  
     <!-- Sekce mapa itineráře Singapur -->
 
-    <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px;">
+    <div id="mapa-singapur" class="map-container">
         <iframe 
-            src="https://www.google.com/maps/d/embed?mid=13FT1rGlTFxq7e5u33Zfaew9KpamhfHM&ehbc=2E312F"
-            frameborder="0" 
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-            allowfullscreen>
+            class="map-frame"
+            src="https://www.google.com/maps/d/embed?mid=13FT1rGlTFxq7e5u33Zfaew9KpamhfHM&ehbc=2E312F" 
+            allowfullscreen
+            frameborder="0">
         </iframe>
     </div>
+   
+   
+   
+   
+   
+   
+   
 
 
     <!-- Sekce průvodce atrakcemi v Singapuru -->
@@ -1077,15 +1104,16 @@
 
 
 
-    <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px;">
+
+    <div id="mapa-bali" id="mapa-bali" class="map-container">
         <iframe 
-            src="https://www.google.com/maps/d/u/0/embed?mid=1gXa0M2z-FE6YhOPVd0_ae2hqUCt3ih0&ehbc=2E312F"
-            frameborder="0" 
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-            allowfullscreen>
+            class="map-frame"
+            src="https://www.google.com/maps/d/u/0/embed?mid=1gXa0M2z-FE6YhOPVd0_ae2hqUCt3ih0&ehbc=2E312F" 
+            allowfullscreen
+            frameborder="0">
         </iframe>
     </div>
-
+   
 
 
 
