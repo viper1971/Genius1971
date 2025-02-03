@@ -484,8 +484,29 @@
     </div>
     <!-- Sekce hotely a rezervace -->
  
-
-
+    <style>
+        .pdf-button {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            background-color: #007bff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            max-width: 200px;
+        }
+    
+        .pdf-button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    
     <div id="hotely" class="card">
         <h2>🏨 Hotely - Rezervace</h2>
     
@@ -495,10 +516,8 @@
                 <h3>Hotel 81 Palace - NEWLY RENOVATED</h3>
                 <p><strong>Místo:</strong> Singapur</p>
                 <p><strong>Datum rezervace:</strong> 10. července – 13. července</p>
-                <div style="text-align: center;">
-                    <button onclick="requestPassword('./Hotel81_1.rezervace.pdf')">Zobrazit rezervaci 1</button><br>
-                    <button onclick="requestPassword('./Hotel81_2.rezervace.pdf')">Zobrazit rezervaci 2</button>
-                </div>
+                <a href="#" class="pdf-button" onclick="openModal('./Hotel81 1.rezervace.pdf')">Otevřít rezervaci - PDF</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Hotel81 2.rezervace.pdf')">Otevřít rezervaci - PDF (2)</a>
             </div>
     
             <div class="card">
@@ -506,9 +525,7 @@
                 <h3>Kamboja Homestay</h3>
                 <p><strong>Místo:</strong> Bali</p>
                 <p><strong>Datum rezervace:</strong> 13. července – 15. července</p>
-                <div style="text-align: center;">
-                    <button onclick="requestPassword('./Kamboja_Homestay.pdf')">Zobrazit rezervaci</button>
-                </div>
+                <a href="#" class="pdf-button" onclick="openModal('./Kamboja Homestay.pdf')">Otevřít rezervaci - PDF</a>
             </div>
     
             <div class="card">
@@ -516,9 +533,7 @@
                 <h3>Gili Pesona</h3>
                 <p><strong>Místo:</strong> Bali</p>
                 <p><strong>Datum rezervace:</strong> 15. července – 18. července</p>
-                <div style="text-align: center;">
-                    <button onclick="requestPassword('./Gili_Pesona.pdf')">Zobrazit rezervaci</button>
-                </div>
+                <a href="#" class="pdf-button" onclick="openModal('./Gili Pesona.pdf')">Otevřít rezervaci - PDF</a>
             </div>
     
             <div class="card">
@@ -526,11 +541,9 @@
                 <h3>Lovina Beach Hotel</h3>
                 <p><strong>Místo:</strong> Bali</p>
                 <p><strong>Datum rezervace:</strong> 18. července – 21. července</p>
-                <div style="text-align: center;">
-                    <button onclick="requestPassword('./Lovina_Beach_Hotel_r1.pdf')">Zobrazit rezervaci 1</button><br>
-                    <button onclick="requestPassword('./Lovina_Beach_Hotel_r2.pdf')">Zobrazit rezervaci 2</button><br>
-                    <button onclick="requestPassword('./Lovina_Beach_Hotel_r3.pdf')">Zobrazit rezervaci 3</button>
-                </div>
+                <a href="#" class="pdf-button" onclick="openModal('./Lovina Beach Hotel r1.pdf')">Otevřít rezervaci - PDF</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Lovina Beach Hotel r2.pdf')">Otevřít rezervaci - PDF (2)</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Lovina Beach Hotel r3.pdf')">Otevřít rezervaci - PDF (3)</a>
             </div>
     
             <div class="card">
@@ -538,10 +551,8 @@
                 <h3>Gubug Balian Beach Bungalow</h3>
                 <p><strong>Místo:</strong> Bali</p>
                 <p><strong>Datum rezervace:</strong> 21. července – 23. července</p>
-                <div style="text-align: center;">
-                    <button onclick="requestPassword('./Gubug_Balian_Bungalow_r1.pdf')">Zobrazit rezervaci 1</button><br>
-                    <button onclick="requestPassword('./Gubug_Balian_Bungalow_r2.pdf')">Zobrazit rezervaci 2</button>
-                </div>
+                <a href="#" class="pdf-button" onclick="openModal('./Gubug Balian Beach Bungalow r1.pdf')">Otevřít rezervaci - PDF</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Gubug Balian Beach Bungalow r2.pdf')">Otevřít rezervaci - PDF (2)</a>
             </div>
     
             <div class="card">
@@ -549,24 +560,21 @@
                 <h3>Argya Santi Suite and Villas</h3>
                 <p><strong>Místo:</strong> Bali</p>
                 <p><strong>Datum rezervace:</strong> 23. července – 24. července</p>
-                <div style="text-align: center;">
-                    <button onclick="requestPassword('./Argya_Santi_Suite_and_Villas.pdf')">Zobrazit rezervaci</button>
-                </div>
+                <a href="#" class="pdf-button" onclick="openModal('./Argya Santi Suite and Villas.pdf')">Otevřít rezervaci - PDF</a>
             </div>
         </div>
     </div>
     
     <script>
-        function requestPassword(pdfUrl) {
-            const password = prompt("Zadejte heslo pro zobrazení rezervace:");
+        function openModal(pdfPath) {
+            const password = prompt("Zadejte heslo pro otevření dokumentu:");
             if (password === "Bali2025") {
-                window.open(pdfUrl, '_blank');
+                window.open(pdfPath, '_blank');
             } else {
-                alert("Nesprávné heslo. Přístup byl odepřen.");
+                alert("Nesprávné heslo!");
             }
         }
     </script>
-    
     
    
     <div id="letovy-plan" class="section">
