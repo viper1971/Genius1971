@@ -12,6 +12,10 @@
 <!-- Boční panel s obsahem -->
 <div class="side-panel" id="sidePanel">
     <h2>📑 Obsah itineráře</h2>
+
+
+<button id="closeButton" onclick="closePanel()" style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; font-size: 20px; font-weight: bold; cursor: pointer;">×</button>
+ 
     <ul>
         <li><a href="#harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
         <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
@@ -1032,6 +1036,11 @@
         panel.classList.toggle('open');
     }
 
+function closePanel() {
+    document.getElementById('sidePanel').style.left = '-300px';
+}
+
+ 
     function navigateAndClose(event) {
         event.preventDefault();
         const targetId = event.target.getAttribute('href').substring(1);
