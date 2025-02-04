@@ -529,16 +529,30 @@
         justify-content: center;
         align-items: center;
         z-index: 1000;
+        padding: 10px;
+        box-sizing: border-box;
     }
 
     .popup-content {
         background-color: white;
-        padding: 20px;
+        padding: 15px;
         border-radius: 10px;
-        width: 90%;
+        width: 100%;
         max-width: 400px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         position: relative;
+        overflow: hidden;
+        font-size: 1rem;
+    }
+
+    .popup-content h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .popup-content p {
+        margin: 10px 0;
     }
 
     .close {
@@ -557,25 +571,28 @@
         margin: 10px 0;
     }
 
-    .pdf-button {
-        color: white;
-        background-color: #007bff;
-        border-radius: 8px;
-        padding: 10px 20px;
-        text-decoration: none;
-        text-align: center;
-        width: 100%;
-        max-width: 250px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+    @media (max-width: 768px) {
+        .popup-content {
+            font-size: 0.9rem;
+            padding: 10px;
+        }
 
-    .pdf-button:hover {
-        background-color: #0056b3;
+        .popup-content h2 {
+            font-size: 1.1rem;
+        }
     }
 </style>
 
+<!-- Skript pro zobrazení a zavření pop-up oken -->
+<script>
+    function showPopup(id) {
+        document.getElementById(id).style.display = "flex";
+    }
+
+    function closePopup(id) {
+        document.getElementById(id).style.display = "none";
+    }
+</script>
 
     
 
