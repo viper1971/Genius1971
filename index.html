@@ -455,56 +455,6 @@
 
 </div>
 
-<!-- Sekce doprava z Hodkovic na letiště -->
-<section id="praha" class="section-container">
-    <h2 style="text-align: center;">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</h2>
-    
-    <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
-        <button class="pdf-button" onclick="showPopup('popup1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</button>
-        <button class="pdf-button" onclick="showPopup('popup2')">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</button>
-        <button class="pdf-button" onclick="showPopup('popup3')">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</button>
-    </div>
-</section>
-
-<!-- Pop-up okna s detaily -->
-<section id="popups">
-    <div id="popup1" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('popup1')">&times;</span>
-            <h2>🚌 Úsek: Hodkovice → Černý Most</h2>
-            <p><strong>Odjezd:</strong> 10:00 ze zastávky Hodkovice</p>
-            <p><strong>Příjezd:</strong> 11:30 na Černý Most</p>
-            <p><strong>Doba jízdy:</strong> 1 hodina 30 minut</p>
-            <p><strong>Cena:</strong> 150 Kč</p>
-            <img src="Praha1.jpg" alt="Obrázek dopravy Hodkovice">
-        </div>
-    </div>
-
-    <div id="popup2" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('popup2')">&times;</span>
-            <h2>🚌 Úsek: Zličín → Letiště Václava Havla</h2>
-            <p><strong>Příjezd:</strong> 12:20 na stanici Zličín</p>
-            <p><strong>Doba jízdy:</strong> 35 minut</p>
-            <p><strong>Cena:</strong> 40 Kč (90minutová jízdenka PID)</p>
-            <p><strong>Rezerva na přestup:</strong> 10 minut</p>
-            <img src="Praha2.jpg" alt="Obrázek dopravy Zličín">
-        </div>
-    </div>
-
-    <div id="popup3" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('popup3')">&times;</span>
-            <h2>🚌 Úsek: Letiště Václava Havla → Centrum</h2>
-            <p><strong>Odjezd:</strong> 12:30 z Letiště Václava Havla</p>
-            <p><strong>Příjezd:</strong> 13:00 na Náměstí Republiky</p>
-            <p><strong>Doba jízdy:</strong> 30 minut</p>
-            <p><strong>Cena:</strong> 90 Kč</p>
-            <img src="Praha3.jpg" alt="Obrázek dopravy Centrum">
-        </div>
-    </div>
-</section>
-
 <!-- Styl pro popup okna -->
 <style>
     .popup {
@@ -571,17 +521,6 @@
         }
     }
 </style>
-
-<!-- Skript pro zobrazení a zavření pop-up oken -->
-<script>
-    function showPopup(id) {
-        document.getElementById(id).style.display = "flex";
-    }
-
-    function closePopup(id) {
-        document.getElementById(id).style.display = "none";
-    }
-</script>
 
 <!-- Skript pro zobrazení a zavření pop-up oken -->
 <script>
