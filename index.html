@@ -554,39 +554,114 @@
     img {
         max-width: 100%;
         height: auto;
+<!-- Sekce doprava z Hodkovic na letiště -->
+<section id="praha" class="section-container">
+    <h2 style="text-align: center;">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</h2>
+
+    <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+        <button class="pdf-button" onclick="toggleSection('section1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</button>
+        <div id="section1" class="details-section" style="display: none;">
+            <h3>🚌 Úsek: Hodkovice → Černý Most</h3>
+            <p><strong>Odjezd:</strong> 10:00 ze zastávky Hodkovice</p>
+            <p><strong>Příjezd:</strong> 11:30 na Černý Most</p>
+            <p><strong>Doba jízdy:</strong> 1 hodina 30 minut</p>
+            <p><strong>Cena:</strong> 150 Kč</p>
+            <img src="Praha1.jpg" alt="Obrázek dopravy Hodkovice">
+        </div>
+
+        <button class="pdf-button" onclick="toggleSection('section2')">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</button>
+        <div id="section2" class="details-section" style="display: none;">
+            <h3>🚌 Úsek: Zličín → Letiště Václava Havla</h3>
+            <p><strong>Příjezd:</strong> 12:20 na stanici Zličín</p>
+            <p><strong>Doba jízdy:</strong> 35 minut</p>
+            <p><strong>Cena:</strong> 40 Kč (90minutová jízdenka PID)</p>
+            <p><strong>Rezerva na přestup:</strong> 10 minut</p>
+            <img src="Praha2.jpg" alt="Obrázek dopravy Zličín">
+        </div>
+
+        <button class="pdf-button" onclick="toggleSection('section3')">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</button>
+        <div id="section3" class="details-section" style="display: none;">
+            <h3>🚌 Úsek: Letiště Václava Havla → Centrum</h3>
+            <p><strong>Odjezd:</strong> 12:30 z Letiště Václava Havla</p>
+            <p><strong>Příjezd:</strong> 13:00 na Náměstí Republiky</p>
+            <p><strong>Doba jízdy:</strong> 30 minut</p>
+            <p><strong>Cena:</strong> 90 Kč</p>
+            <img src="Praha3.jpg" alt="Obrázek dopravy Centrum">
+        </div>
+    </div>
+</section>
+
+<!-- Styl pro detaily -->
+<style>
+    .details-section {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+        width: 90%;
+        max-width: 400px;
+        text-align: left;
+    }
+
+    .details-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .details-section p {
+        margin: 5px 0;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
         display: block;
-        margin: 10px 0;
+        margin-top: 10px;
+    }
+
+    .pdf-button {
+        font-size: 1rem;
+        padding: 10px 15px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .pdf-button:hover {
+        background-color: #0056b3;
     }
 
     @media (max-width: 768px) {
-        .popup-content {
-            font-size: 0.85rem;
-            padding: 10px;
+        .details-section {
+            font-size: 0.9rem;
         }
 
-        .popup-content h2 {
+        .details-section h3 {
             font-size: 1rem;
         }
 
-        .close {
-            font-size: 18px;
+        .pdf-button {
+            font-size: 0.9rem;
+            padding: 8px 12px;
         }
     }
 </style>
 
-<!-- Skript pro zobrazení a zavření pop-up oken -->
+<!-- Skript pro zobrazení a sbalení sekcí -->
 <script>
-    function showPopup(id) {
-        document.getElementById(id).style.display = "flex";
-    }
-
-    function closePopup(id) {
-        document.getElementById(id).style.display = "none";
+    function toggleSection(id) {
+        const section = document.getElementById(id);
+        if (section.style.display === "none") {
+            section.style.display = "block";
+        } else {
+            section.style.display = "none";
+        }
     }
 </script>
-
-
-
     <!-- Sekce postup na letišti -->
     <div id="postup" class="card">
         <h2>🛂 Postup na letišti</h2>
