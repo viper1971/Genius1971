@@ -43,10 +43,13 @@ function navigateAndClose(event) {
 <button class="panel-button" onclick="navigateToSection('harmonogram')">🗓️ Harmonogram příprav</button>
 <button class="panel-button" onclick="navigateToSection('praha')">🚍 Doprava z Hodkovic</button>
 <button class="panel-button" onclick="navigateToSection('postup')">🛂 Postup na letišti</button>
-<button class="panel-button" onclick="navigateToSection('letovy-plan')">✈️ Letový plán</button>
 <button class="panel-button" onclick="navigateToSection('hotely')">🏨 Hotely - Rezervace</button>
+<button class="panel-button" onclick="navigateToSection('letovy-plan')">✈️ Letový plán</button>
+<button class="panel-button" onclick="navigateToSection('letadla')">✈️ Info o letadlech v letovém plánu</button>
 <button class="panel-button" onclick="navigateToSection('mapa-singapur')">🌍 Mapa itineráře - Singapur</button>
 <button class="panel-button" onclick="navigateToSection('atrakce-singapur')">🗺️ Průvodce atrakcemi - Singapur</button>
+<button class="panel-button" onclick="navigateToSection('mapa-bali')">🌍 Mapa itineráře - Bali</button>
+<button class="panel-button" onclick="navigateToSection('atrakce-bali')">🗺️ Průvodce atrakcemi - Bali</button>
 
 </div>
 
@@ -369,7 +372,7 @@ function navigateToSection(sectionId) {
 </script>
     
   <section style="font-family: Arial, sans-serif; background: linear-gradient(to right, #eef2f3, #e3e9ed); padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 900px; margin: auto;">
-    <h2 id="topinfo" style="color: #2c3e50; font-size: 1.8rem; text-align: center; margin-bottom: 20px;">🌍 Podrobný průvodce pro návštěvu Singapuru a Bali</h2>
+    <h2 id="topinfo" style="color: #2c3e50; font-size: 1.8rem; text-align: left; margin-bottom: 20px;">🌍 Podrobný průvodce pro návštěvu Singapuru a Bali</h2>
     <div style="display: flex; flex-direction: column; gap: 20px;">
         <!-- Sekce pro Singapur -->
         <div style="background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
@@ -411,28 +414,55 @@ function navigateToSection(sectionId) {
             <source src="./Cesta.mp4" type="video/mp4">
             Váš prohlížeč nepodporuje přehrávání videa.
         </video>
-    </div>
+    </div><div id="harmonogram" class="card" style="text-align: center;">
+    <h2>🗓️ Harmonogram příprav</h2>
+    <table style="width: 80%; margin: 0 auto; border-collapse: collapse; text-align: center;">
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 10px; background-color: #40916c; color: white;">📅 Termín</th>
+            <td style="border: 1px solid #ddd; padding: 10px;">Do 30.6.2025</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 10px; background-color: #40916c; color: white;">🛂 Úkol</th>
+            <td style="border: 1px solid #ddd; padding: 10px;">Získání mezinárodních řidičských průkazů (Ženevský a Vídeňský)</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 10px; background-color: #40916c; color: white;">👥 Odpovědnost</th>
+            <td style="border: 1px solid #ddd; padding: 10px;">Michal, Radek, Tomáš, Pepa, Naďa, Míša, Milan</td>
+        </tr>
+    </table>
+
+    <a href="https://g.denik.cz/16/fd/dom_ridicaky_denik-630-16x9@2x.jpg" target="_blank">
+        <img src="https://g.denik.cz/16/fd/dom_ridicaky_denik-630-16x9@2x.jpg" alt="Řidičský průkaz" width="600" style="margin: 20px 0;">
+    </a>
+
+    <hr style="border: none; border-top: 1px solid #ccc; margin: 15px 0; width: 80%;">
+
+    <table style="width: 80%; margin: 0 auto; border-collapse: collapse; text-align: center;">
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 10px; background-color: #40916c; color: white;">📅 Termín</th>
+            <td style="border: 1px solid #ddd; padding: 10px;">5.7.2025, 15:00</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 10px; background-color: #40916c; color: white;">📍 Úkol</th>
+            <td style="border: 1px solid #ddd; padding: 10px;">Povinná schůzka v Hodkovicích (hromadné vyplnění a platba víza e-VOA, platba turistické daně, kontrola dokumentů)</td>
+        </tr>
+        <tr>
+            <th style="border: 1px solid #ddd; padding: 10px; background-color: #40916c; color: white;">👥 Odpovědnost</th>
+            <td style="border: 1px solid #ddd; padding: 10px;">Celá skupina</td>
+        </tr>
+    </table>
+
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2563.865460573986!2d15.0911717!3d50.6630427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47094ae0db5d8241%3A0x732cb496a407b07b!2zUHJhxaFza8OpIDMxOCwgNDYzIDQyIEhvZGtvdmljZSBuYWQgTW9oZWxrb3U!5e0!3m2!1scs!2scz!4v1617916365607!5m2!1scs!2scz"
+        width="600"
+        height="450"
+        style="border: 0; margin-top: 20px;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
 </div>
-<div id="harmonogram" class="card" style="text-align: left;">
-        <h2>🗓️ Harmonogram příprav</h2>
-        <p>📅 <strong>Termín:</strong> Do 30.6.2025</p>
-        <p>🛂 <strong>Úkol:</strong> Získání mezinárodních řidičských průkazů (Ženevský a Vídeňský)</p>
-        <p>👥 <strong>Odpovědnost:</strong> Michal, Radek, Tomáš, Pepa, Naďa, Míša, Milan</p>
-<a href="https://g.denik.cz/16/fd/dom_ridicaky_denik-630-16x9@2x.jpg" target="_blank">
-    <img src="https://g.denik.cz/16/fd/dom_ridicaky_denik-630-16x9@2x.jpg" alt="Řidičský průkaz" width="600">
-</a>
-        <hr style="border: none; border-top: 1px solid #ccc; margin: 15px 0;">
-        <p>📅 <strong>Termín:</strong> 5.7.2025, 15:00</p>
-        <p>📍 <strong>Úkol:</strong> Povinná schůzka v Hodkovicích (hromadné vyplnění a platba víza e-VOA, platba turistické daně, kontrola dokumentů)</p>
-        <p>👥 <strong>Odpovědnost:</strong> Celá skupina</p>
-<iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2563.865460573986!2d15.0911717!3d50.6630427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47094ae0db5d8241%3A0x732cb496a407b07b!2zUHJhxaFza8OpIDMxOCwgNDYzIDQyIEhvZGtvdmljZSBuYWQgTW9oZWxrb3U!5e0!3m2!1scs!2scz!4v1617916365607!5m2!1scs!2scz"
-    width="600"
-    height="450"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy">
-</iframe>
+
+
 
 <!_________________________________________________________________________________________________________>
 <!-- Sekce doprava z Hodkovic na letiště -->
