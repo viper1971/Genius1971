@@ -498,13 +498,13 @@
     </div>
 </div>
 
-<!-- Styl pro popup přizpůsobený mobilnímu zařízení -->
+<!-- Styl pro popup okno umístěné na středu obrazovky -->
 <style>
     .popup {
         position: fixed;
         top: 0;
         left: 0;
-        width: 750px;
+        width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.5);
         display: flex;
@@ -520,9 +520,10 @@
         width: 90%;
         max-width: 400px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        position: relative;
         overflow-y: auto;
         max-height: 80%;
+        position: relative;
+        animation: popup-fade-in 0.3s ease-in-out;
     }
 
     .close {
@@ -548,6 +549,17 @@
 
     .popup-button:hover {
         color: #0056b3;
+    }
+
+    @keyframes popup-fade-in {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 </style>
 
