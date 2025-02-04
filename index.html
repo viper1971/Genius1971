@@ -1,4 +1,1246 @@
-   <!-- Sekce průvodce atrakcemi v Singapuru -->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kompletní itinerář cesty na Bali a Singapur</title>
+    <script>
+        // Uložení aktuální pozice při odchodu
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('scrollPosition', window.scrollY);
+        });
+    
+        // Obnovení pozice při načtení stránky
+        window.addEventListener('load', () => {
+            const savedPosition = localStorage.getItem('scrollPosition');
+            if (savedPosition) {
+                window.scrollTo(0, parseInt(savedPosition));
+            }
+        });
+      function togglePanel() {
+    const panel = document.getElementById('sidePanel');
+    panel.classList.toggle('open');  // Přepíná třídu pro zobrazení/skrytí
+}
+
+function navigateAndClose(event) {
+    event.preventDefault();  // Zabrání výchozímu chování odkazu
+    const targetId = event.target.getAttribute('href').substring(1);  // Získá ID cílové sekce
+    const targetElement = document.getElementById(targetId);  // Najde cílovou sekci
+
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });  // Plynulý posun na sekci
+        document.getElementById('sidePanel').classList.remove('open');  // Zavře panel
+    }
+}
+    </script>
+ </head>   
+<!-- Plovoucí tlačítko -->
+<button class="floating-button" onclick="togglePanel()">Obsah</button><!-- Boční panel s tlačítky -->
+<div id="sidePanel" class="side-panel">
+    <h4>📑 Obsah itineráře</h4>
+<button class="panel-button" onclick="navigateToSection('informace')">🌍 Začátek stránky</button>
+  <button class="panel-button" onclick="navigateToSection('topinfo')">🌍 Podrobný průvodce</button>
+<button class="panel-button" onclick="navigateToSection('harmonogram')">🗓️ Harmonogram příprav</button>
+<button class="panel-button" onclick="navigateToSection('praha')">🚍 Doprava z Hodkovic</button>
+<button class="panel-button" onclick="navigateToSection('postup')">🛂 Postup na letišti</button>
+<button class="panel-button" onclick="navigateToSection('hotely')">🏨 Hotely - Rezervace</button>
+<button class="panel-button" onclick="navigateToSection('letovy-plan')">✈️ Letový plán</button>
+<button class="panel-button" onclick="navigateToSection('letadla')">✈️ Info o letadlech v letovém plánu</button>
+  <button class="panel-button" onclick="navigateToSection('osobni')">📝 Osobní údaje cestujících</button>
+<button class="panel-button" onclick="navigateToSection('mapa-singapur')">🌍 Mapa itineráře - Singapur</button>
+<button class="panel-button" onclick="navigateToSection('atrakce-singapur')">🗺️ Průvodce atrakcemi - Singapur</button>
+<button class="panel-button" onclick="navigateToSection('mapa-bali')">🌍 Mapa itineráře - Bali</button>
+<button class="panel-button" onclick="navigateToSection('atrakce-bali')">🗺️ Průvodce atrakcemi - Bali</button>
+
+</div>
+
+<!-- Stylování pro panel a tlačítka -->
+<style>
+ .side-panel {
+    position: fixed; /* Panel zůstane na místě při posouvání stránky */
+    top: 0;
+    left: -260px; /* Skrytý panel mimo obrazovku */
+    width: 158px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 9999; /* Zajištění, že panel bude nad ostatními prvky */
+}
+
+.side-panel.open {
+    left: 0; /* Když je panel otevřen, zobrazí se */
+}
+
+.floating-button {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.floating-button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.side-panel h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.panel-button {
+    width: 98%;
+    padding: 5px 5px; /* Zmenšený vnitřní odsazení */
+    margin: 2px 3px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.6rem; /* Zmenšená velikost písma */
+    font-weight: right;
+    text-align: right;
+    transition: all 0.3s ease;
+}
+
+.panel-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateX(5px);
+}
+
+.panel-button:focus {
+    outline: none;
+}
+
+</style>
+<script>  
+// Funkce pro otevření a zavření bočního panelu
+function togglePanel() {
+    const panel = document.getElementById('sidePanel');
+    const button = document.querySelector('.floating-button');
+
+    panel.classList.toggle('open');  // Přepíná třídu pro otevření panelu
+
+    // Skrytí nebo zobrazení tlačítka pomocí třídy 'hidden'
+    if (panel.classList.contains('open')) {
+        button.classList.add('hidden');
+    } else {
+        button.classList.remove('hidden');
+    }
+}
+
+// Funkce pro navigaci na konkrétní sekci a zavření panelu
+function navigateToSection(sectionId) {
+    const targetElement = document.getElementById(sectionId);
+
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });  // Plynulé posunutí na sekci
+        document.getElementById('sidePanel').classList.remove('open');  // Zavře panel
+        document.querySelector('.floating-button').classList.remove('hidden');  // Zobrazí tlačítko
+    }
+}
+
+
+</script>
+   
+    <style>
+        /* Globální stylování */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e9f5ff;
+            color: #333;
+            line-height: 1.6;
+        }
+    
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    
+        h1, h2, h3 {
+            color: #007bff;
+            text-align: center;
+        }
+    
+        /* Flexbox a karty */
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+    
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            flex: 1 1 30%;
+            box-sizing: border-box;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+    
+        .card:hover {
+            transform: scale(1.06);
+        }
+    
+        img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    
+        /* Sekce a tabulky */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        .section p {
+            margin-bottom: 15px;
+        }
+    
+        /* Tabulky */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+    
+        .flight-table, .personal-data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+        }
+    
+        th, td {
+            padding: 10px;
+            border: 2px solid #ddd;
+            text-align: center;
+        }
+    
+        th {
+            background: #40916c;
+            color: white;
+        }
+    
+        .flight-table tr:nth-child(even), .personal-data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    
+        .flight-table tr:hover, .personal-data-table tr:hover {
+            background-color: #4caf50;
+            color: white;
+        }
+    
+        .map-container {
+        width: 100%;
+        height: 400px; /* Výchozí výška pro desktop */
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .map-frame {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    @media screen and (max-width: 768px) {
+        .map-container {
+            height: 800px; /* Zvýšená výška pro mobilní zobrazení */
+        }
+    }
+        /* Responzivní styly */
+        @media (min-width: 1200px) {
+            .card {
+                flex: 1 1 22%;
+            }
+        }
+    
+        @media (max-width: 1024px) {
+            .card {
+                flex: 1 1 calc(50% - 20px);
+            }
+    
+            .flight-table, .personal-data-table {
+                font-size: 0.9rem;
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .card {
+                flex: 1 1 100%;
+            }
+    
+            .section-container {
+                padding: 10px;
+            }
+    
+            h1 {
+                font-size: 1.8rem;
+            }
+    
+            .table-container {
+                overflow-x: auto;
+                margin: 0;
+            }
+    
+            .flight-table, .personal-data-table {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+    
+    
+    
+    
+<script>
+    const correctPassword = "Bali2025";
+    function unlockTable() {
+        const enteredPassword = document.getElementById('tablePassword').value;
+        if (enteredPassword === correctPassword) {
+            document.getElementById('passwordPrompt').style.display = 'none';
+            document.getElementById('tableContent').style.display = 'block';
+        } else {
+            alert('Nesprávné heslo! Zkuste to znovu.');
+        }
+    }
+    function showAllRows() {
+        const rows = document.querySelectorAll('.personal-data-table tr');
+        rows.forEach((row, index) => {
+            if (index !== 0) row.style.display = '';
+        });
+    }
+    function filterRowsByPassportYear(year) {
+        const rows = document.querySelectorAll('.personal-data-table tr');
+        rows.forEach((row, index) => {
+            if (index !== 0) {
+                const passportDate = row.cells[2].innerText;
+                const passportYear = parseInt(passportDate.split('.')[2]);
+                row.style.display = passportYear === year ? '' : 'none';
+            }
+        });
+    }
+    function filterRowsBySurname() {
+        const selectedSurname = document.getElementById('surnameFilter').value.toLowerCase();
+        const rows = document.querySelectorAll('.personal-data-table tr');
+        rows.forEach((row, index) => {
+            if (index !== 0) {
+                const fullName = row.cells[0].innerText.toLowerCase();
+                row.style.display = fullName.includes(selectedSurname) ? '' : 'none';
+            }
+        });
+    }
+</script>
+    
+ 
+  
+    
+    
+</head>
+<body><h1>🌍 INFORMACE K DOVOLENÉ SINGAPUR A BALI - 9–25.7.2025</h1>
+<div id="informace" class="card" style="text-align: center; padding: 20px;">
+    
+  
+  <div class="warning" style="font-family: Arial, sans-serif; background: #fff3cd; padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 800px; margin: auto;">
+    <h3 style="color: #856404; font-size: 1.5rem; margin-bottom: 15px;">❗ Povinné pro všechny účastníky</h3>
+    <ul style="list-style: none; padding-left: 20px; line-height: 1.6; color: #555;">
+        <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+            <span style="min-width: 30px;">🛂</span>
+            <span>Pas platný do 24.1.2026 + 2 volné stránky</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+            <span style="min-width: 30px;">🛃</span>
+            <span>e-VOA vízum (35 USD) (<a href="https://evisa.imigrasi.go.id/" style="color: #007bff;">https://evisa.imigrasi.go.id/</a>)</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+            <span style="min-width: 30px;">💰</span>
+            <span>Turistická daň (10 USD) (<a href="https://lovebali.baliprov.go.id/levy-group" style="color: #007bff;">LoveBali</a>)</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+            <span style="min-width: 30px;">🩺</span>
+            <span>Zdravotní formulář SATUSEHAT (<a href="https://sshp.kemkes.go.id/" style="color: #007bff;">https://sshp.kemkes.go.id/</a>)</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+            <span style="min-width: 30px;">📋</span>
+            <span>Příjezdová karta SG Arrival Card (<a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/sg-arrival-card" style="color: #007bff;">SG Arrival Card</a>)</span>
+        </li>
+        <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+            <span style="min-width: 30px;">📅</span>
+            <span>Klikni a potvrď schůzku 5.7.2025 (<a href="https://calendar.app.google/VqNDM6J6WbT5qSZi6" style="color: #007bff;">Kalendář schůzka</a>)</span>
+        </li>
+    </ul>
+</div>
+
+  
+  
+  
+  
+  
+  
+  <h2>🎥 Celá trasa na Bali</h2>
+ 
+    <div class="video-container">
+        <video autoplay muted loop playsinline>
+            <source src="./Cesta.mp4" type="video/mp4">
+            Váš prohlížeč nepodporuje přehrávání videa.
+        </video>
+    </div>
+</div>
+
+<style>
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-top: 177.78%; /* Poměr stran 9:16 */
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Pro mobilní zařízení zachování poměru 9:16 */
+    @media screen and (max-width: 768px) {
+        .video-container {
+            padding-top: 177.78%; /* Poměr stran 9:16 i pro mobilní zařízení */
+        }
+    }
+</style>
+
+ 
+    
+    
+   <section style="font-family: Arial, sans-serif; background: linear-gradient(to right, #eef2f3, #e3e9ed); padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 900px; margin: auto;">
+    <h2 id="topinfo" style="color: #2c3e50; font-size: 1.8rem; text-align: left; margin-bottom: 20px;">🌍 Podrobný průvodce pro návštěvu Singapuru a Bali</h2>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- Sekce pro Singapur -->
+        <div style="background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
+            <h3 style="color: #3498db; font-size: 1.5rem; margin-bottom: 10px;">🇸🇬 Singapur</h3>
+            <ul style="line-height: 1.6; color: #555; padding-left: 20px; list-style: none;">
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">⚠️</span> 
+                    <span><strong>Dodržujte zákony:</strong> Singapur má velmi přísné zákony. Za odhození odpadků, plivání na ulici, kouření na veřejných místech nebo přecházení silnice mimo přechod hrozí vysoké pokuty až 1 000 SGD (cca 17 000 Kč).</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">🚭</span> 
+                    <span><strong>Žvýkačky a kouření:</strong> Žvýkačky jsou zakázány (dovoz, prodej i konzumace mimo lékařské účely). Kouření je povoleno pouze na vyhrazených místech.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">🚫</span> 
+                    <span><strong>Drogová politika:</strong> Držení nebo pašování drog se přísně trestá, včetně možnosti trestu smrti. Problémem může být už držení malého množství marihuany.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">🙏</span> 
+                    <span><strong>Respektujte místní zvyklosti:</strong> Veřejné projevy emocí jsou považovány za nevhodné. Při návštěvě chrámů mějte zakrytá ramena a kolena.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">💧</span> 
+                    <span><strong>Hygiena a voda:</strong> Kohoutková voda je pitná a veřejná čistota je přísně udržována.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">🚦</span> 
+                    <span><strong>Přecházení ulice:</strong> Přecházejte výhradně na vyznačených přechodech pro chodce. Jinak hrozí pokuta.</span>
+                </li>
+            </ul>
+        </div>
+        <!-- Sekce pro Bali -->
+        <div style="background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
+            <h3 style="color: #e67e22; font-size: 1.5rem; margin-bottom: 10px;">🏝️ Bali</h3>
+            <ul style="line-height: 1.6; color: #555; padding-left: 20px; list-style: none;">
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">🚦</span> 
+                    <span><strong>Dopravní situace:</strong> Hustý a chaotický provoz je běžný, zejména v turistických oblastech. Pokud si půjčujete motocykl, noste helmu a mějte mezinárodní řidičský průkaz.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">🦟</span> 
+                    <span><strong>Zdravotní opatření:</strong> Doporučuje se očkování proti žloutence A a B, břišnímu tyfu a vzteklině. Používejte repelenty proti komárům kvůli riziku horečky dengue. Pijte výhradně balenou vodu a vyhněte se ledu v nápojích mimo kvalitní hotely či restaurace.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">🛕</span> 
+                    <span><strong>Náboženské zvyklosti:</strong> Bali je převážně hinduistické. Při návštěvě chrámů noste tradiční sarong (můžete si jej půjčit na místě) a zakrývejte ramena i kolena. Nepřekračujte obětiny na chodnících.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">💰</span> 
+                    <span><strong>Směna peněz:</strong> Měňte pouze v oficiálních směnárnách nebo bankách. Pouliční směnárny mohou podvádět na kurzu nebo vrácené částce.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">🌋</span> 
+                    <span><strong>Přírodní rizika:</strong> Bali leží v seismicky aktivní oblasti. Riziko zemětřesení a sopečné aktivity (např. sopka Mount Agung) je reálné. Dodržujte varování místních úřadů.</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; margin-bottom: 10px;">
+                    <span style="min-width: 30px;">🌊</span> 
+                    <span><strong>Bezpečnost na plážích:</strong> Dávejte pozor na silné spodní proudy. Respektujte označené bezpečné zóny pro koupání.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+    
+    
+    
+    
+    
+    
+    
+    <div id="harmonogram" class="card" style="font-family: Arial, sans-serif; background: #eef2f3; padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 900px; margin: auto; text-align: center;">
+    <h2 style="color: #2c3e50; font-size: 1.8rem; margin-bottom: 20px;">🗓️ Harmonogram příprav</h2>
+
+    <div class="responsive-table-container">
+        <table class="schedule-table">
+            <tr>
+                <th>📅 Termín</th>
+                <td>Do 30.6.2025</td>
+            </tr>
+            <tr>
+                <th>🛂 Úkol</th>
+                <td>Získání mezinárodních řidičských průkazů (Ženevský a Vídeňský)</td>
+            </tr>
+            <tr>
+                <th>👥 Odpovědnost</th>
+                <td>Michal, Radek, Tomáš, Pepa, Naďa, Míša, Milan</td>
+            </tr>
+        </table>
+    </div>
+
+    <a href="https://g.denik.cz/16/fd/dom_ridicaky_denik-630-16x9@2x.jpg" target="_blank">
+        <img src="https://g.denik.cz/16/fd/dom_ridicaky_denik-630-16x9@2x.jpg" alt="Řidičský průkaz" style="width: 100%; max-width: 600px; margin: 20px 0; border-radius: 8px;">
+    </a>
+
+    <hr style="border: none; border-top: 1px solid #ccc; margin: 20px 0; width: 80%;">
+
+    <div class="responsive-table-container">
+        <table class="schedule-table">
+            <tr>
+                <th>📅 Termín</th>
+                <td>5.7.2025, 15:00</td>
+            </tr>
+            <tr>
+                <th>📍 Úkol</th>
+                <td>Povinná schůzka v Hodkovicích (hromadné vyplnění a platba víza e-VOA, platba turistické daně, kontrola dokumentů)</td>
+            </tr>
+            <tr>
+                <th>👥 Odpovědnost</th>
+                <td>Celá skupina</td>
+            </tr>
+        </table>
+    </div>
+
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2563.865460573986!2d15.0911717!3d50.6630427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47094ae0db5d8241%3A0x732cb496a407b07b!2zUHJhxaFza8OpIDMxOCwgNDYzIDQyIEhvZGtvdmljZSBuYWQgTW9oZWxrb3U!5e0!3m2!1scs!2scz!4v1617916365607!5m2!1scs!2scz"
+        width="100%"
+        height="450"
+        style="border: 0; margin-top: 20px; border-radius: 8px;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+</div>
+
+<style>
+    .responsive-table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 20px;
+    }
+
+    .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    .schedule-table th, .schedule-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .schedule-table th {
+        background-color: #40916c;
+        color: white;
+        font-weight: bold;
+    }
+
+    .schedule-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .schedule-table tr:hover {
+        background-color: #e0f2f1;
+    }
+
+    @media screen and (max-width: 768px) {
+        .schedule-table th, .schedule-table td {
+            padding: 8px;
+            font-size: 12px;
+        }
+    }
+</style>
+
+
+
+
+<!_________________________________________________________________________________________________________>
+<!-- Sekce doprava z Hodkovic na letiště -->
+<section id="praha" class="section-container">
+    <h2 style="text-align: center;">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</h2>
+
+    <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+        <button class="pdf-button" data-target="section1">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</button>
+        <div id="section1" class="details-section hidden">
+            <h3>🚌 Úsek: Hodkovice → Černý Most</h3>
+            <p><strong>Odjezd:</strong> 10:00 ze zastávky Hodkovice</p>
+            <p><strong>Příjezd:</strong> 11:30 na Černý Most</p>
+            <p><strong>Doba jízdy:</strong> 1 hodina 30 minut</p>
+            <p><strong>Cena:</strong> 150 Kč</p>
+            <img src="Praha1.jpg" alt="Obrázek dopravy Hodkovice">
+        </div>
+
+        <button class="pdf-button" data-target="section2">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</button>
+        <div id="section2" class="details-section hidden">
+            <h3>🚌 Úsek: Zličín → Letiště Václava Havla</h3>
+            <p><strong>Příjezd:</strong> 12:20 na stanici Zličín</p>
+            <p><strong>Doba jízdy:</strong> 35 minut</p>
+            <p><strong>Cena:</strong> 40 Kč (90minutová jízdenka PID)</p>
+            <p><strong>Rezerva na přestup:</strong> 10 minut</p>
+            <img src="Praha2.jpg" alt="Obrázek dopravy Zličín">
+        </div>
+
+        <button class="pdf-button" data-target="section3">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</button>
+        <div id="section3" class="details-section hidden">
+            <h3>🚌 Úsek: Letiště Václava Havla → Centrum</h3>
+            <p><strong>Odjezd:</strong> 12:30 z Letiště Václava Havla</p>
+            <p><strong>Příjezd:</strong> 13:00 na Náměstí Republiky</p>
+            <p><strong>Doba jízdy:</strong> 30 minut</p>
+            <p><strong>Cena:</strong> 90 Kč</p>
+            <img src="Praha3.jpg" alt="Obrázek dopravy Centrum">
+        </div>
+    </div>
+</section>
+
+<!-- Styl pro detaily -->
+<style>
+    .details-section {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+        width: 90%;
+        max-width: 400px;
+        text-align: left;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .details-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .details-section p {
+        margin: 5px 0;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 10px;
+    }
+
+    .pdf-button {
+        font-size: 1rem;
+        padding: 10px 15px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .pdf-button:hover {
+        background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        .details-section {
+            font-size: 0.9rem;
+        }
+
+        .details-section h3 {
+            font-size: 1rem;
+        }
+
+        .pdf-button {
+            font-size: 0.9rem;
+            padding: 8px 12px;
+        }
+    }
+</style>
+
+<!-- Skript pro zobrazení a sbalení sekcí -->
+<script>
+    document.querySelectorAll(".pdf-button").forEach(button => {
+        button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection.classList.contains("hidden")) {
+                targetSection.classList.remove("hidden");
+            } else {
+                targetSection.classList.add("hidden");
+            }
+        });
+    });
+</script>
+
+
+<!_________________________________________________________________________________________________________>
+
+    
+        
+</script>
+    <!-- Sekce postup na letišti -->
+    <div id="postup" class="card">
+        <h2>🛂 Postup na letišti</h2>
+        <div class="flex-container">
+            <div class="card">
+                <img src="./LetištěPraha.png" alt="Letiště Praha">
+                <h3>V Praze (9.7.2025)</h3>
+                <ul>
+                    <li>Společná cesta autobusem z Hodkovic nad Mohelkou do Prahy</li>
+                    <li>3 hodiny před odletem na letišti</li>
+                    <li>Vyplnit SG Arrival Card pro Singapur</li>
+                </ul>
+            </div>
+            <div class="card">
+                <img src="./Changi.png" alt="Letiště Changi">
+                <h3>V Singapuru (10.7.2025)</h3>
+                <ul>
+                    <li>Předložit: Příjezdová karta SG Arrival Card</li>
+                    <li>Projít imigrační kontrolou</li>
+                    <li>Vyřídit přepravu z letiště do hotelu</li>
+                </ul>
+            </div>
+            <div class="card">
+                <img src="./Baliletiste.jpg" alt="Letiště Bali">
+                <h3>Na Bali (13.7.2025)</h3>
+                <ul>
+                    <li>Předložit: e-VOA + SATUSEHAT kód</li>
+                    <li>Imigrační kontrola</li>
+                    <li>Přeprava do ubytování</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Sekce hotely a rezervace -->
+ 
+    <style>
+        .pdf-button {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            background-color: #007bff;
+            border-radius: 8px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            max-width: 200px;
+        }
+    
+        .pdf-button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    
+    <div id="hotely" class="card">
+        <h2>🏨 Hotely - Rezervace</h2>
+    
+        <div class="flex-container">
+            <div class="card" id="hotel81">
+                <img src="./h1.jpg" alt="Hotel 81 Palace">
+                <h3>Hotel 81 Palace - NEWLY RENOVATED</h3>
+                <p><strong>Místo:</strong> Singapur</p>
+                <p><strong>Datum rezervace:</strong> 10. července – 13. července</p>
+                <a href="https://www.booking.com/hotel/sg/81-palace.cs.html?" target="_blank" class="pdf-button">Zobrazit hotel na Booking.com</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Hotel81 1.rezervace.pdf', 'hotel81')">Otevřít rezervaci - PDF</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Hotel81 2.rezervace.pdf', 'hotel81')">Otevřít rezervaci - PDF (2)</a>
+            </div>
+    
+            <div class="card" id="kamboja">
+                <img src="./h2.jpg" alt="Kamboja Homestay">
+                <h3>Kamboja Homestay</h3>
+                <p><strong>Místo:</strong> Bali</p>
+                <p><strong>Datum rezervace:</strong> 13. července – 15. července</p>
+                <a href="https://www.booking.com/hotel/id/kamboja-homestay.cs.html?" target="_blank" class="pdf-button">Zobrazit hotel na Booking.com</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Kamboja Homestay.pdf', 'kamboja')">Otevřít rezervaci - PDF</a>
+            </div>
+    
+            <div class="card">
+                <img src="./h3.jpg" alt="Gili Pesona">
+                <h3>Gili Pesona</h3>
+                <p><strong>Místo:</strong> Bali</p>
+                <p><strong>Datum rezervace:</strong> 15. července – 18. července</p>
+                <a href="https://www.booking.com/hotel/id/gili-pesona.cs.html?" target="_blank" class="pdf-button">Zobrazit hotel na Booking.com</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Gili Pesona.pdf')">Otevřít rezervaci - PDF</a>
+            </div>
+    
+            <div class="card">
+                <img src="./h4.jpg" alt="Lovina Beach Hotel">
+                <h3>Lovina Beach Hotel</h3>
+                <p><strong>Místo:</strong> Bali</p>
+                <p><strong>Datum rezervace:</strong> 18. července – 21. července</p>
+                <a href="https://www.booking.com/hotel/id/lovina-beach.cs.html?" target="_blank" class="pdf-button">Zobrazit hotel na Booking.com</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Lovina Beach Hotel r1.pdf')">Otevřít rezervaci - PDF</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Lovina Beach Hotel r2.pdf')">Otevřít rezervaci - PDF (2)</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Lovina Beach Hotel r3.pdf')">Otevřít rezervaci - PDF (3)</a>
+            </div>
+    
+            <div class="card">
+                <img src="./h5.jpg" alt="Gubug Balian Beach Bungalow">
+                <h3>Gubug Balian Beach Bungalow</h3>
+                <p><strong>Místo:</strong> Bali</p>
+                <p><strong>Datum rezervace:</strong> 21. července – 23. července</p>
+                <a href="https://www.booking.com/hotel/id/gubug-balian-beach-bungalow.cs.html?" target="_blank" class="pdf-button">Zobrazit hotel na Booking.com</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Gubug Balian Beach Bungalow r1.pdf')">Otevřít rezervaci - PDF</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Gubug Balian Beach Bungalow r2.pdf')">Otevřít rezervaci - PDF (2)</a>
+            </div>
+    
+            <div class="card">
+                <img src="./h6.jpg" alt="Argya Santi Suite and Villas">
+                <h3>Argya Santi Suite and Villas</h3>
+                <p><strong>Místo:</strong> Bali</p>
+                <p><strong>Datum rezervace:</strong> 23. července – 24. července</p>
+                <a href="https://www.booking.com/hotel/id/argya-santi-seminyak.cs.html?" target="_blank" class="pdf-button">Zobrazit hotel na Booking.com</a>
+                <a href="#" class="pdf-button" onclick="openModal('./Argya Santi Suite and Villas.pdf')">Otevřít rezervaci - PDF</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function openModal(pdfPath, elementId) {
+        const password = prompt("Zadejte heslo pro otevření dokumentu:");
+        if (password === "Bali2025") {
+            window.location.hash = '#' + elementId;
+            window.open(pdfPath, '_blank');
+        } else {
+            alert("Nesprávné heslo!");
+        }
+    }
+</script>
+    
+   
+  <div id="letovy-plan" class="section">
+    <h2>✈️ Letový plán</h2>
+    <div class="table-container">
+        <table class="flight-table">
+            <tr>
+                <th>Let</th>
+                <th>Datum</th>
+                <th>Čas odletu</th>
+                <th>Číslo letu</th>
+                <th>Letecká společnost</th>
+                <th>Odkud</th>
+                <th>Kam</th>
+                <th>Čas příletu</th>
+                <th>Doba trvání</th>
+            </tr>
+            <tr><td>Odlet z Prahy</td><td>9.7.2025</td><td>16:10</td><td>EK140</td><td>Emirates</td><td>Praha (PRG)</td><td>Dubaj (DXB)</td><td>23:55</td><td>5h 45m</td></tr>
+            <tr><td>Přestup v Dubaji</td><td>9.-10.7.2025</td><td>23:55 - 02:20</td><td>-</td><td>Emirates</td><td>Dubaj (DXB)</td><td>Singapur (SIN)</td><td>-</td><td>2h 25m</td></tr>
+            <tr><td>Let Dubaj - Singapur</td><td>10.7.2025</td><td>02:20</td><td>EK348</td><td>Emirates</td><td>Dubaj (DXB)</td><td>Singapur (SIN)</td><td>14:05</td><td>7h 45m</td></tr>
+            <tr><td>Odlet na Bali</td><td>13.7.2025</td><td>12:15</td><td>QZ0505</td><td>AirAsia</td><td>Singapur (SIN)</td><td>Denpasar (DPS)</td><td>15:05</td><td>2h 50m</td></tr>
+            <tr><td>Odlet z Bali</td><td>24.7.2025</td><td>13:40</td><td>QZ0506</td><td>AirAsia</td><td>Denpasar (DPS)</td><td>Singapur (SIN)</td><td>16:40</td><td>3h</td></tr>
+            <tr><td>Odlet ze Singapuru</td><td>25.7.2025</td><td>01:40</td><td>EK349</td><td>Emirates</td><td>Singapur (SIN)</td><td>Dubaj (DXB)</td><td>04:55</td><td>7h 15m</td></tr>
+            <tr><td>Let Dubaj - Praha</td><td>25.7.2025</td><td>08:35</td><td>EK139</td><td>Emirates</td><td>Dubaj (DXB)</td><td>Praha (PRG)</td><td>13:00</td><td>6h 25m</td></tr>
+        </table>
+    </div>
+</div>
+
+<style>
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .flight-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    .flight-table th, .flight-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .flight-table th {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+    }
+
+    .flight-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .flight-table tr:hover {
+        background-color: #ddd;
+    }
+
+    @media screen and (max-width: 768px) {
+        .flight-table th, .flight-table td {
+            padding: 6px;
+            font-size: 12px;
+        }
+    }
+</style>
+
+<div id="letadla" class="flight-container">
+    <div class="flight-card">
+        <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px;">
+            <iframe 
+                src="https://www.youtube.com/embed/ffLO9Lsw3Rg?autoplay=1&mute=1&loop=1&playlist=ffLO9Lsw3Rg&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+            </iframe>
+        </div>
+        
+        
+        <div class="flight-info">
+            <h3>Praha (PRG) → Dubaj (DXB)</h3>
+            <p>✈️ <strong>Let číslo:</strong> EK140</p>
+            <p>🛫 <strong>Letadlo:</strong> Boeing 777-300ER</p>
+            <p>🪑 <strong>Kapacita:</strong> 354 míst</p>
+            <p>📏 <strong>Délka:</strong> 73,9 m</p>
+            <p>📏 <strong>Výška:</strong> 18,5 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 64,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 351 000 kg</p>
+        </div>
+    </div>
+    <div class="flight-card">
+        <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px;">
+            <iframe 
+                src="https://www.youtube.com/embed/-jpOuhLYx_k?autoplay=1&mute=1&loop=1&playlist=-jpOuhLYx_k&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Dubaj (DXB) → Singapur (SIN)</h3>
+            <p>✈️ <strong>Let číslo:</strong> EK348</p>
+            <p>🛫 <strong>Letadlo:</strong> Airbus A380</p>
+            <p>🪑 <strong>Kapacita:</strong> 484 míst</p>
+            <p>📏 <strong>Délka:</strong> 72,7 m</p>
+            <p>📏 <strong>Výška:</strong> 24,1 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 79,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 575 000 kg</p>
+        </div>
+    </div>
+    
+    <div class="flight-card">
+        <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px;">
+            <iframe 
+                src="https://www.youtube.com/embed/nCqA5AmyqBA?autoplay=1&mute=1&loop=1&playlist=nCqA5AmyqBA&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Singapur (SIN) → Bali (DPS)</h3>
+            <p>✈️ <strong>Let číslo:</strong> QZ0505</p>
+            <p>🛫 <strong>Letadlo:</strong> Airbus A320</p>
+            <p>🪑 <strong>Kapacita:</strong> 180 míst</p>
+            <p>📏 <strong>Délka:</strong> 37,6 m</p>
+            <p>📏 <strong>Výška:</strong> 11,8 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 35,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 78 000 kg</p>
+        </div>
+    </div>
+    <div class="flight-card">
+        <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px;">
+            <iframe 
+                src="https://www.youtube.com/embed/x7OM1T1mlZM?autoplay=1&mute=1&loop=1&playlist=x7OM1T1mlZM&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Bali (DPS) → Singapur (SIN)</h3>
+            <p>✈️ <strong>Let číslo:</strong> QZ0506</p>
+            <p>🛫 <strong>Letadlo:</strong> Airbus A320</p>
+            <p>🪑 <strong>Kapacita:</strong> 180 míst</p>
+            <p>📏 <strong>Délka:</strong> 37,6 m</p>
+            <p>📏 <strong>Výška:</strong> 11,8 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 35,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 78 000 kg</p>
+        </div>
+    </div>
+    <div class="flight-card">
+        <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px;">
+            <iframe 
+                src="https://www.youtube.com/embed/kBynbL7P3p0?autoplay=1&mute=1&loop=1&playlist=kBynbL7P3p0&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Singapur (SIN) → Dubaj (DXB) - na videu neni naše cestovní třída😁😁😁</h3>
+            <p>✈️ <strong>Let číslo:</strong> EK349</p>
+            <p>🛫 <strong>Letadlo:</strong> Airbus A380</p>
+            <p>🪑 <strong>Kapacita:</strong> 484 míst</p>
+            <p>📏 <strong>Délka:</strong> 72,7 m</p>
+            <p>📏 <strong>Výška:</strong> 24,1 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 79,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 575 000 kg</p>
+        </div>
+    </div>
+    <div class="flight-card">
+        <div style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 12px;">
+            <iframe 
+                src="https://www.youtube.com/embed/Fvc7PjkfJN8?autoplay=1&mute=1&loop=1&playlist=Fvc7PjkfJN8&controls=0&showinfo=0&rel=0&modestbranding=1" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media" 
+                allowfullscreen 
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+            </iframe>
+        </div>
+        <div class="flight-info">
+            <h3>Dubaj (DXB) → Praha (PRG)</h3>
+            <p>✈️ <strong>Let číslo:</strong> EK139</p>
+            <p>🛫 <strong>Letadlo:</strong> Boeing 777-300ER</p>
+            <p>🪑 <strong>Kapacita:</strong> 354 míst</p>
+            <p>📏 <strong>Délka:</strong> 73,9 m</p>
+            <p>📏 <strong>Výška:</strong> 18,5 m</p>
+            <p>📐 <strong>Rozpětí křídel:</strong> 64,8 m</p>
+            <p>🛫 <strong>Maximální vzletová hmotnost:</strong> 351 000 kg</p>
+        </div>
+    </div>
+</div>
+ <!-- Oddělovací linka -->
+ <div id="emptySection" style="width: 100%; height: 5px; background-color: #ccc; margin: 20px 0;"></div>
+    <div class="section">
+       
+      
+   <div id="osobni" class="table-wrapper">
+    <h2>📝 Osobní údaje cestujících</h2>
+    <div id="passwordPrompt">
+        <p>Zadejte heslo pro zobrazení tabulky:</p>
+        <input type="password" id="tablePassword" placeholder="Heslo">
+        <button onclick="unlockTable()">Odemknout</button>
+    </div>
+    <div id="tableContent" style="display: none;">
+        <div style="margin-bottom: 20px;">
+            <button onclick="showAllRows()">Zobraz všechny záznamy</button>
+            <button onclick="filterRowsByPassportYear(2026)">Filtr: Platnost pasu do roku 2026</button>
+
+            <select id="surnameFilter" onchange="filterRowsBySurname()">
+                <option value="">Vyber příjmení</option>
+                <option value="Holan">Holanovi</option>
+                <option value="Zelen">Zelení</option>
+                <option value="Habasko">Habaskovi</option>
+                <option value="Urbanova">Urbanova</option>
+                <option value="Čmelík">Čmelíkovi</option>
+            </select>
+        </div>
+
+        <div class="responsive-table-container">
+            <table class="personal-data-table" id="personalDataTable">
+                <tr>
+                    <th>Jméno</th>
+                    <th>Číslo pasu</th>
+                    <th>Platnost pasu</th>
+                    <th>Datum narození</th>
+                    <th>Zbývá dní do konce platnosti</th>
+                </tr>
+                <tr><td>Radek Holan</td><td>47935419</td><td>3.3.2033</td><td>24.5.1971</td><td>2952</td></tr>
+                <tr><td>Hannah Holanova</td><td>46771417</td><td>14.1.2032</td><td>19.11.2006</td><td>2538</td></tr>
+                <tr><td>Lucie Zelena</td><td>43286120</td><td>11.4.2026</td><td>20.6.1977</td><td>434</td></tr>
+                <tr><td>Tomáš Zelený</td><td>47102606</td><td>22.4.2027</td><td>22.9.2007</td><td>810</td></tr>
+                <tr><td>Michaela Habasková</td><td>43635432</td><td>17.8.2026</td><td>5.8.1972</td><td>562</td></tr>
+                <tr><td>Milan Habasko</td><td>43635431</td><td>17.8.2026</td><td>13.4.1974</td><td>562</td></tr>
+                <tr><td>Nadezda Urbanova</td><td>44980554</td><td>19.5.2028</td><td>30.11.1963</td><td>1203</td></tr>
+                <tr><td>Michal Čmelík</td><td>45911485</td><td>3.9.2029</td><td>4.4.1973</td><td>1675</td></tr>
+                <tr><td>Jitka Čmelíková</td><td>48632831</td><td>22.12.2033</td><td>2.4.1974</td><td>3246</td></tr>
+                <tr><td>Josef Čmelík</td><td>46765901</td><td>11.1.2032</td><td>17.4.2006</td><td>2535</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .responsive-table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .personal-data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    th {
+        background: #40916c;
+        color: white;
+        font-weight: bold;
+    }
+
+    .personal-data-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .personal-data-table tr:hover {
+        background-color: #4caf50;
+        color: white;
+    }
+
+    input[type="password"], select, button {
+        margin: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .personal-data-table th, .personal-data-table td {
+            padding: 8px;
+            font-size: 12px;
+        }
+    }
+</style>
+
+<script>
+    const correctPassword = "Bali2025"; // Heslo pro zobrazení tabulky
+
+    function unlockTable() {
+        const enteredPassword = document.getElementById('tablePassword').value;
+        if (enteredPassword === correctPassword) {
+            document.getElementById('passwordPrompt').style.display = 'none';
+            document.getElementById('tableContent').style.display = 'block';
+        } else {
+            alert('Nesprávné heslo! Zkuste to znovu.');
+        }
+    }
+
+    function showAllRows() {
+        const rows = document.querySelectorAll('#personalDataTable tr');
+        rows.forEach((row, index) => {
+            if (index !== 0) row.style.display = '';
+        });
+    }
+
+    function filterRowsByPassportYear(year) {
+        const rows = document.querySelectorAll('#personalDataTable tr');
+        rows.forEach((row, index) => {
+            if (index !== 0) {
+                const passportDate = row.cells[2].innerText;
+                const passportYear = parseInt(passportDate.split('.')[2]);
+                row.style.display = passportYear === year ? '' : 'none';
+            }
+        });
+    }
+
+    function filterRowsBySurname() {
+        const selectedSurname = document.getElementById('surnameFilter').value.toLowerCase();
+        const rows = document.querySelectorAll('#personalDataTable tr');
+        rows.forEach((row, index) => {
+            if (index !== 0) {
+                const fullName = row.cells[0].innerText.toLowerCase();
+                row.style.display = fullName.includes(selectedSurname) ? '' : 'none';
+            }
+        });
+    }
+</script>
+
+    
+    
+    <!-- Oddělovací linka -->
+    <div id="emptySection" style="width: 100%; height: 5px; background-color: #ccc; margin: 20px 0;"></div>
+ 
+    <!-- Sekce mapa itineráře Singapur -->
+    <div id="mapa-singapur" class="map-container">
+        <iframe 
+            class="map-frame"
+            src="https://www.google.com/maps/d/embed?mid=13FT1rGlTFxq7e5u33Zfaew9KpamhfHM&ehbc=2E312F" 
+            allowfullscreen
+            frameborder="0">
+        </iframe>
+    </div>
+   
+   
+   
+      <!-- Sekce průvodce atrakcemi v Singapuru -->
 <div id="atrakce-singapur" class="card">
     
         <h2>🗺️ Průvodce atrakcemi v Singapuru 🌆</h2>
