@@ -455,12 +455,13 @@
 
 </div>
 
- <id="praha"
+
 <!-- Texty sloužící jako tlačítka pro otevření pop-up oken -->
-<h2 class="pdf-button" onclick="showPopup('popup1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</h2>
+ <div id="praha"
+    <h2 class="pdf-button" onclick="showPopup('popup1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</h2>
 <h2 class="pdf-button" onclick="showPopup('popup2')">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</h2>
 <h2 class="pdf-button" onclick="showPopup('popup3')">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</h2>
-
+</div>
 <!-- Popup okna s podrobnostmi -->
 <div id="popup1" class="popup" style="display:none;">
     <div class="popup-content">
@@ -498,70 +499,7 @@
     </div>
 </div>
 
-<!-- Styl pro popup okno umístěné na středu obrazovky -->
-<style>
-    .popup {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    }
-
-    .popup-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        width: 90%;
-        max-width: 400px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        overflow-y: auto;
-        max-height: 80%;
-        position: relative;
-        animation: popup-fade-in 0.3s ease-in-out;
-    }
-
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-        margin-top: 10px;
-    }
-
-    .popup-button {
-        color: #007bff;
-        cursor: pointer;
-        text-decoration: underline;
-    }
-
-    .popup-button:hover {
-        color: #0056b3;
-    }
-
-    @keyframes popup-fade-in {
-        from {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-</style>
+<div id="informace"
 
 <!-- Skript pro zobrazení a zavření pop-up oken -->
 <script>
