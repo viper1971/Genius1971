@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
+  
+  
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kompletní itinerář cesty na Bali a Singapur</title>
     <script>
@@ -38,15 +40,15 @@ function navigateAndClose(event) {
 <button class="floating-button" onclick="togglePanel()">Obsah</button><!-- Boční panel s tlačítky -->
 <div id="sidePanel" class="side-panel">
     <h4>📑 Obsah itineráře</h4>
-    <button class="panel-button" onclick="navigateToSection('topinfo')">🌍 Podrobný průvodce</button>
-<button class="panel-button" onclick="navigateToSection('informace')">🌍 INFORMACE K DOVOLENÉ</button>
+<button class="panel-button" onclick="navigateToSection('informace')">🚀 Začátek stránky</button>
+  <button class="panel-button" onclick="navigateToSection('topinfo')">🌍 Podrobný průvodce</button>
 <button class="panel-button" onclick="navigateToSection('harmonogram')">🗓️ Harmonogram příprav</button>
 <button class="panel-button" onclick="navigateToSection('praha')">🚍 Doprava z Hodkovic</button>
 <button class="panel-button" onclick="navigateToSection('postup')">🛂 Postup na letišti</button>
 <button class="panel-button" onclick="navigateToSection('hotely')">🏨 Hotely - Rezervace</button>
 <button class="panel-button" onclick="navigateToSection('letovy-plan')">✈️ Letový plán</button>
 <button class="panel-button" onclick="navigateToSection('letadla')">✈️ Info o letadlech v letovém plánu</button>
-    <button class="panel-button" onclick="navigateToSection('osobni')">📝 Osobní údaje cestujících</button>
+  <button class="panel-button" onclick="navigateToSection('osobni')">📝 Osobní údaje cestujících</button>
 <button class="panel-button" onclick="navigateToSection('mapa-singapur')">🌍 Mapa itineráře - Singapur</button>
 <button class="panel-button" onclick="navigateToSection('atrakce-singapur')">🗺️ Průvodce atrakcemi - Singapur</button>
 <button class="panel-button" onclick="navigateToSection('mapa-bali')">🌍 Mapa itineráře - Bali</button>
@@ -163,7 +165,26 @@ function navigateToSection(sectionId) {
    
     <style>
         /* Globální stylování */
-        body {
+      
+      #letovy-plan {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+}
+
+.flight-container {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+}
+
+iframe, .flight-video {
+    z-index: 0;
+    position: relative;
+}
+
+      
+      body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -372,7 +393,25 @@ function navigateToSection(sectionId) {
     }
 </script>
     
-  <section style="font-family: Arial, sans-serif; background: linear-gradient(to right, #eef2f3, #e3e9ed); padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 900px; margin: auto;">
+
+  
+    
+    
+</head>
+<body>
+    <h2>🌍 INFORMACE K DOVOLENÉ SINGAPUR A BALI - 9–25.7.2025</h2>
+  <div id="informace" class="card" style="text-align: center; padding: 20px;">
+  
+    
+    <h2>🎥 Celá trasa na Bali</h2>
+    <p>Video se automaticky přehraje na pozadí:</p>
+    <div style="position: relative; width: 100%; padding-top: 177.78%; /* Poměr stran 16:9 převrácený (9:16) */ overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            <source src="./Cesta.mp4" type="video/mp4">
+            Váš prohlížeč nepodporuje přehrávání videa.
+        </video>
+ 
+     <section style="font-family: Arial, sans-serif; background: linear-gradient(to right, #eef2f3, #e3e9ed); padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 900px; margin: auto;">
     <h2 id="topinfo" style="color: #2c3e50; font-size: 1.8rem; text-align: left; margin-bottom: 20px;">🌍 Podrobný průvodce pro návštěvu Singapuru a Bali</h2>
     <div style="display: flex; flex-direction: column; gap: 20px;">
         <!-- Sekce pro Singapur -->
@@ -401,20 +440,9 @@ function navigateToSection(sectionId) {
         </div>
     </div>
 </section>
-  
     
+   
     
-</head>
-<body>
-    <h1>🌍 INFORMACE K DOVOLENÉ SINGAPUR A BALI - 9–25.7.2025</h1>
-  <div id="informace" class="card" style="text-align: center; padding: 20px;">
-    <h2>🎥 Celá trasa na Bali</h2>
-    <p>Video se automaticky přehraje na pozadí:</p>
-    <div style="position: relative; width: 100%; padding-top: 177.78%; /* Poměr stran 16:9 převrácený (9:16) */ overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-            <source src="./Cesta.mp4" type="video/mp4">
-            Váš prohlížeč nepodporuje přehrávání videa.
-        </video>
     </div><div id="harmonogram" class="card" style="text-align: center;">
     <h2>🗓️ Harmonogram příprav</h2>
     <table style="width: 80%; margin: 0 auto; border-collapse: collapse; text-align: center;">
