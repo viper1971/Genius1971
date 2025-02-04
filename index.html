@@ -17,111 +17,145 @@
                 window.scrollTo(0, parseInt(savedPosition));
             }
         });
+      function togglePanel() {
+    const panel = document.getElementById('sidePanel');
+    panel.classList.toggle('open');  // Přepíná třídu pro zobrazení/skrytí
+}
+
+function navigateAndClose(event) {
+    event.preventDefault();  // Zabrání výchozímu chování odkazu
+    const targetId = event.target.getAttribute('href').substring(1);  // Získá ID cílové sekce
+    const targetElement = document.getElementById(targetId);  // Najde cílovou sekci
+
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });  // Plynulý posun na sekci
+        document.getElementById('sidePanel').classList.remove('open');  // Zavře panel
+    }
+}
     </script>
  </head>   
 <!-- Plovoucí tlačítko -->
-<button class="floating-button" onclick="togglePanel()">Obsah</button>
-<!-- Boční panel s obsahem -->
-<div class="side-panel" id="sidePanel">
-    <h2>📑 Obsah itineráře</h2>
- 
-    
-     <li><a href="#topinfo" onclick="navigateAndClose(event)">🌍 Podrobný průvodce pro návštěvu Singapuru a Bali</a></li>
-        <li><a href="#informace" onclick="navigateAndClose(event)">🌍 INFORMACE K DOVOLENÉ SINGAPUR A BALI - 9–25.7.2025</a></li>
-        <li><a href="#harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
-          <li><a href="#praha" onclick="navigateAndClose(event)">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</a></li>   
-     <li><a href="#postup" onclick="navigateAndClose(event)">🛂 Postup na letišti</a></li>   
-     <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
-     <li><a href="#letadla" onclick="navigateAndClose(event)">✈️ Kompletní přehled letů a letadel</a></li>
-     <li><a href="#osobni" onclick="navigateAndClose(event)">📝 Osobní údaje cestujících</a></li>
-        <li><a href="#hotely" onclick="navigateAndClose(event)">🏨 Hotely - Rezervace</a></li>
-        <li><a href="#mapa-singapur" onclick="navigateAndClose(event)">🌍 Mapa itineráře - Singapur</a></li>
-        <li><a href="#atrakce-singapur" onclick="navigateAndClose(event)">🗺️ Průvodce atrakcemi - Singapur</a></li>
-        <li><a href="#mapa-bali" onclick="navigateAndClose(event)">🌍 Mapa itineráře - Bali</a></li>
-        <li><a href="#atrakce-bali" onclick="navigateAndClose(event)">🏨 Průvodce atrakcemi - Bali</a></li>
-    </ul>
+<button class="floating-button" onclick="togglePanel()">Obsah</button><!-- Boční panel s tlačítky -->
+<div id="sidePanel" class="side-panel">
+    <h4>📑 Obsah itineráře</h4>
+    <button class="panel-button" onclick="navigateToSection('topinfo')">🌍 Podrobný průvodce</button>
+<button class="panel-button" onclick="navigateToSection('informace')">🌍 INFORMACE K DOVOLENÉ</button>
+<button class="panel-button" onclick="navigateToSection('harmonogram')">🗓️ Harmonogram příprav</button>
+<button class="panel-button" onclick="navigateToSection('praha')">🚍 Doprava z Hodkovic</button>
+<button class="panel-button" onclick="navigateToSection('postup')">🛂 Postup na letišti</button>
+<button class="panel-button" onclick="navigateToSection('letovy-plan')">✈️ Letový plán</button>
+<button class="panel-button" onclick="navigateToSection('hotely')">🏨 Hotely - Rezervace</button>
+<button class="panel-button" onclick="navigateToSection('mapa-singapur')">🌍 Mapa itineráře - Singapur</button>
+<button class="panel-button" onclick="navigateToSection('atrakce-singapur')">🗺️ Průvodce atrakcemi - Singapur</button>
+
 </div>
+
+<!-- Stylování pro panel a tlačítka -->
 <style>
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.modal-content {
-  position: relative;
-  margin: 15% auto;
-  padding: 20px;
-  background-color: #fff;
-  width: 50%;
-  border-radius: 5px;
-}
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
-  cursor: pointer;
-}
-    .floating-button {
-        position: fixed;
-        top: 300px;
-        left: 20px;
-        padding: 10px 20px;
-        background-color: #ff0000;
-        color: #fff;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        transition: background-color 0.3s ease;
-    }
-    .floating-button:hover {
-        background-color: #0056b3;
-    }
-   .side-panel {
-    position: fixed;
+ .side-panel {
+    position: fixed; /* Panel zůstane na místě při posouvání stránky */
     top: 0;
-    left: -300px;
-    width: 300px;
+    left: -260px; /* Skrytý panel mimo obrazovku */
+    width: 158px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: white;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-    padding: 20px;
+    padding: 5px;
+    box-sizing: border-box;
     overflow-y: auto;
     transition: left 0.3s ease;
-    box-sizing: border-box;
+    z-index: 9999; /* Zajištění, že panel bude nad ostatními prvky */
 }
+
 .side-panel.open {
-    left: 0;
+    left: 0; /* Když je panel otevřen, zobrazí se */
 }
-    .side-panel h2 {
-        text-align: center;
-        color: #007bff;
-        margin-bottom: 20px;
-    }
-    .side-panel ul {
-        list-style: none;
-        padding: 0;
-    }
-    .side-panel ul li {
-        margin: 10px 0;
-    }
-    .side-panel ul li a {
-        color: #007bff;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1rem;
-    }
-    .side-panel ul li a:hover {
-        text-decoration: underline;
-    }
+
+.floating-button {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.floating-button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.side-panel h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.panel-button {
+    width: 98%;
+    padding: 5px 5px; /* Zmenšený vnitřní odsazení */
+    margin: 2px 3px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.6rem; /* Zmenšená velikost písma */
+    font-weight: right;
+    text-align: right;
+    transition: all 0.3s ease;
+}
+
+.panel-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateX(5px);
+}
+
+.panel-button:focus {
+    outline: none;
+}
+
 </style>
+<script>  
+// Funkce pro otevření a zavření bočního panelu
+function togglePanel() {
+    const panel = document.getElementById('sidePanel');
+    const button = document.querySelector('.floating-button');
+
+    panel.classList.toggle('open');  // Přepíná třídu pro otevření panelu
+
+    // Skrytí nebo zobrazení tlačítka pomocí třídy 'hidden'
+    if (panel.classList.contains('open')) {
+        button.classList.add('hidden');
+    } else {
+        button.classList.remove('hidden');
+    }
+}
+
+// Funkce pro navigaci na konkrétní sekci a zavření panelu
+function navigateToSection(sectionId) {
+    const targetElement = document.getElementById(sectionId);
+
+    if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });  // Plynulé posunutí na sekci
+        document.getElementById('sidePanel').classList.remove('open');  // Zavře panel
+        document.querySelector('.floating-button').classList.remove('hidden');  // Zobrazí tlačítko
+    }
+}
+
+
+</script>
    
     <style>
         /* Globální stylování */
@@ -1391,21 +1425,4 @@
             </div>
         </div>
     </div>
-              
-<script>
-    function togglePanel() {
-        const panel = document.getElementById('sidePanel');
-        panel.classList.toggle('open');  // Přepínání třídy pro zobrazení/skrýt panel
-    }
-
-    function navigateAndClose(event) {
-        event.preventDefault();  // Zabránění výchozímu chování odkazu
-        const targetId = event.target.getAttribute('href').substring(1);  // Získání cílového ID
-        const targetElement = document.getElementById(targetId);  // Najití cílového elementu
-
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });  // Plynulé posouvání na cílový element
-            document.getElementById('sidePanel').classList.remove('open');  // Zavření panelu po kliknutí
-        }
-    }
-</script>
+         
