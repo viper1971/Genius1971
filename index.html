@@ -1395,25 +1395,17 @@
 <script>
     function togglePanel() {
         const panel = document.getElementById('sidePanel');
-        panel.classList.toggle('open');
+        panel.classList.toggle('open');  // Přepínání třídy pro zobrazení/skrýt panel
     }
+
     function navigateAndClose(event) {
-        event.preventDefault();
-        const targetId = event.target.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
+        event.preventDefault();  // Zabránění výchozímu chování odkazu
+        const targetId = event.target.getAttribute('href').substring(1);  // Získání cílového ID
+        const targetElement = document.getElementById(targetId);  // Najití cílového elementu
+
         if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-            document.getElementById('sidePanel').classList.remove('open');
+            targetElement.scrollIntoView({ behavior: 'smooth' });  // Plynulé posouvání na cílový element
+            document.getElementById('sidePanel').classList.remove('open');  // Zavření panelu po kliknutí
         }
     }
-        });
-    });
 </script>
-0 commit comments
-Comments
-0
- (0)
-Comment
-You're receiving notifications because you're subscribed to this thread.
-
-Update index.html · viper1971/Genius1971@f08e80f 
