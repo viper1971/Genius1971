@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -456,726 +455,124 @@
 <!-- Sekce doprava z Hodkovic na letiště -->
 <section id="praha" class="section-container">
     <h2 style="text-align: center;">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</h2>
-    
+
     <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
-        <button class="pdf-button" onclick="showPopup('popup1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</button>
-        <button class="pdf-button" onclick="showPopup('popup2')">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</button>
-        <button class="pdf-button" onclick="showPopup('popup3')">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</button>
-    </div>
-</section>
-
-<!-- Pop-up okna s detaily -->
-<section id="popups">
-    <div id="popup1" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('popup1')">&times;</span>
-            <h2>🚌 Úsek: Hodkovice → Černý Most</h2>
-            <p><strong>Odjezd:</strong> 10:00 ze zastávky Hodkovice</p>
-            <p><strong>Příjezd:</strong> 11:30 na Černý Most</p>
-            <p><strong>Doba jízdy:</strong> 1 hodina 30 minut</p>
-            <p><strong>Cena:</strong> 150 Kč</p>
-            <img src="Praha1.jpg" alt="Obrázek dopravy Hodkovice">
-        </div>
-    </div>
-
-    <div id="popup2" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('popup2')">&times;</span>
-            <h2>🚌 Úsek: Zličín → Letiště Václava Havla</h2>
-            <p><strong>Příjezd:</strong> 12:20 na stanici Zličín</p>
-            <p><strong>Doba jízdy:</strong> 35 minut</p>
-            <p><strong>Cena:</strong> 40 Kč (90minutová jízdenka PID)</p>
-            <p><strong>Rezerva na přestup:</strong> 10 minut</p>
-            <img src="Praha2.jpg" alt="Obrázek dopravy Zličín">
-        </div>
-    </div>
-
-    <div id="popup3" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('popup3')">&times;</span>
-            <h2>🚌 Úsek: Letiště Václava Havla → Centrum</h2>
-            <p><strong>Odjezd:</strong> 12:30 z Letiště Václava Havla</p>
-            <p><strong>Příjezd:</strong> 13:00 na Náměstí Republiky</p>
-            <p><strong>Doba jízdy:</strong> 30 minut</p>
-            <p><strong>Cena:</strong> 90 Kč</p>
-            <img src="Praha3.jpg" alt="Obrázek dopravy Centrum">
-        </div>
-    </div>
-</section>
-
-<!-- Styl pro popup okna -->
-<style>
-    .popup {
-        position: fixed;
-        top: 5%;
-        left: 0;
-        width: 100%;
-        height: 90%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        z-index: 1000;
-        padding: 10px;
-        box-sizing: border-box;
-    }
-
-    .popup-content {
-        background-color: white;
-        padding: 15px;
-        border-radius: 10px;
-        width: 90%;
-        max-width: 400px;
-        max-height: 80%;
-        overflow-y: auto;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        position: relative;
-    }
-
-    .popup-content h2 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    .popup-content p {
-        margin: 5px 0;
-    }
-
-    .close {
-        position: absolute;
-        top: 8px;
-        right: 10px;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-
-
-
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kompletní itinerář cesty na Bali a Singapur</title>
-    <script>
-        // Uložení aktuální pozice při odchodu
-        window.addEventListener('beforeunload', () => {
-            localStorage.setItem('scrollPosition', window.scrollY);
-        });
-    
-        // Obnovení pozice při načtení stránky
-        window.addEventListener('load', () => {
-            const savedPosition = localStorage.getItem('scrollPosition');
-            if (savedPosition) {
-                window.scrollTo(0, parseInt(savedPosition));
-            }
-        });
-    </script>
- </head>   
-
-<!-- Plovoucí tlačítko -->
-<button class="floating-button" onclick="togglePanel()">Obsah</button>
-
-<!-- Boční panel s obsahem -->
-<div class="side-panel" id="sidePanel">
-    <h2>📑 Obsah itineráře</h2>
-
-
-
- 
-    
-
-
-
-     <li><a href="#topinfo" onclick="navigateAndClose(event)">🌍 Podrobný průvodce pro návštěvu Singapuru a Bali</a></li>
-        <li><a href="#informace" onclick="navigateAndClose(event)">🌍 INFORMACE K DOVOLENÉ SINGAPUR A BALI - 9–25.7.2025</a></li>
-        <li><a href="#harmonogram" onclick="navigateAndClose(event)">🗓️ Harmonogram příprav</a></li>
-          <li><a href="#praha" onclick="navigateAndClose(event)">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</a></li>   
-     <li><a href="#postup" onclick="navigateAndClose(event)">🛂 Postup na letišti</a></li>   
-     <li><a href="#letovy-plan" onclick="navigateAndClose(event)">✈️ Letový plán</a></li>
-     <li><a href="#letadla" onclick="navigateAndClose(event)">✈️ Kompletní přehled letů a letadel</a></li>
-     <li><a href="#osobni" onclick="navigateAndClose(event)">📝 Osobní údaje cestujících</a></li>
-        <li><a href="#hotely" onclick="navigateAndClose(event)">🏨 Hotely - Rezervace</a></li>
-        <li><a href="#mapa-singapur" onclick="navigateAndClose(event)">🌍 Mapa itineráře - Singapur</a></li>
-        <li><a href="#atrakce-singapur" onclick="navigateAndClose(event)">🗺️ Průvodce atrakcemi - Singapur</a></li>
-        <li><a href="#mapa-bali" onclick="navigateAndClose(event)">🌍 Mapa itineráře - Bali</a></li>
-        <li><a href="#atrakce-bali" onclick="navigateAndClose(event)">🏨 Průvodce atrakcemi - Bali</a></li>
-    </ul>
-</div>
-
-
-
-
-<style>
-
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  position: relative;
-  margin: 15% auto;
-  padding: 20px;
-  background-color: #fff;
-  width: 50%;
-  border-radius: 5px;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-
-
-
-
-
-    .floating-button {
-        position: fixed;
-        top: 300px;
-        left: 20px;
-        padding: 10px 20px;
-        background-color: #ff0000;
-        color: #fff;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        transition: background-color 0.3s ease;
-    }
-
-    .floating-button:hover {
-        background-color: #0056b3;
-    }
-
-   .side-panel {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-    padding: 20px;
-    overflow-y: auto;
-    transition: left 0.3s ease;
-    box-sizing: border-box;
-}
-
-.side-panel.open {
-    left: 0;
-}
-
-    .side-panel h2 {
-        text-align: center;
-        color: #007bff;
-        margin-bottom: 20px;
-    }
-
-    .side-panel ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .side-panel ul li {
-        margin: 10px 0;
-    }
-
-    .side-panel ul li a {
-        color: #007bff;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1rem;
-    }
-
-    .side-panel ul li a:hover {
-        text-decoration: underline;
-    }
-</style>
-
-
-   
-
-    <style>
-        /* Globální stylování */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #e9f5ff;
-            color: #333;
-            line-height: 1.6;
-        }
-    
-        .container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-    
-        h1, h2, h3 {
-            color: #007bff;
-            text-align: center;
-        }
-    
-        /* Flexbox a karty */
-        .flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-    
-        .card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            flex: 1 1 30%;
-            box-sizing: border-box;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-    
-        .card:hover {
-            transform: scale(1.06);
-        }
-    
-        img {
-            width: 100%;
-            max-height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-    
-        /* Sekce a tabulky */
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-    
-        .section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    
-        .section p {
-            margin-bottom: 15px;
-        }
-    
-        /* Tabulky */
-        .table-container {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-    
-        .flight-table, .personal-data-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 1rem;
-        }
-    
-        th, td {
-            padding: 10px;
-            border: 2px solid #ddd;
-            text-align: center;
-        }
-    
-        th {
-            background: #40916c;
-            color: white;
-        }
-    
-        .flight-table tr:nth-child(even), .personal-data-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-    
-        .flight-table tr:hover, .personal-data-table tr:hover {
-            background-color: #4caf50;
-            color: white;
-        }
-    
-        .map-container {
-        width: 100%;
-        height: 400px; /* Výchozí výška pro desktop */
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .map-frame {
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-
-    @media screen and (max-width: 768px) {
-        .map-container {
-            height: 800px; /* Zvýšená výška pro mobilní zobrazení */
-        }
-    }
-
-        /* Responzivní styly */
-        @media (min-width: 1200px) {
-            .card {
-                flex: 1 1 22%;
-            }
-        }
-    
-        @media (max-width: 1024px) {
-            .card {
-                flex: 1 1 calc(50% - 20px);
-            }
-    
-            .flight-table, .personal-data-table {
-                font-size: 0.9rem;
-            }
-        }
-    
-        @media (max-width: 768px) {
-            .flex-container {
-                flex-direction: column;
-                align-items: center;
-            }
-    
-            .card {
-                flex: 1 1 100%;
-            }
-    
-            .section-container {
-                padding: 10px;
-            }
-    
-            h1 {
-                font-size: 1.8rem;
-            }
-    
-            .table-container {
-                overflow-x: auto;
-                margin: 0;
-            }
-    
-            .flight-table, .personal-data-table {
-                font-size: 0.8rem;
-            }
-        }
-    </style>
-    
-    
-    
-    
-
-
-<script>
-    const correctPassword = "Bali2025";
-
-    function unlockTable() {
-        const enteredPassword = document.getElementById('tablePassword').value;
-        if (enteredPassword === correctPassword) {
-            document.getElementById('passwordPrompt').style.display = 'none';
-            document.getElementById('tableContent').style.display = 'block';
-        } else {
-            alert('Nesprávné heslo! Zkuste to znovu.');
-        }
-    }
-
-    function showAllRows() {
-        const rows = document.querySelectorAll('.personal-data-table tr');
-        rows.forEach((row, index) => {
-            if (index !== 0) row.style.display = '';
-        });
-    }
-
-    function filterRowsByPassportYear(year) {
-        const rows = document.querySelectorAll('.personal-data-table tr');
-        rows.forEach((row, index) => {
-            if (index !== 0) {
-                const passportDate = row.cells[2].innerText;
-                const passportYear = parseInt(passportDate.split('.')[2]);
-                row.style.display = passportYear === year ? '' : 'none';
-            }
-        });
-    }
-
-    function filterRowsBySurname() {
-        const selectedSurname = document.getElementById('surnameFilter').value.toLowerCase();
-        const rows = document.querySelectorAll('.personal-data-table tr');
-        rows.forEach((row, index) => {
-            if (index !== 0) {
-                const fullName = row.cells[0].innerText.toLowerCase();
-                row.style.display = fullName.includes(selectedSurname) ? '' : 'none';
-            }
-        });
-    }
-</script>
-    
-  <section style="font-family: Arial, sans-serif; background: linear-gradient(to right, #eef2f3, #e3e9ed); padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 900px; margin: auto;">
-    <h2 id="topinfo" style="color: #2c3e50; font-size: 1.8rem; text-align: center; margin-bottom: 20px;">🌍 Podrobný průvodce pro návštěvu Singapuru a Bali</h2>
-
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-
-        <!-- Sekce pro Singapur -->
-        <div style="background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
-            <h3 style="color: #3498db; font-size: 1.5rem; margin-bottom: 10px;">🇸🇬 Singapur</h3>
-            <ul style="line-height: 1.6; color: #555;">
-                <li>⚠️ <strong>Dodržujte zákony:</strong> Singapur má velmi přísné zákony. Za odhození odpadků, plivání na ulici, kouření na veřejných místech nebo přecházení silnice mimo přechod hrozí vysoké pokuty až 1 000 SGD (cca 17 000 Kč).</li>
-                <li>🚭 <strong>Žvýkačky a kouření:</strong> Žvýkačky jsou zakázány (dovoz, prodej i konzumace mimo lékařské účely). Kouření je povoleno pouze na vyhrazených místech.</li>
-                <li>🚫 <strong>Drogová politika:</strong> Držení nebo pašování drog se přísně trestá, včetně možnosti trestu smrti. Problémem může být už držení malého množství marihuany.</li>
-                <li>🙏 <strong>Respektujte místní zvyklosti:</strong> Veřejné projevy emocí jsou považovány za nevhodné. Při návštěvě chrámů mějte zakrytá ramena a kolena.</li>
-                <li>💧 <strong>Hygiena a voda:</strong> Kohoutková voda je pitná a veřejná čistota je přísně udržována.</li>
-                <li>🚦 <strong>Přecházení ulice:</strong> Přecházejte výhradně na vyznačených přechodech pro chodce. Jinak hrozí pokuta.</li>
-            </ul>
-        </div>
-
-        <!-- Sekce pro Bali -->
-        <div style="background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
-            <h3 style="color: #e67e22; font-size: 1.5rem; margin-bottom: 10px;">🏝️ Bali</h3>
-            <ul style="line-height: 1.6; color: #555;">
-                <li>🚦 <strong>Dopravní situace:</strong> Hustý a chaotický provoz je běžný, zejména v turistických oblastech. Pokud si půjčujete motocykl, noste helmu a mějte mezinárodní řidičský průkaz.</li>
-                <li>🦟 <strong>Zdravotní opatření:</strong> Doporučuje se očkování proti žloutence A a B, břišnímu tyfu a vzteklině. Používejte repelenty proti komárům kvůli riziku horečky dengue. Pijte výhradně balenou vodu a vyhněte se ledu v nápojích mimo kvalitní hotely či restaurace.</li>
-                <li>🛕 <strong>Náboženské zvyklosti:</strong> Bali je převážně hinduistické. Při návštěvě chrámů noste tradiční sarong (můžete si jej půjčit na místě) a zakrývejte ramena i kolena. Nepřekračujte obětiny na chodnících.</li>
-                <li>💰 <strong>Směna peněz:</strong> Měňte pouze v oficiálních směnárnách nebo bankách. Pouliční směnárny mohou podvádět na kurzu nebo vrácené částce.</li>
-                <li>🌋 <strong>Přírodní rizika:</strong> Bali leží v seismicky aktivní oblasti. Riziko zemětřesení a sopečné aktivity (např. sopka Mount Agung) je reálné. Dodržujte varování místních úřadů.</li>
-                <li>🌊 <strong>Bezpečnost na plážích:</strong> Dávejte pozor na silné spodní proudy. Respektujte označené bezpečné zóny pro koupání.</li>
-            </ul>
-        </div>
-
-    </div>
-</section>
-  
-    
-
-    
-</head>
-<body>
-    <h1>🌍 INFORMACE K DOVOLENÉ SINGAPUR A BALI - 9–25.7.2025</h1>
-
-  <div id="informace" class="card" style="text-align: center; padding: 20px;">
-    <h2>🎥 Celá trasa na Bali</h2>
-    <p>Video se automaticky přehraje na pozadí:</p>
-    <div style="position: relative; width: 100%; padding-top: 177.78%; /* Poměr stran 16:9 převrácený (9:16) */ overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-            <source src="./Cesta.mp4" type="video/mp4">
-            Váš prohlížeč nepodporuje přehrávání videa.
-        </video>
-    </div>
-</div>
-
-
-<div id="harmonogram" class="card" style="text-align: left;">
-        <h2>🗓️ Harmonogram příprav</h2>
-
-        <p>📅 <strong>Termín:</strong> Do 30.6.2025</p>
-        <p>🛂 <strong>Úkol:</strong> Získání mezinárodních řidičských průkazů (Ženevský a Vídeňský)</p>
-        <p>👥 <strong>Odpovědnost:</strong> Michal, Radek, Tomáš, Pepa, Naďa, Míša, Milan</p>
-<a href="https://g.denik.cz/16/fd/dom_ridicaky_denik-630-16x9@2x.jpg" target="_blank">
-    <img src="https://g.denik.cz/16/fd/dom_ridicaky_denik-630-16x9@2x.jpg" alt="Řidičský průkaz" width="600">
-</a>
-        <hr style="border: none; border-top: 1px solid #ccc; margin: 15px 0;">
-
-        <p>📅 <strong>Termín:</strong> 5.7.2025, 15:00</p>
-        <p>📍 <strong>Úkol:</strong> Povinná schůzka v Hodkovicích (hromadné vyplnění a platba víza e-VOA, platba turistické daně, kontrola dokumentů)</p>
-        <p>👥 <strong>Odpovědnost:</strong> Celá skupina</p>
-<iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2563.865460573986!2d15.0911717!3d50.6630427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47094ae0db5d8241%3A0x732cb496a407b07b!2zUHJhxaFza8OpIDMxOCwgNDYzIDQyIEhvZGtvdmljZSBuYWQgTW9oZWxrb3U!5e0!3m2!1scs!2scz!4v1617916365607!5m2!1scs!2scz"
-    width="600"
-    height="450"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy">
-</iframe>
-
-<!-- Sekce doprava z Hodkovic na letiště -->
-<section id="praha" class="section-container">
-    <h2 style="text-align: center;">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</h2>
-    
-    <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
-        <button class="pdf-button" onclick="showPopup('popup1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</button>
-        <button class="pdf-button" onclick="showPopup('popup2')">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</button>
-        <button class="pdf-button" onclick="showPopup('popup3')">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</button>
-    </div>
-</section>
-
-<!-- Pop-up okna s detaily -->
-<section id="popups">
-    <div id="popup1" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('popup1')">&times;</span>
-            <h2>🚌 Úsek: Hodkovice → Černý Most</h2>
-            <p><strong>Odjezd:</strong> 10:00 ze zastávky Hodkovice</p>
-            <p><strong>Příjezd:</strong> 11:30 na Černý Most</p>
-            <p><strong>Doba jízdy:</strong> 1 hodina 30 minut</p>
-            <p><strong>Cena:</strong> 150 Kč</p>
-            <img src="Praha1.jpg" alt="Obrázek dopravy Hodkovice">
-        </div>
-    </div>
-
-    <div id="popup2" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('popup2')">&times;</span>
-            <h2>🚌 Úsek: Zličín → Letiště Václava Havla</h2>
-            <p><strong>Příjezd:</strong> 12:20 na stanici Zličín</p>
-            <p><strong>Doba jízdy:</strong> 35 minut</p>
-            <p><strong>Cena:</strong> 40 Kč (90minutová jízdenka PID)</p>
-            <p><strong>Rezerva na přestup:</strong> 10 minut</p>
-            <img src="Praha2.jpg" alt="Obrázek dopravy Zličín">
-        </div>
-    </div>
-
-    <div id="popup3" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('popup3')">&times;</span>
-            <h2>🚌 Úsek: Letiště Václava Havla → Centrum</h2>
-            <p><strong>Odjezd:</strong> 12:30 z Letiště Václava Havla</p>
-            <p><strong>Příjezd:</strong> 13:00 na Náměstí Republiky</p>
-            <p><strong>Doba jízdy:</strong> 30 minut</p>
-            <p><strong>Cena:</strong> 90 Kč</p>
-            <img src="Praha3.jpg" alt="Obrázek dopravy Centrum">
-        </div>
-    </div>
-</section>
-
-<!-- Styl pro popup okna -->
-<style>
-    .popup {
-        position: fixed;
-        top: 5%;
-        left: 0;
-        width: 100%;
-        height: 90%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        z-index: 1000;
-        padding: 10px;
-        box-sizing: border-box;
-    }
-
-    .popup-content {
-        background-color: white;
-        padding: 15px;
-        border-radius: 10px;
-        width: 90%;
-        max-width: 400px;
-        max-height: 80%;
-        overflow-y: auto;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        position: relative;
-    }
-
-    .popup-content h2 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    .popup-content p {
-        margin: 5px 0;
-    }
-
-    .close {
-        position: absolute;
-        top: 8px;
-        right: 10px;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-
-
-<!-- Sekce doprava z Hodkovic na letiště -->
-<section id="praha" class="section-container">
-<h2 style="text-align: center;">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</h2>
-
-<div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
-        <button class="pdf-button" onclick="toggleSection('section1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</button>
-        <div id="section1" class="details-section" style="display: none;">
         <button class="pdf-button" data-target="section1">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</button>
         <div id="section1" class="details-section hidden">
-<h3>🚌 Úsek: Hodkovice → Černý Most</h3>
-<p><strong>Odjezd:</strong> 10:00 ze zastávky Hodkovice</p>
-<p><strong>Příjezd:</strong> 11:30 na Černý Most</p>
-@@ -571,8 +13,8 @@ <h3>🚌 Úsek: Hodkovice → Černý Most</h3>
-<img src="Praha1.jpg" alt="Obrázek dopravy Hodkovice">
-</div>
+            <h3>🚌 Úsek: Hodkovice → Černý Most</h3>
+            <p><strong>Odjezd:</strong> 10:00 ze zastávky Hodkovice</p>
+            <p><strong>Příjezd:</strong> 11:30 na Černý Most</p>
+            <p><strong>Doba jízdy:</strong> 1 hodina 30 minut</p>
+            <p><strong>Cena:</strong> 150 Kč</p>
+            <img src="Praha1.jpg" alt="Obrázek dopravy Hodkovice">
+        </div>
 
-        <button class="pdf-button" onclick="toggleSection('section2')">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</button>
-        <div id="section2" class="details-section" style="display: none;">
         <button class="pdf-button" data-target="section2">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</button>
         <div id="section2" class="details-section hidden">
-<h3>🚌 Úsek: Zličín → Letiště Václava Havla</h3>
-<p><strong>Příjezd:</strong> 12:20 na stanici Zličín</p>
-<p><strong>Doba jízdy:</strong> 35 minut</p>
-@@ -581,8 +23,8 @@ <h3>🚌 Úsek: Zličín → Letiště Václava Havla</h3>
-<img src="Praha2.jpg" alt="Obrázek dopravy Zličín">
-</div>
+            <h3>🚌 Úsek: Zličín → Letiště Václava Havla</h3>
+            <p><strong>Příjezd:</strong> 12:20 na stanici Zličín</p>
+            <p><strong>Doba jízdy:</strong> 35 minut</p>
+            <p><strong>Cena:</strong> 40 Kč (90minutová jízdenka PID)</p>
+            <p><strong>Rezerva na přestup:</strong> 10 minut</p>
+            <img src="Praha2.jpg" alt="Obrázek dopravy Zličín">
+        </div>
 
-        <button class="pdf-button" onclick="toggleSection('section3')">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</button>
-        <div id="section3" class="details-section" style="display: none;">
         <button class="pdf-button" data-target="section3">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</button>
         <div id="section3" class="details-section hidden">
-<h3>🚌 Úsek: Letiště Václava Havla → Centrum</h3>
-<p><strong>Odjezd:</strong> 12:30 z Letiště Václava Havla</p>
-<p><strong>Příjezd:</strong> 13:00 na Náměstí Republiky</p>
-@@ -604,6 +46,11 @@ <h3>🚌 Úsek: Letiště Václava Havla → Centrum</h3>
-width: 90%;
-max-width: 400px;
-text-align: left;
+            <h3>🚌 Úsek: Letiště Václava Havla → Centrum</h3>
+            <p><strong>Odjezd:</strong> 12:30 z Letiště Václava Havla</p>
+            <p><strong>Příjezd:</strong> 13:00 na Náměstí Republiky</p>
+            <p><strong>Doba jízdy:</strong> 30 minut</p>
+            <p><strong>Cena:</strong> 90 Kč</p>
+            <img src="Praha3.jpg" alt="Obrázek dopravy Centrum">
+        </div>
+    </div>
+</section>
+
+<!-- Styl pro detaily -->
+<style>
+    .details-section {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+        width: 90%;
+        max-width: 400px;
+        text-align: left;
         transition: all 0.3s ease-in-out;
     }
 
     .hidden {
         display: none;
-}
+    }
 
-.details-section h3 {
-@@ -655,953 +102,16 @@ <h3>🚌 Úsek: Letiště Václava Havla → Centrum</h3>
+    .details-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .details-section p {
+        margin: 5px 0;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 10px;
+    }
+
+    .pdf-button {
+        font-size: 1rem;
+        padding: 10px 15px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .pdf-button:hover {
+        background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        .details-section {
+            font-size: 0.9rem;
+        }
+
+        .details-section h3 {
+            font-size: 1rem;
+        }
+
+        .pdf-button {
+            font-size: 0.9rem;
+            padding: 8px 12px;
+        }
+    }
+</style>
 
 <!-- Skript pro zobrazení a sbalení sekcí -->
 <script>
-    function toggleSection(id) {
-        const section = document.getElementById(id);
-        if (section.style.display === "none" || section.style.display === "") {
-            section.style.display = "block";
-        } else {
-            section.style.display = "none";
-        }
-    }
+    document.querySelectorAll(".pdf-button").forEach(button => {
+        button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection.classList.contains("hidden")) {
+                targetSection.classList.remove("hidden");
+            } else {
+                targetSection.classList.add("hidden");
+            }
+        });
+    });
 </script>
 
-        
-</script>
+
+    
+
     <!-- Sekce postup na letišti -->
     <div id="postup" class="card">
         <h2>🛂 Postup na letišti</h2>
