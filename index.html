@@ -554,6 +554,8 @@
     img {
         max-width: 100%;
         height: auto;
+
+
 <!-- Sekce doprava z Hodkovic na letiště -->
 <section id="praha" class="section-container">
     <h2 style="text-align: center;">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</h2>
@@ -655,12 +657,15 @@
 <script>
     function toggleSection(id) {
         const section = document.getElementById(id);
-        if (section.style.display === "none") {
+        if (section.style.display === "none" || section.style.display === "") {
             section.style.display = "block";
         } else {
             section.style.display = "none";
         }
     }
+</script>
+
+        
 </script>
     <!-- Sekce postup na letišti -->
     <div id="postup" class="card">
