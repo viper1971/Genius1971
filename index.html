@@ -455,17 +455,20 @@
 
 </div>
 
-
-<!-- Sekce s texty a tlačítky pro otevření pop-up oken -->
-<section id="praha">
-    <h2 class="pdf-button" onclick="showPopup('popup1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</h2>
-    <h2 class="pdf-button" onclick="showPopup('popup2')">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</h2>
-    <h2 class="pdf-button" onclick="showPopup('popup3')">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</h2>
+<!-- Sekce doprava z Hodkovic na letiště -->
+<section id="praha" class="section-container">
+    <h2 style="text-align: center;">🚍 Doprava z Hodkovic na letiště 9.7.2025 ✈️</h2>
+    
+    <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+        <button class="pdf-button" onclick="showPopup('popup1')">🚌 Úsek: Hodkovice → Černý Most (klikni pro více podrobností)</button>
+        <button class="pdf-button" onclick="showPopup('popup2')">🚌 Úsek: Zličín → Letiště Václava Havla (klikni pro více podrobností)</button>
+        <button class="pdf-button" onclick="showPopup('popup3')">🚌 Úsek: Letiště Václava Havla → Centrum (klikni pro více podrobností)</button>
+    </div>
 </section>
 
-<!-- Popup okna s podrobnostmi -->
+<!-- Pop-up okna s detaily -->
 <section id="popups">
-    <div id="popup1" class="popup" style="display:none;">
+    <div id="popup1" class="popup" style="display: none;">
         <div class="popup-content">
             <span class="close" onclick="closePopup('popup1')">&times;</span>
             <h2>🚌 Úsek: Hodkovice → Černý Most</h2>
@@ -477,7 +480,7 @@
         </div>
     </div>
 
-    <div id="popup2" class="popup" style="display:none;">
+    <div id="popup2" class="popup" style="display: none;">
         <div class="popup-content">
             <span class="close" onclick="closePopup('popup2')">&times;</span>
             <h2>🚌 Úsek: Zličín → Letiště Václava Havla</h2>
@@ -489,7 +492,7 @@
         </div>
     </div>
 
-    <div id="popup3" class="popup" style="display:none;">
+    <div id="popup3" class="popup" style="display: none;">
         <div class="popup-content">
             <span class="close" onclick="closePopup('popup3')">&times;</span>
             <h2>🚌 Úsek: Letiště Václava Havla → Centrum</h2>
@@ -536,14 +539,6 @@
         max-width: 400px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         position: relative;
-        overflow: hidden;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 10px 0;
     }
 
     .close {
@@ -555,17 +550,31 @@
         cursor: pointer;
     }
 
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 10px 0;
+    }
+
     .pdf-button {
-        color: #007bff;
+        color: white;
+        background-color: #007bff;
+        border-radius: 8px;
+        padding: 10px 20px;
+        text-decoration: none;
+        text-align: center;
+        width: 100%;
+        max-width: 250px;
         cursor: pointer;
-        text-decoration: underline;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .pdf-button:hover {
-        color: #0056b3;
+        background-color: #0056b3;
     }
 </style>
-
 
 
     
